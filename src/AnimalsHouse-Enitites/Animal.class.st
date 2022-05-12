@@ -70,7 +70,7 @@ Animal >> breed [
 
 { #category : #accessing }
 Animal >> breed: anObject [
-	(anObject class = Breed) 
+	(anObject isBreed) 
 	ifTrue: [ 
 		((self isCat and: anObject class == CatBreed) or: (self isDog and: anObject class == DogBreed))
 		ifTrue: [ breed := anObject ]

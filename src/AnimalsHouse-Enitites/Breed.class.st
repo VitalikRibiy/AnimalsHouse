@@ -43,6 +43,14 @@ Breed class >> breeds [
 	^ breeds.
 ]
 
+{ #category : #accessing }
+Breed class >> getByName: nameOfBreed [
+	| result |
+	result := (self breeds select: [ :e | e name = nameOfBreed ]).
+	result isNotEmpty ifTrue: [ ^ result at: 1 ]
+	ifFalse: [ self error: 'Breed with name:',nameOfBreed, 'does not exist' ]
+]
+
 { #category : #'instance creation' }
 Breed class >> new [
 self == Breed ifTrue: [
