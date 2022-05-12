@@ -29,12 +29,24 @@ Class {
 
 { #category : #'instance creation' }
 Animal class >> new [
-	self subclassResponsibility.
+	self == Animal ifTrue: [
+			^ self error: 'Animal is an abstract class.  Make a concrete subclass.' ].
+		^ super new
 ]
 
 { #category : #'instance creation' }
 Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValue weight: weightValue healthStatus: healthStatusValue description: descriptionValue donationProgress: donationProgressValue [
-	^ self subclassResponsibility
+	| instance |
+	instance := self new.
+	instance name: nameValue; 
+	age: ageValue; 
+	sex: sexValue;
+	breed: breedValue;
+	weight: weightValue; 
+	healthStatus: healthStatusValue; 
+	description: descriptionValue; 
+	donationProgress: donationProgressValue.
+	^ instance.
 ]
 
 { #category : #accessing }
@@ -58,8 +70,12 @@ Animal >> breed [
 
 { #category : #accessing }
 Animal >> breed: anObject [
-	(anObject isMemberOf: Breed) 
-	ifTrue: [ breed := anObject ]  
+	(anObject class = Breed) 
+	ifTrue: [ 
+		((self isCat and: anObject class == CatBreed) or: (self isDog and: anObject class == DogBreed))
+		ifTrue: [ breed := anObject ]
+		ifFalse: [ self error: 'breed object do not correspond to animal specie' ] 
+		]  
 	ifFalse: [ self error: 'breed: should be an instance of Breed' ]
 ]
 

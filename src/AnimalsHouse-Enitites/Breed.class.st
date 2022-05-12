@@ -27,19 +27,43 @@ Class {
 	#category : #'AnimalsHouse-Enitites'
 }
 
-{ #category : #'instance creation' }
-Breed class >> addWithName: nameValue avgSize: avgSizeValue avgWeight: avgWeightValue avgLifespan: avgLifeSpanValue avgDailySleep: avgDailySleepValue avgSpeed: avgSpeedValue [
-	self subclassResponsibility.
+{ #category : #adding }
+Breed class >> add: breedObject [
+	self breeds isNotNil 
+	   ifTrue: [ 
+			(breeds anySatisfy: [ :e | e name = breedObject name. ]) 
+			ifTrue: [ self error: 'This bread already exists'. ]
+			ifFalse: [ breeds addLast: breedObject. ]
+			]
+		ifFalse: [ breeds := OrderedCollection with: breedObject. ].
 ]
 
 { #category : #accessing }
-Breed class >> breedsList [
-	self subclassResponsibility.
+Breed class >> breeds [
+	^ breeds.
 ]
 
 { #category : #'instance creation' }
 Breed class >> new [
-	self subclassResponsibility.
+self == Breed ifTrue: [
+		^ self error: 'Breed is an abstract class.  Make a concrete subclass.' ].
+	^ super new
+]
+
+{ #category : #'instance creation' }
+Breed class >> newWithName: nameValue avgSize: avgSizeValue avgWeight: avgWeightValue avgLifespan: avgLifeSpanValue avgDailySleep: avgDailySleepValue avgSpeed: avgSpeedValue [
+	| instance |
+	self == Breed ifTrue: [
+		^ self error: 'Breed is an abstract class.  Make a concrete subclass.' ].
+	instance := self new.
+	instance name: nameValue; 
+			   avgSize: avgSizeValue;
+			   avgWeight: avgWeightValue;
+			   avgLifespan: avgLifeSpanValue;
+			   avgDailySleep: avgDailySleepValue;
+			   avgSpeed: avgSpeedValue.
+   self add: instance.
+	^ instance.
 ]
 
 { #category : #accessing }

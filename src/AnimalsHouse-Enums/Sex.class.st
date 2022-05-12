@@ -6,10 +6,10 @@ Class {
 
 { #category : #initialization }
 Sex class >> female [
-	^'female'.
+	^ 'female'.
 ]
 
 { #category : #initialization }
 Sex class >> male [
-	^'male'.
+	^ 'male'.
 ]
