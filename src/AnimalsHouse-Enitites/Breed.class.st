@@ -59,7 +59,7 @@ self == Breed ifTrue: [
 ]
 
 { #category : #'instance creation' }
-Breed class >> newWithName: nameValue avgSize: avgSizeValue avgWeight: avgWeightValue avgLifespan: avgLifeSpanValue avgDailySleep: avgDailySleepValue avgSpeed: avgSpeedValue [
+Breed class >> withName: nameValue avgSize: avgSizeValue avgWeight: avgWeightValue avgLifespan: avgLifeSpanValue avgDailySleep: avgDailySleepValue avgSpeed: avgSpeedValue [
 	| instance |
 	self == Breed ifTrue: [
 		^ self error: 'Breed is an abstract class.  Make a concrete subclass.' ].
