@@ -18,6 +18,7 @@ Class {
 		'name',
 		'age',
 		'sex',
+		'species',
 		'breed',
 		'weight',
 		'healthStatus',
@@ -27,11 +28,50 @@ Class {
 	#category : #'AnimalsHouse-Enitites'
 }
 
+{ #category : #demo }
+Animal class >> createDemoData [
+	CatBreed initialize. DogBreed initialize.
+	CatBreed withName: 'British' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Irish' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Munchkin' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Husky' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Labrador' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'ToyTerier' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	Cat withName: 'Happy' age: 1 sex: Sex female  breed: (CatBreed getByName: 'British') weight: 5 healthStatus: 'Healthy' description: 'Lovely British' donationProgress: #(0 100).
+	Cat withName: 'Erl' age: 1 sex: Sex male  breed: (CatBreed getByName: 'Irish') weight: 5 healthStatus: 'Healthy' description: 'Lovely Irish' donationProgress: #(0 100).
+	Cat withName: 'Puffy' age: 1 sex: Sex female  breed: (CatBreed getByName: 'Munchkin') weight: 5 healthStatus: 'Healthy' description: 'Lovely Munchkin' donationProgress: #(0 100).
+	Dog withName: 'Jozy' age: 1 sex: Sex female  breed: (DogBreed getByName: 'Husky') weight: 5 healthStatus: 'Healthy' description: 'Lovely Husky' donationProgress: #(0 100).
+	Dog withName: 'Fred' age: 1 sex: Sex male  breed: (DogBreed getByName: 'ToyTerier') weight: 5 healthStatus: 'Healthy' description: 'Lovely ToyTerier' donationProgress: #(0 100).
+	Dog withName: 'Archi' age: 1 sex: Sex male  breed: (DogBreed getByName: 'Labrador') weight: 5 healthStatus: 'Healthy' description: 'Lovely Labrador' donationProgress: #(0 100).
+]
+
+{ #category : #initialization }
+Animal class >> initialize [
+	self reset.
+]
+
+{ #category : #initialization }
+Animal class >> initializeVoyageOnMemoryDB [
+	| repository |
+	repository := VOMongoRepository database: 'AnimalsHouse'.
+	repository enableSingleton.
+]
+
+{ #category : #testing }
+Animal class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #'instance creation' }
 Animal class >> new [
 	self == Animal ifTrue: [
 			^ self error: 'Animal is an abstract class.  Make a concrete subclass.' ].
 		^ super new
+]
+
+{ #category : #initialization }
+Animal class >> reset [
+	self initializeVoyageOnMemoryDB
 ]
 
 { #category : #'instance creation' }
@@ -45,7 +85,9 @@ Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValu
 	weight: weightValue; 
 	healthStatus: healthStatusValue; 
 	description: descriptionValue; 
-	donationProgress: donationProgressValue.
+	donationProgress: donationProgressValue;
+	species: self class.
+	instance save.
 	^ instance.
 ]
 
@@ -152,6 +194,17 @@ Animal >> sex: sexValue [
 	sexValue isByteString
 	ifTrue: [ sex := sexValue ]  
 	ifFalse: [ self error: 'sex should be an instance of ByteString' ]
+]
+
+{ #category : #accessing }
+Animal >> species [
+	^ species
+]
+
+{ #category : #accessing }
+Animal >> species: anObject [
+	(anObject == 'Cat' or: anObject == 'Dog')
+	ifTrue: [ species := anObject ]
 ]
 
 { #category : #accessing }

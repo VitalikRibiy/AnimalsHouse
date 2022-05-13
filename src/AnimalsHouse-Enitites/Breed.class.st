@@ -51,6 +51,11 @@ Breed class >> getByName: nameOfBreed [
 	ifFalse: [ self error: 'Breed with name:',nameOfBreed, 'does not exist' ]
 ]
 
+{ #category : #testing }
+Breed class >> isVoyageRoot [
+	^ true.
+]
+
 { #category : #'instance creation' }
 Breed class >> new [
 self == Breed ifTrue: [
