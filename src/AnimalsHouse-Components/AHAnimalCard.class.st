@@ -1,6 +1,6 @@
 Class {
 	#name : #AHAnimalCard,
-	#superclass : #WAComponent,
+	#superclass : #SBSComponent,
 	#instVars : [
 		'animal'
 	],
@@ -30,16 +30,16 @@ AHAnimalCard >> name [
 { #category : #rendering }
 AHAnimalCard >> renderContentOn: html [
 		html card
+			style: 'width: 18rem;';
 			with: [ 
-			html html: self class imagePlaceHolderSVG.
+			html html: SBSCardExample imagePlaceHolderSVG.
 			html cardBody: [ 
 			html cardTitle level5 with: self name.
 			html cardSubtitle 
 				level6; 
 				mutedText;
-				with: self sex,',', self age.
+				with: self sex,',', self age printString.
 			html formButton bePrimary with: 'Про мене' ] ].
-	Transcript show: 'End'.
 ]
 
 { #category : #accessing }

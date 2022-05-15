@@ -16,7 +16,7 @@ AHApplicationRootComponent class >> canBeRoot [
 AHApplicationRootComponent class >> initialize [
 	| app |
 	app := WAAdmin register: self asApplicationAt: 'AnimalsHouse'.
-	app addLibrary: JQDeploymentLibrary; addLibrary: JQUiDeploymentLibrary; addLibrary: TBSDeploymentLibrary;addLibrary: SBSHtmlCanvas; addLibrary: SBSDevelopmentLibrary; addLibrary: SBSDeploymentLibrary.
+	app addLibrary: JQDeploymentLibrary; addLibrary: JQUiDeploymentLibrary; addLibrary: TBSDeploymentLibrary; addLibrary: SBSDevelopmentLibrary; addLibrary: SBSDeploymentLibrary.
 ]
 
 { #category : #initialization }
@@ -42,7 +42,6 @@ AHApplicationRootComponent >> renderContentOn: html [
 
 { #category : #rendering }
 AHApplicationRootComponent >> updateRoot: anHtmlRoot [
-	super updateRoot: anHtmlRoot.
 	anHtmlRoot beHtml5.
 	anHtmlRoot title: 'AnimalsHouse'.
 ]
