@@ -1,6 +1,6 @@
 Class {
 	#name : #AHAnimalCard,
-	#superclass : #AnObsoleteWAComponent,
+	#superclass : #WAComponent,
 	#instVars : [
 		'animal'
 	],
