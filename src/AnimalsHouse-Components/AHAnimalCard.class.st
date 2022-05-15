@@ -17,6 +17,11 @@ AHAnimalCard >> animal: anObject [
 	animal := anObject
 ]
 
+{ #category : #accessing }
+AHAnimalCard >> image [
+	animal image ifNotNil: [ ^ animal image ] ifNil: [ ^ SBSCardExample imagePlaceHolderSVG ]
+]
+
 { #category : #initialization }
 AHAnimalCard >> initialize [
 	super initialize.
@@ -32,7 +37,7 @@ AHAnimalCard >> renderContentOn: html [
 		html card
 			style: 'width: 18rem;';
 			with: [ 
-			html html: SBSCardExample imagePlaceHolderSVG.
+			html html: self image.
 			html cardBody: [ 
 			html cardTitle level5 with: self name.
 			html cardSubtitle 
