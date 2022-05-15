@@ -1,6 +1,6 @@
 Class {
 	#name : #AHApplicationRootComponent,
-	#superclass : #WAComponent,
+	#superclass : #AnObsoleteWAComponent,
 	#instVars : [
 		'main'
 	],
@@ -16,7 +16,7 @@ AHApplicationRootComponent class >> canBeRoot [
 AHApplicationRootComponent class >> initialize [
 	| app |
 	app := WAAdmin register: self asApplicationAt: 'AnimalsHouse'.
-	app addLibrary: JQDeploymentLibrary; addLibrary: JQUiDeploymentLibrary; addLibrary: TBSDeploymentLibrary.
+	app addLibrary: JQDeploymentLibrary; addLibrary: JQUiDeploymentLibrary; addLibrary: TBSDeploymentLibrary;addLibrary: SBSHtmlCanvas; addLibrary: SBSDevelopmentLibrary; addLibrary: SBSDeploymentLibrary.
 ]
 
 { #category : #initialization }
@@ -27,7 +27,12 @@ AHApplicationRootComponent >> children [
 { #category : #initialization }
 AHApplicationRootComponent >> initialize [
 	super initialize.
-	main := AHScreenComponent new.
+	main := AHCardsGrid new.
+]
+
+{ #category : #accessing }
+AHApplicationRootComponent >> main: aComponent [
+	main := aComponent
 ]
 
 { #category : #rendering }
