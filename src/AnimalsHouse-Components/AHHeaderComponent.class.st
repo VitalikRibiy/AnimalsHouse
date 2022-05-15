@@ -1,6 +1,6 @@
 Class {
 	#name : #AHHeaderComponent,
-	#superclass : #AnObsoleteWAComponent,
+	#superclass : #WAComponent,
 	#category : #'AnimalsHouse-Components'
 }
 
