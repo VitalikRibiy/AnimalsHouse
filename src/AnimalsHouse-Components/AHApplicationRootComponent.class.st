@@ -16,7 +16,12 @@ AHApplicationRootComponent class >> canBeRoot [
 AHApplicationRootComponent class >> initialize [
 	| app |
 	app := WAAdmin register: self asApplicationAt: 'AnimalsHouse'.
-	app addLibrary: JQDeploymentLibrary; addLibrary: JQUiDeploymentLibrary; addLibrary: TBSDeploymentLibrary; addLibrary: SBSDevelopmentLibrary; addLibrary: SBSDeploymentLibrary.
+	app addLibrary: JQDeploymentLibrary; 
+	addLibrary: JQUiDeploymentLibrary; 
+	addLibrary: TBSDeploymentLibrary; 
+	addLibrary: SBSDevelopmentLibrary; 
+	addLibrary: SBSDeploymentLibrary;
+	addLibrary: SBSFileLibrary.
 ]
 
 { #category : #initialization }
@@ -27,7 +32,7 @@ AHApplicationRootComponent >> children [
 { #category : #initialization }
 AHApplicationRootComponent >> initialize [
 	super initialize.
-	main := AHCardsGrid new.
+	main := AHMainScreenComponent new.
 ]
 
 { #category : #accessing }

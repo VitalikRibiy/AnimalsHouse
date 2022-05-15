@@ -1,6 +1,6 @@
 Class {
 	#name : #AHCardsGrid,
-	#superclass : #AHScreenComponent,
+	#superclass : #WAComponent,
 	#category : #'AnimalsHouse-Components'
 }
 
