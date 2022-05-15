@@ -1,6 +1,6 @@
 Class {
 	#name : #AHApplicationRootComponent,
-	#superclass : #AnObsoleteWAComponent,
+	#superclass : #WAComponent,
 	#instVars : [
 		'main'
 	],
