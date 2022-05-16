@@ -2,7 +2,8 @@ Class {
 	#name : #AHScreenComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'header'
+		'header',
+		'footer'
 	],
 	#category : #'AnimalsHouse-Components'
 }
@@ -10,6 +11,11 @@ Class {
 { #category : #hooks }
 AHScreenComponent >> children [
 	^ { header }
+]
+
+{ #category : #initialization }
+AHScreenComponent >> createFooterComponent [
+	^ AHFooterComponent new.
 ]
 
 { #category : #initialization }
@@ -21,6 +27,7 @@ AHScreenComponent >> createHeaderComponent [
 AHScreenComponent >> initialize [
 	super initialize.
 	header := self createHeaderComponent.
+	footer := self createFooterComponent.
 ]
 
 { #category : #rendering }

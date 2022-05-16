@@ -22,4 +22,5 @@ AHMainScreenComponent >> renderContentOn: html [
 	html render: FoundAnimalModal new.
 	html render: WantAnimalModal new.
 	html render: grid.
+	html render: footer.
 ]
