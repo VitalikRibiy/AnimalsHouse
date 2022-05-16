@@ -14,7 +14,7 @@ FoundAnimalModal >> renderContentOn: html [
 	html container
 		with: [
 			html formButton
-				style: 'width: 15rem; height: 10rem';
+				style: 'width: 12rem; height: 6rem';
 				bePrimary;
 				dataToggle: 'modal';
 				dataTarget: '#FoundAnimalModal';

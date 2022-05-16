@@ -1,6 +1,6 @@
 Class {
 	#name : #AHHeaderComponent,
-	#superclass : #WAComponent,
+	#superclass : #SBSComponent,
 	#category : #'AnimalsHouse-Components'
 }
 
@@ -15,8 +15,42 @@ AHHeaderComponent >> renderBrandOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderContentOn: html [
-	html tbsNavbar beDefault; with: [ 
-		html tbsContainer: [ 
-			self renderBrandOn: html
-	] ]
+	| bar id|
+	id := '#navbarCollapsed'.
+	bar := html navigationBar.
+	bar expandLarge; 
+		style: 'font: 15px Monserat; color: white; background-color: #355070'.
+	bar with: [ 
+		html navigationBarBrand: 'Animals House'.
+		
+		"The toggler that is only visible when reducing the width of screen"
+		html
+			navigationBarToggler
+			beButtonType;
+			collapse;
+			dataTarget: id;
+			with: [ html navigationBarTogglerIcon ].
+				
+		html navigationBarCollapse collapse id: 'navbarCollapsed'; with: [ 
+			html navigationBarNavigation: [
+				html navigationItem 
+					
+					dropdown with: [ 
+					html navigationLink dropdownToggle; dataToggle: 'dropdown'; with: 'Взяти тварину'.
+				 
+					html dropdownMenu 
+						attributeAt: 'aria-labelledby' put: 'navbarDropdown';
+						with: [ 
+						html dropdownItem: 'Actions'.
+						html dropdownItem: 'Another action'.
+						html dropdownDivider.
+						html dropdownItem: 'Something else here'.
+					 ]
+				].
+				html navigationItem: [ html navigationLink beDisabled with: 'Disabled' ].	
+			].
+			 
+			
+		]
+	]
 ]
