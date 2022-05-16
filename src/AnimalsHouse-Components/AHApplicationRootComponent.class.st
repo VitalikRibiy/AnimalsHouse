@@ -1,6 +1,6 @@
 Class {
 	#name : #AHApplicationRootComponent,
-	#superclass : #WAComponent,
+	#superclass : #SBSComponent,
 	#instVars : [
 		'main'
 	],
@@ -42,7 +42,9 @@ AHApplicationRootComponent >> main: aComponent [
 
 { #category : #rendering }
 AHApplicationRootComponent >> renderContentOn: html [
-	html render: main.
+	html div
+		style: 'backgroundColor: #1F4BE8';
+		with: main.
 ]
 
 { #category : #rendering }

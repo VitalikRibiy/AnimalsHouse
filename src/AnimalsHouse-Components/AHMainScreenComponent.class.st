@@ -18,9 +18,15 @@ AHMainScreenComponent >> initialize [
 { #category : #rendering }
 AHMainScreenComponent >> renderContentOn: html [
 	super renderContentOn: html.
-	html render: carousel.
-	html render: FoundAnimalModal new.
-	html render: WantAnimalModal new.
-	html render: grid.
-	html render: footer.
+	html row with: [ html column extraLargeSize:6; extraLargeOffset: 3; with: carousel. ].
+	html row justifyContentCenterVeryLarge;
+		with: [
+		html column extraLargeSize: 2; with: FoundAnimalModal new.
+		html column extraLargeSize: 2; with: WantAnimalModal new.
+	 ].
+	html row with: [ 
+		html column extraLargeSize: 6; extraLargeOffset: 3; with: grid.
+		 ].
+	html row 
+		with: footer.
 ]

@@ -11,28 +11,37 @@ FoundAnimalModal >> initialize [
 
 { #category : #rendering }
 FoundAnimalModal >> renderContentOn: html [
-	html formButton
-		bePrimary;
-		dataToggle: 'modal';
-		dataTarget: '#FoundAnimalModal';
-		with: 'Found Animal?'.			
-	html tbsModal
-		id: 'FoundAnimalModal';
-		with: [ html
-				tbsModalDialog with: [ html
-						tbsModalContent: [ html
-								tbsModalHeader: [ html modalTitle
+	html container
+		with: [
+			html formButton
+				style: 'width: 15rem; height: 10rem';
+				bePrimary;
+				dataToggle: 'modal';
+				dataTarget: '#FoundAnimalModal';
+				with: 'Found Animal?'.			
+					html modal
+					id: 'FoundAnimalModal';
+					with: [ html
+						modalDialog with: [ html
+							modalContent: [ html
+								modalHeader: [ html modalTitle
 										level5;
 										with: 'Found Animal?'.
-									html modalCloseButton ].
-							html tbsModalBody: 'Describe Animal here pls'.
-							html
-								tbsModalFooter: [ html formButton
+									html modalCloseButton 
+								].
+								html modalBody: 'Describe Animal here pls'.
+								html modalFooter: [ 
+									html formButton
 										beSecondary;
 										dataDismiss: 'modal';
 										with: 'Close'.
 									html formButton
 										bePrimary;
-										with: 'Send application' ] ] ] ]
+										with: 'Send application' 
+								] 
+							] 
+						] 
+					] 
+	].
 
 ]

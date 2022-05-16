@@ -1,6 +1,6 @@
 Class {
 	#name : #AHCardsGrid,
-	#superclass : #WAComponent,
+	#superclass : #SBSComponent,
 	#instVars : [
 		'animalsComponents'
 	],
@@ -22,8 +22,12 @@ AHCardsGrid >> initialize [
 { #category : #rendering }
 AHCardsGrid >> renderContentOn: html [
 	super renderContentOn: html.
-	html tbsContainer: [  
-		self animalsComponents do: [ :a |
-			html render: a ]
+	html container
+		style: 'background: #6F9DC8';
+		with: [ 
+		html row	with: [ 
+				self animalsComponents do: [ :a |
+					html column extraLargeSize: 3; with: a ]
+			] 
 	]
 ]

@@ -35,7 +35,7 @@ AHAnimalCard >> name [
 { #category : #rendering }
 AHAnimalCard >> renderContentOn: html [
 		html card
-			style: 'width: 18rem;';
+			style: 'margin: 10px';
 			with: [ 
 			html html: self image.
 			html cardBody: [ 
@@ -44,7 +44,8 @@ AHAnimalCard >> renderContentOn: html [
 				level6; 
 				mutedText;
 				with: self sex,',', self age printString.
-			html formButton bePrimary with: 'Про мене' ] ].
+			html formButton bePrimary with: 'Про мене' ] ]
+
 ]
 
 { #category : #accessing }

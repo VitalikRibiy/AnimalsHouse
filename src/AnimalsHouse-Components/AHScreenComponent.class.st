@@ -1,6 +1,6 @@
 Class {
 	#name : #AHScreenComponent,
-	#superclass : #WAComponent,
+	#superclass : #SBSComponent,
 	#instVars : [
 		'header',
 		'footer'
