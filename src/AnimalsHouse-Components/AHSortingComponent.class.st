@@ -24,30 +24,57 @@ AHSortingComponent >> initialize [
 
 { #category : #rendering }
 AHSortingComponent >> renderBreedLinkOn: html with: breed [
-	html listGroupLinkedItem callback: [ self selectBreed: breed ]; with: breed.
+	html dropdownItem callback: [ self selectBreed: breed ]; with: breed.
 ]
 
 { #category : #rendering }
 AHSortingComponent >> renderContentOn: html [
-	html listGroup: [ 
-		self species collect: [ :species| self renderSpeciesLinkOn: html with: species ].
+	html dropdown with: [ 
+		html formButton 
+			beSecondary;
+			dropdown;
+			dataToggle: 'dropdown';
+			with: selectedSpeciesName.
+		html dropdownMenu 
+		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
+		with: [ 
+			self species collect: [ :species| self renderSpeciesLinkOn: html with: species ].
+		].
 	].
-	html listGroup: [ 
-		self sexList collect: [ :sex| self renderSexLinkOn: html with: sex ].
+	html dropdown with: [ 
+		html formButton 
+			beSecondary;
+			dropdown;
+			dataToggle: 'dropdown';
+			with: selectedSex.
+		html dropdownMenu 
+		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
+		with: [ 
+			self sexList collect: [ :sex| self renderSexLinkOn: html with: sex ].
+		].
 	].
-	html listGroup: [ 
-		(self breedsOfSpecies: selectedSpeciesName) collect: [ :breed| self renderBreedLinkOn: html with: breed ].
+	html dropdown with: [ 
+		html formButton 
+			beSecondary;
+			dropdown;
+			dataToggle: 'dropdown';
+			with: selectedBreedName.
+		html dropdownMenu 
+		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
+		with: [ 
+			(self breedsOfSpecies: selectedSpeciesName) collect: [ :breed| self renderBreedLinkOn: html with: breed ].
+		].
 	].
 ]
 
 { #category : #rendering }
 AHSortingComponent >> renderSexLinkOn: html with: sex [
-	html listGroupLinkedItem callback: [ self selectSex: sex ]; with: sex.
+	html dropdownItem callback: [ self selectSex: sex ]; with: sex.
 ]
 
 { #category : #rendering }
 AHSortingComponent >> renderSpeciesLinkOn: html with: species [
-	html listGroupLinkedItem callback: [ self selectSpecies: species ]; with: species.
+	html dropdownItem callback: [ self selectSpecies: species ]; with: species.
 ]
 
 { #category : #actions }
@@ -62,7 +89,11 @@ AHSortingComponent >> selectSex: sex [
 
 { #category : #actions }
 AHSortingComponent >> selectSpecies: species [
-	selectedSpeciesName := species.
+	selectedSpeciesName = species ifTrue: [ ^ self ] 
+		ifFalse: [  
+			selectedSpeciesName := species.
+			selectedBreedName := (self breedsOfSpecies: species) asArray at: 1.
+		].
 ]
 
 { #category : #accessing }

@@ -38,12 +38,20 @@ Animal class >> createDemoData [
 	DogBreed withName: 'Husky' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
 	DogBreed withName: 'Labrador' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
 	DogBreed withName: 'ToyTerier' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	Cat withName: 'Happy' age: 1 sex: Sex female  breed: (CatBreed getByName: 'British') weight: 5 healthStatus: 'Healthy' description: 'Lovely British' donationProgress: #(0 100) image: nil.
+	Cat withName: 'Happy' age: 1 sex: Sex male  breed: (CatBreed getByName: 'British') weight: 5 healthStatus: 'Healthy' description: 'Lovely British' donationProgress: #(0 100) image: nil.
+	Cat withName: 'Heddy' age: 1 sex: Sex female  breed: (CatBreed getByName: 'British') weight: 5 healthStatus: 'Healthy' description: 'Lovely British' donationProgress: #(0 100) image: nil.
 	Cat withName: 'Erl' age: 1 sex: Sex male  breed: (CatBreed getByName: 'Irish') weight: 5 healthStatus: 'Healthy' description: 'Lovely Irish' donationProgress: #(0 100) image: nil.
+	Cat withName: 'Essy' age: 1 sex: Sex female  breed: (CatBreed getByName: 'Irish') weight: 5 healthStatus: 'Healthy' description: 'Lovely Irish' donationProgress: #(0 100) image: nil.
 	Cat withName: 'Puffy' age: 1 sex: Sex female  breed: (CatBreed getByName: 'Munchkin') weight: 5 healthStatus: 'Healthy' description: 'Lovely Munchkin' donationProgress: #(0 100) image: nil.
+	Cat withName: 'Plummy' age: 1 sex: Sex male  breed: (CatBreed getByName: 'Munchkin') weight: 5 healthStatus: 'Healthy' description: 'Lovely Munchkin' donationProgress: #(0 100) image: nil.
 	Dog withName: 'Jozy' age: 1 sex: Sex female  breed: (DogBreed getByName: 'Husky') weight: 5 healthStatus: 'Healthy' description: 'Lovely Husky' donationProgress: #(0 100) image: nil.
+	Dog withName: 'Sansa' age: 1 sex: Sex female  breed: (DogBreed getByName: 'Husky') weight: 5 healthStatus: 'Healthy' description: 'Lovely Husky' donationProgress: #(0 100) image: nil.
+	Dog withName: 'Jenny' age: 1 sex: Sex female  breed: (DogBreed getByName: 'Husky') weight: 5 healthStatus: 'Healthy' description: 'Lovely Husky' donationProgress: #(0 100) image: nil.
+	Dog withName: 'Jo' age: 1 sex: Sex male  breed: (DogBreed getByName: 'Husky') weight: 5 healthStatus: 'Healthy' description: 'Lovely Husky' donationProgress: #(0 100) image: nil.
 	Dog withName: 'Fred' age: 1 sex: Sex male  breed: (DogBreed getByName: 'ToyTerier') weight: 5 healthStatus: 'Healthy' description: 'Lovely ToyTerier' donationProgress: #(0 100) image: nil.
+	Dog withName: 'Finny' age: 1 sex: Sex female  breed: (DogBreed getByName: 'ToyTerier') weight: 5 healthStatus: 'Healthy' description: 'Lovely ToyTerier' donationProgress: #(0 100) image: nil.
 	Dog withName: 'Archi' age: 1 sex: Sex male  breed: (DogBreed getByName: 'Labrador') weight: 5 healthStatus: 'Healthy' description: 'Lovely Labrador' donationProgress: #(0 100) image: nil.
+	Dog withName: 'Ally' age: 1 sex: Sex female  breed: (DogBreed getByName: 'Labrador') weight: 5 healthStatus: 'Healthy' description: 'Lovely Labrador' donationProgress: #(0 100) image: nil.
 ]
 
 { #category : #initialization }
