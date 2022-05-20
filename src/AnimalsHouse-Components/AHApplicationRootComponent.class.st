@@ -43,7 +43,7 @@ AHApplicationRootComponent >> main: aComponent [
 { #category : #rendering }
 AHApplicationRootComponent >> renderContentOn: html [
 	html div
-		style: 'background-color: #EAF6FF';
+		style: 'background-color: #EAF6FF; height: 100%; width: 100%';
 		with: main.
 ]
 

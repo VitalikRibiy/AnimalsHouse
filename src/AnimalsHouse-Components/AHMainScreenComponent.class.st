@@ -19,6 +19,7 @@ AHMainScreenComponent >> initialize [
 AHMainScreenComponent >> renderContentOn: html [
 	super renderContentOn: html.
 	html column
+		style: 'height: 100%';
 		extraLargeSize: 12; with: [ 
 		html row
 			style: 'margin-top: 50px; margin-bottom: 50px;'; 
