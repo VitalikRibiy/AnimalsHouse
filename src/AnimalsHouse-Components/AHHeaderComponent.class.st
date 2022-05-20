@@ -47,10 +47,7 @@ AHHeaderComponent >> renderContentOn: html [
 						html dropdownItem: 'Something else here'.
 					 ]
 				].
-				html navigationItem: [ html navigationLink beDisabled with: 'Disabled' ].	
 			].
-			 
-			
 		]
 	]
 ]

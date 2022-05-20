@@ -161,3 +161,8 @@ Breed >> name: nameValue [
 	ifTrue: [ name := nameValue ]  
 	ifFalse: [ self error: 'name should be an instance of ByteString' ]
 ]
+
+{ #category : #private }
+Breed >> species [
+	self subclassResponsibility.
+]
