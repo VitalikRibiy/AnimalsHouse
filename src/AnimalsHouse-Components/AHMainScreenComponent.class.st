@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'carousel',
 		'grid',
-		'showLoginError'
+		'showLoginError',
+		'adminView'
 	],
 	#category : #'AnimalsHouse-Components'
 }
@@ -16,7 +17,7 @@ AHMainScreenComponent >> admin [
 
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> goToAdministrationView [
-	self call: AHAdminComponent new.
+	self call: adminView.
 ]
 
 { #category : #'as yet unclassified' }
@@ -29,6 +30,7 @@ AHMainScreenComponent >> initialize [
 	super initialize.
 	carousel := AHCarouselPhotos new.
 	grid := AHCardsGrid new.
+	adminView := AHAdminComponent new.
 ]
 
 { #category : #'as yet unclassified' }
@@ -55,7 +57,6 @@ AHMainScreenComponent >> renderContentOn: html [
 			style: 'margin-top: 50px; margin-bottom: 50px;';
 			with: [
 			html column style: 'text-align: center'; extraLargeSize: 2; with: FoundAnimalModal new.
-			html column style: 'text-align: center'; extraLargeSize: 2; with: WantAnimalModal new.
 	 	].
 		html row with: [ 
 			html column extraLargeSize: 6; extraLargeOffset: 3; 
@@ -77,12 +78,18 @@ AHMainScreenComponent >> renderLoginErrorMessageIfAnyOn: html [
 		with: self loginErrorMessage
 ]
 
+{ #category : #initialization }
+AHMainScreenComponent >> resetAdminView [
+	adminView := AHAdminComponent new.
+]
+
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> tryConnectionWithLogin: login andPassword: password [
 	| admin |
 	admin := self admin.
 	(login = admin login and: [ (SHA256 hashMessage: password) = admin password asByteArray ])
 		ifTrue: [ self session currentAdmin: admin.
+				    self resetAdminView.
 					 self goToAdministrationView ]
 		ifFalse: [ self loginErrorOccurred ]
 ]
