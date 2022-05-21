@@ -29,9 +29,12 @@ AHSortingComponent >> renderBreedLinkOn: html with: breed [
 
 { #category : #rendering }
 AHSortingComponent >> renderContentOn: html [
-	html dropdown with: [ 
+	html dropdown 
+		style: 'margin: 10px';
+		with: [ 
 		html formButton 
-			beSecondary;
+			bePrimary;
+			beLarge;
 			dropdown;
 			dataToggle: 'dropdown';
 			with: selectedSpeciesName.
@@ -41,9 +44,12 @@ AHSortingComponent >> renderContentOn: html [
 			self species collect: [ :species| self renderSpeciesLinkOn: html with: species ].
 		].
 	].
-	html dropdown with: [ 
+	html dropdown 
+		style: 'margin: 10px';
+		with: [ 
 		html formButton 
-			beSecondary;
+			bePrimary;
+			beLarge;
 			dropdown;
 			dataToggle: 'dropdown';
 			with: selectedSex.
@@ -53,9 +59,12 @@ AHSortingComponent >> renderContentOn: html [
 			self sexList collect: [ :sex| self renderSexLinkOn: html with: sex ].
 		].
 	].
-	html dropdown with: [ 
+	html dropdown 
+		style: 'margin: 10px';
+		with: [ 
 		html formButton 
-			beSecondary;
+			bePrimary;
+			beLarge;
 			dropdown;
 			dataToggle: 'dropdown';
 			with: selectedBreedName.
