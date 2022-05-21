@@ -120,7 +120,7 @@ AHFoundAnimalCard >> renderContentOn: html [
 			bePrimary 
 			dataToggle: 'modal';
 			dataTarget: '#AddAnimalModal';
-			with: 'Про мене' ] ].
+			with: 'Add animal' ] ].
 		html modal
 			id: 'AddAnimalModal';
 			with: [ 
@@ -129,7 +129,7 @@ AHFoundAnimalCard >> renderContentOn: html [
 						html modalHeader: [ 
 							html modalTitle
 								level5;
-								with: 'Found Animal?'.
+								with: 'Add Animal'.
 							html modalCloseButton 
 						].
 						self renderFormBodyOn: html.
