@@ -20,7 +20,7 @@ AHScreenComponent >> createFooterComponent [
 
 { #category : #initialization }
 AHScreenComponent >> createHeaderComponent [
-	^ AHHeaderComponent new.
+	^ AHHeaderComponent from: self
 ]
 
 { #category : #initialization }

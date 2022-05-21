@@ -3,10 +3,21 @@ Class {
 	#superclass : #AHScreenComponent,
 	#instVars : [
 		'carousel',
-		'grid'
+		'grid',
+		'showLoginError'
 	],
 	#category : #'AnimalsHouse-Components'
 }
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> goToAdministrationView [
+	self call: AHAdminComponent new.
+]
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> hasLoginError [
+	^ showLoginError ifNil: [ false ]
+]
 
 { #category : #initialization }
 AHMainScreenComponent >> initialize [
@@ -15,12 +26,23 @@ AHMainScreenComponent >> initialize [
 	grid := AHCardsGrid new.
 ]
 
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> loginErrorMessage [
+	^ 'Incorrect login or password'
+]
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> loginErrorOccurred [
+	showLoginError := true.
+]
+
 { #category : #rendering }
 AHMainScreenComponent >> renderContentOn: html [
 	super renderContentOn: html.
 	html column
 		style: 'height: 100%';
-		extraLargeSize: 12; with: [ 
+		extraLargeSize: 12; with: [
+		self renderLoginErrorMessageIfAnyOn: html. 
 		html row
 			style: 'margin-top: 50px; margin-bottom: 50px;'; 
 			with: [ html column extraLargeSize:6; extraLargeOffset: 3; with: carousel. ].
@@ -39,4 +61,20 @@ AHMainScreenComponent >> renderContentOn: html [
 			with: [
 			html column style: 'padding:0px; text-align: center'; extraLargeSize: 12; with: footer. ]
 	]
+]
+
+{ #category : #rendering }
+AHMainScreenComponent >> renderLoginErrorMessageIfAnyOn: html [
+	self hasLoginError ifFalse: [ ^ self ].
+	showLoginError := false.
+	html alert
+		beDanger;
+		with: self loginErrorMessage
+]
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> tryConnectionWithLogin: login andPassword: password [
+	(login = 'admin' and: [ password = 'topsecret' ])
+		ifTrue: [ self goToAdministrationView ]
+		ifFalse: [ self loginErrorOccurred ]
 ]

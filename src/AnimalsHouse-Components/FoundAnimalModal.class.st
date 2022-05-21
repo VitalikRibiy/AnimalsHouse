@@ -22,8 +22,8 @@ FoundAnimalModal >> renderContentOn: html [
 					html modal
 					id: 'FoundAnimalModal';
 					with: [ html
-						modalDialog with: [ html
-							modalContent: [ html
+						modalDialog with: [ 
+							html modalContent: [ html
 								modalHeader: [ html modalTitle
 										level5;
 										with: 'Found Animal?'.

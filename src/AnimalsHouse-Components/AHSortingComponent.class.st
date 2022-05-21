@@ -24,7 +24,9 @@ AHSortingComponent >> initialize [
 
 { #category : #rendering }
 AHSortingComponent >> renderBreedLinkOn: html with: breed [
-	html dropdownItem callback: [ self selectBreed: breed ]; with: breed.
+	html dropdownItem 
+		class: 'active' if: breed = self selectedBreedName;
+		callback: [ self selectBreed: breed ]; with: breed.
 ]
 
 { #category : #rendering }
@@ -78,12 +80,16 @@ AHSortingComponent >> renderContentOn: html [
 
 { #category : #rendering }
 AHSortingComponent >> renderSexLinkOn: html with: sex [
-	html dropdownItem callback: [ self selectSex: sex ]; with: sex.
+	html dropdownItem 
+		class: 'active' if: sex = self selectedSex;
+		callback: [ self selectSex: sex ]; with: sex.
 ]
 
 { #category : #rendering }
 AHSortingComponent >> renderSpeciesLinkOn: html with: species [
-	html dropdownItem callback: [ self selectSpecies: species ]; with: species.
+	html dropdownItem 
+		class: 'active' if: species = self selectedSpeciesName;	
+		callback: [ self selectSpecies: species ]; with: species.
 ]
 
 { #category : #actions }
