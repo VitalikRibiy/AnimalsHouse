@@ -55,6 +55,18 @@ Animal class >> createDemoData [
 	Dog withName: 'Ally' age: 1 sex: Sex female  breed: (DogBreed getByName: 'Labrador') weight: 5 healthStatus: 'Healthy' description: 'Lovely Labrador' donationProgress: #(0 100) image: nil.
 ]
 
+{ #category : #demo }
+Animal class >> createSmallDemoData [
+	AHAdministrator login: 'admin' password: 'test'.
+	CatBreed initialize. DogBreed initialize.
+	CatBreed withName: 'British' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Irish' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Munchkin' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Husky' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Labrador' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'ToyTerier' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+]
+
 { #category : #initialization }
 Animal class >> initialize [
 	self reset.

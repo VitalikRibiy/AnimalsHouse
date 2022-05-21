@@ -76,6 +76,7 @@ Breed class >> withName: nameValue avgSize: avgSizeValue avgWeight: avgWeightVal
 			   avgDailySleep: avgDailySleepValue;
 			   avgSpeed: avgSpeedValue.
    self add: instance.
+	instance save.
 	^ instance.
 ]
 
