@@ -47,11 +47,29 @@ FoundAnimalModal >> renderContentOn: html [
 
 { #category : #rendering }
 FoundAnimalModal >> renderFormBodyOn: html [
+	self reset.
 	html modalBody: [
-		html form: [ 
+		html form multipart; 
+			with: [ 
 			html formGroup: [ 
 				html label: 'Photo'.
 				html fileUpload callback: [ :file | photo := file ].
+			].
+			html formGroup: [ 
+				html label: 'Place'.
+				html textInput callback: [ :value | place := value ].
+			].
+			html formGroup: [ 
+				html label: 'Description'.
+				html textInput callback: [ :value | description := value ].
+			].
+			html formGroup: [ 
+				html label: 'Name'.
+				html textInput callback: [ :value | contactName := value ].
+			].
+			html formGroup: [ 
+				html label: 'Contact Phone'.
+				html telephoneInput callback: [ :value | contactPhone := value ].
 			].
 			html modalFooter: [ 
 				html formButton
