@@ -9,6 +9,11 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
+{ #category : #private }
+AHMainScreenComponent >> admin [ 
+	^ AHAdministrator selectAll at: 1.
+]
+
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> goToAdministrationView [
 	self call: AHAdminComponent new.
@@ -74,7 +79,10 @@ AHMainScreenComponent >> renderLoginErrorMessageIfAnyOn: html [
 
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> tryConnectionWithLogin: login andPassword: password [
-	(login = 'admin' and: [ password = 'topsecret' ])
-		ifTrue: [ self goToAdministrationView ]
+	| admin |
+	admin := self admin.
+	(login = admin login and: [ (SHA256 hashMessage: password) = admin password asByteArray ])
+		ifTrue: [ self session currentAdmin: admin.
+					 self goToAdministrationView ]
 		ifFalse: [ self loginErrorOccurred ]
 ]

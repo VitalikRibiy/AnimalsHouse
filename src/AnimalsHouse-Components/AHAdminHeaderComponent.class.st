@@ -6,15 +6,29 @@ Class {
 
 { #category : #rendering }
 AHAdminHeaderComponent >> renderButtonsOn: html [
-	html form: [ self renderDisconnectButtonOn: html ]
+	html form: [ 
+		self renderDisconnectButtonOn: html.
+		self renderPublicViewButtonOn: html ]
 ]
 
 { #category : #rendering }
 AHAdminHeaderComponent >> renderDisconnectButtonOn: html [
 	html tbsNavbarButton
-	tbsPullRight;
-	callback: [ component goToMainView ];
-	with: [
-		html text: 'Disconnect '.
-		html tbsGlyphIcon iconLogout ]
+		tbsPullRight;
+		callback: [ self session reset ];
+		with: [
+			html text: 'Disconnect '.
+			html tbsGlyphIcon iconLogout ]
+]
+
+{ #category : #rendering }
+AHAdminHeaderComponent >> renderPublicViewButtonOn: html [
+	self session isLogged ifTrue: [ 
+		html tbsNavbarButton 
+			tbsPullRight;
+			callback: [ component goToMainView ];
+			with: [ 
+				html tbsGlyphIcon iconEyeOpen.
+				html text: 'Public View' ]
+		]
 ]

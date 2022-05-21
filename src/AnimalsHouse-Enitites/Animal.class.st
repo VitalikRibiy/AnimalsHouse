@@ -31,6 +31,7 @@ Class {
 
 { #category : #demo }
 Animal class >> createDemoData [
+	AHAdministrator login: 'admin' password: 'test'.
 	CatBreed initialize. DogBreed initialize.
 	CatBreed withName: 'British' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
 	CatBreed withName: 'Irish' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.

@@ -51,7 +51,9 @@ AHHeaderComponent >> renderBrandOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderButtonsOn: html [
-	self renderModalLoginButtonOn: html.
+	self session isLogged
+		ifTrue: [ self renderAdminButtonOn: html ]
+		ifFalse: [ self renderModalLoginButtonOn: html. ].
 ]
 
 { #category : #rendering }

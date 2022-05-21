@@ -16,6 +16,7 @@ AHApplicationRootComponent class >> canBeRoot [
 AHApplicationRootComponent class >> initialize [
 	| app |
 	app := WAAdmin register: self asApplicationAt: 'AnimalsHouse'.
+	app preferenceAt: #sessionClass put: AHSession.
 	app addLibrary: JQDeploymentLibrary; 
 	addLibrary: JQUiDeploymentLibrary; 
 	addLibrary: TBSDeploymentLibrary; 
