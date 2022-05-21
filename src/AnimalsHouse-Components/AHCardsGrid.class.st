@@ -32,14 +32,16 @@ AHCardsGrid >> initialize [
 AHCardsGrid >> renderContentOn: html [
 	html column
 		style: 'background: #6F9DC8';
-		extraLargeSize: 12; 
+		extraLargeSize: 12;
+		mediumSize: 12;
+		smallSize: 12;
 		with: [ 
 			html row
 				style: 'background: #2e608f';
 				with: sorting.
 			html row with: [ 
 				(self animalsComponentsSpecies: sorting selectedSpeciesName breed: sorting selectedBreedName sex: sorting selectedSex) 
-					collect: [ :a | html column extraLargeSize: 3; with: a ]
+					collect: [ :a | html column extraLargeSize: 3; mediumSize: 4; smallSize: 6; with: a ]
 			]
 		].
 ]

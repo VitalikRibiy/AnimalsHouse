@@ -31,7 +31,9 @@ AHMainScreenComponent >> renderContentOn: html [
 			html column style: 'text-align: center'; extraLargeSize: 2; with: WantAnimalModal new.
 	 	].
 		html row with: [ 
-			html column extraLargeSize: 6; extraLargeOffset: 3; with: grid.
+			html column extraLargeSize: 6; extraLargeOffset: 3; 
+				mediumSize: 8; mediumOffset:2;
+				with: grid.
 		].
 		html row 
 			with: [

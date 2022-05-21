@@ -41,7 +41,7 @@ AHSortingComponent >> renderContentOn: html [
 		html dropdownMenu 
 		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
 		with: [ 
-			self species collect: [ :species| self renderSpeciesLinkOn: html with: species ].
+			self species collect: [ :species | self renderSpeciesLinkOn: html with: species ].
 		].
 	].
 	html dropdown 
@@ -56,7 +56,7 @@ AHSortingComponent >> renderContentOn: html [
 		html dropdownMenu 
 		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
 		with: [ 
-			self sexList collect: [ :sex| self renderSexLinkOn: html with: sex ].
+			self sexList collect: [ :sex | self renderSexLinkOn: html with: sex ].
 		].
 	].
 	html dropdown 
@@ -68,10 +68,10 @@ AHSortingComponent >> renderContentOn: html [
 			dropdown;
 			dataToggle: 'dropdown';
 			with: selectedBreedName.
-		html dropdownMenu 
+		html dropdownMenu
 		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
 		with: [ 
-			(self breedsOfSpecies: selectedSpeciesName) collect: [ :breed| self renderBreedLinkOn: html with: breed ].
+			(self breedsOfSpecies: selectedSpeciesName) collect: [ :breed | self renderBreedLinkOn: html with: breed ].
 		].
 	].
 ]
