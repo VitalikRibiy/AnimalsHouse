@@ -17,7 +17,7 @@ AHCardsGrid >> animalsComponents [
 { #category : #accessing }
 AHCardsGrid >> animalsComponentsSpecies: speciesValue breed: breedValue sex: sexValue [
 	animalsComponents := (Animal selectAll select: [ :animal | (animal sex = sexValue) and: ((speciesValue = animal class name) and: (breedValue = (animal breed name))) ])
-		 collect: [ :filteredAnimal| AHAnimalCard new animal: filteredAnimal ].
+		 collect: [ :filteredAnimal | AHAnimalCard new animal: filteredAnimal ].
 	^ animalsComponents.
 ]
 

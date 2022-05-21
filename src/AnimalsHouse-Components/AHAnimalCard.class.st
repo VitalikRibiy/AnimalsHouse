@@ -39,7 +39,7 @@ AHAnimalCard >> renderContentOn: html [
 			with: [ 
 			html tbsImage
 				style: 'display: flex; max-width: 100%; width: auto; height: auto';
-				url: (AHFoundAnimal selectAll at: 1) photo.
+				url: self image.
 			html cardBody: [ 
 			html cardTitle level5 with: self name.
 			html cardSubtitle 

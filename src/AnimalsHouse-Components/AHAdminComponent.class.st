@@ -1,6 +1,9 @@
 Class {
 	#name : #AHAdminComponent,
 	#superclass : #AHScreenComponent,
+	#instVars : [
+		'grid'
+	],
 	#category : #'AnimalsHouse-Components'
 }
 
@@ -10,28 +13,30 @@ AHAdminComponent >> createHeaderComponent [
 ]
 
 { #category : #'as yet unclassified' }
-AHAdminComponent >> foundAnimalReports [
-	^ AHFoundAnimal selectAll collect: [ :report | AHFoundAnimalCard withReport: report ].
-]
-
-{ #category : #'as yet unclassified' }
 AHAdminComponent >> goToMainView [
 	self answer
+]
+
+{ #category : #initialization }
+AHAdminComponent >> initialize [
+	super initialize.
+	grid := AHFoundAnimalCardsGrid new.
 ]
 
 { #category : #rendering }
 AHAdminComponent >> renderContentOn: html [
 	super renderContentOn: html.
-	html container: [
-		html heading: 'Admin'.
-		html horizontalRule ].
 	html column
-		extraLargeSize: 3; extraLargeOffset: 3;
+		style: 'height: 100%';
+		extraLargeSize: 12; 
 		with: [
-			html row with: [ 
-				self foundAnimalReports collect: [ :a | html column extraLargeSize: 3; mediumSize: 4; smallSize: 6; with: a.
-				]
-			]
+			html heading: 'Reports'.
+			html row 
+				with: [ 
+					html column extraLargeSize: 8; extraLargeOffset: 2; 
+						mediumSize: 10; mediumOffset:1;
+						with: grid.
+				].
 		].
 	
 ]
