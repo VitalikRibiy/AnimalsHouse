@@ -93,5 +93,5 @@ FoundAnimalModal >> reset [
 
 { #category : #actions }
 FoundAnimalModal >> save [
-	AHFoundAnimal withContactName: contactName contactPhone: contactPhone animalPhoto: photo animalDescription: description animalPlace: place.
+	AHFoundAnimal withContactName: contactName contactPhone: contactPhone animalPhoto: ('data:',(photo contentType greaseString),';base64,',(ZnBase64Encoder new encode: photo rawContents)) animalDescription: description animalPlace: place.
 ]

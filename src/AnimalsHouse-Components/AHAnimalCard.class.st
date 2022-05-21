@@ -35,9 +35,11 @@ AHAnimalCard >> name [
 { #category : #rendering }
 AHAnimalCard >> renderContentOn: html [
 		html card
-			style: 'margin: 10px';
+			style: 'margin: 15px';
 			with: [ 
-			html html: self image.
+			html tbsImage
+				style: 'display: flex; max-width: 100%; width: auto; height: auto';
+				url: (AHFoundAnimal selectAll at: 1) photo.
 			html cardBody: [ 
 			html cardTitle level5 with: self name.
 			html cardSubtitle 
