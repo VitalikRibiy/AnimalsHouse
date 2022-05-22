@@ -19,7 +19,8 @@ Class {
 		'avgLifespan',
 		'avgDailySleep',
 		'avgSpeed',
-		'avgWeight'
+		'avgWeight',
+		'animalSpecies'
 	],
 	#classInstVars : [
 		'breeds'
@@ -78,6 +79,12 @@ Breed class >> withName: nameValue avgSize: avgSizeValue avgWeight: avgWeightVal
    self add: instance.
 	instance save.
 	^ instance.
+]
+
+{ #category : #accessing }
+Breed >> animalSpecies [
+
+	^ animalSpecies
 ]
 
 { #category : #accessing }
@@ -145,6 +152,11 @@ Breed >> avgWeight: anObject [
 	ifFalse: [ self error: 'weight should be a number' ]
 ]
 
+{ #category : #initialization }
+Breed >> initialize [
+	animalSpecies := self animalSpecies.
+]
+
 { #category : #accessing }
 Breed >> isBreed [
 	^ true.
@@ -161,9 +173,4 @@ Breed >> name: nameValue [
 	nameValue isByteString  
 	ifTrue: [ name := nameValue ]  
 	ifFalse: [ self error: 'name should be an instance of ByteString' ]
-]
-
-{ #category : #private }
-Breed >> species [
-	self subclassResponsibility.
 ]

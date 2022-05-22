@@ -6,7 +6,8 @@ Class {
 		'description',
 		'place',
 		'contactName',
-		'contactPhone'
+		'contactPhone',
+		'animalSpecies'
 	],
 	#category : #'AnimalsHouse-Enitites'
 }
@@ -17,12 +18,24 @@ AHFoundAnimal class >> isVoyageRoot [
 ]
 
 { #category : #'as yet unclassified' }
-AHFoundAnimal class >> withContactName: contactName contactPhone: phone animalPhoto: photoValue animalDescription: description animalPlace: place [
+AHFoundAnimal class >> withSpecies: species contactName: contactName contactPhone: phone animalPhoto: photoValue animalDescription: description animalPlace: place [
 	| instance |
 	instance := self new.
-	instance contactName: contactName; contactPhone: phone; photo: photoValue; description: description; place: place.
+	instance animalSpecies: species; contactName: contactName; contactPhone: phone; photo: photoValue; description: description; place: place.
 	instance save.
 	^ instance.
+]
+
+{ #category : #accessing }
+AHFoundAnimal >> animalSpecies [
+
+	^ animalSpecies
+]
+
+{ #category : #accessing }
+AHFoundAnimal >> animalSpecies: anObject [
+
+	animalSpecies := anObject
 ]
 
 { #category : #accessing }

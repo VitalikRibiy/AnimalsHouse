@@ -12,7 +12,7 @@ CatBreed class >> initialize [
 	breeds := OrderedCollection new.
 ]
 
-{ #category : #private }
-CatBreed >> species [
-	^ 'Cat'.
+{ #category : #accessing }
+CatBreed >> animalSpecies [
+	^ Species cat.
 ]

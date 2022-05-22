@@ -93,7 +93,7 @@ AHAnimalCard >> renderFormBodyOn: html [
 				html formButton
 					bePrimary;
 					callback: [ self save. ];
-					with: 'Send application' 
+					with: 'Addopt' 
 			].
 		].
 	].

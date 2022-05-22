@@ -12,7 +12,7 @@ DogBreed class >> initialize [
 	breeds := OrderedCollection new.
 ]
 
-{ #category : #private }
-DogBreed >> species [
-	^ 'Dog'.
+{ #category : #accessing }
+DogBreed >> animalSpecies [
+	^ Species dog.
 ]

@@ -86,8 +86,6 @@ AHFoundAnimalCard >> image: anObject [
 { #category : #initialization }
 AHFoundAnimalCard >> initialize [
 	super initialize.
-	species := Species dog.
-	breed := (Species breedsOf: species) asArray at: 1.
 ]
 
 { #category : #accessing }
@@ -158,12 +156,9 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 					callback: [ :value | sex := value ].
 			].
 			html formGroup: [ 
-				html label: 'Species'.
-				html textInput callback: [ :value | self species: value ].
-			].
-			html formGroup: [ 
 				html label: 'Breed'.
-				html textInput callback: [ :value | self breed: value ].
+				html select list: (Species breedsOf: report animalSpecies);
+					 callback: [ :value | self breed: value ].
 			].
 			html formGroup: [ 
 				html label: 'Age'.
@@ -190,7 +185,7 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 				html formButton
 					bePrimary;
 					callback: [ self save. ];
-					with: 'Send application' 
+					with: 'Add animal' 
 			].
 		].
 	].
@@ -213,7 +208,7 @@ AHFoundAnimalCard >> reset [
 	name := nil.
 	age := nil.
 	sex := nil.
-	species := Species dog.
+	species := report animalSpecies.
 	breed := (Species breedsOf: species) asArray at: 1.
 	weight := nil.
 	healthStatus := nil.
@@ -224,7 +219,7 @@ AHFoundAnimalCard >> reset [
 { #category : #actions }
 AHFoundAnimalCard >> save [
 	| selectedClass |
-	selectedClass := species = Species cat
+	selectedClass := report animalSpecies = Species cat
 		                 ifTrue: [ Cat ]
 		                 ifFalse: [ Dog ].
 	selectedClass

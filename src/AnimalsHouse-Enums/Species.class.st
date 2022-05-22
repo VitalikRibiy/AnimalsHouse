@@ -6,9 +6,12 @@ Class {
 
 { #category : #accessing }
 Species class >> breedsOf: aSpecies [
-	| aSet |
-	aSet := ((Breed selectAll select: [ :breed | breed species = aSpecies ]) collect: [ :breed | breed name ]) asSet.
-	^ aSet.
+
+	| speciesClass |
+	speciesClass := aSpecies = self dog
+		                ifTrue: [ DogBreed ]
+		                ifFalse: [ CatBreed ].
+	^ speciesClass selectAll collect: [ :breed | breed name ]
 ]
 
 { #category : #accessing }

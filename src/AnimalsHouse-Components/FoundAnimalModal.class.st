@@ -5,6 +5,7 @@ Class {
 		'contactName',
 		'contactPhone',
 		'photo',
+		'animalSpecies',
 		'description',
 		'place'
 	],
@@ -56,6 +57,11 @@ FoundAnimalModal >> renderFormBodyOn: html [
 				html fileUpload callback: [ :file | photo := file ].
 			].
 			html formGroup: [ 
+				html label: 'Species'.
+				html select list: Species list;
+					 callback: [ :value | animalSpecies := value ].
+			].
+			html formGroup: [ 
 				html label: 'Place'.
 				html textInput callback: [ :value | place := value ].
 			].
@@ -89,9 +95,14 @@ FoundAnimalModal >> renderFormBodyOn: html [
 { #category : #initialization }
 FoundAnimalModal >> reset [
 	photo := nil.
+	contactName := nil.
+	contactPhone := nil.
+	animalSpecies := 'Cat'.
+	description := nil.
+	place := nil.
 ]
 
 { #category : #actions }
 FoundAnimalModal >> save [
-	AHFoundAnimal withContactName: contactName contactPhone: contactPhone animalPhoto: ('data:',(photo contentType greaseString),';base64,',(ZnBase64Encoder new encode: photo rawContents)) animalDescription: description animalPlace: place.
+	AHFoundAnimal withSpecies: animalSpecies contactName: contactName contactPhone: contactPhone animalPhoto: ('data:',(photo contentType greaseString),';base64,',(ZnBase64Encoder new encode: photo rawContents)) animalDescription: description animalPlace: place.
 ]
