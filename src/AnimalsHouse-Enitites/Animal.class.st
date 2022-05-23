@@ -74,7 +74,7 @@ Animal class >> initialize [
 ]
 
 { #category : #initialization }
-Animal class >> initializeVoyageOnMemoryDB [
+Animal class >> initializeVoyageDB [
 	| repository |
 	repository := VOMongoRepository database: 'AnimalsHouse'.
 	repository enableSingleton.
@@ -94,7 +94,7 @@ Animal class >> new [
 
 { #category : #initialization }
 Animal class >> reset [
-	self initializeVoyageOnMemoryDB
+	self initializeVoyageDB
 ]
 
 { #category : #'instance creation' }

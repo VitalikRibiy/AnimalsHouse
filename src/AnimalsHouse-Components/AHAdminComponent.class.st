@@ -27,7 +27,7 @@ AHAdminComponent >> initialize [
 AHAdminComponent >> renderContentOn: html [
 	super renderContentOn: html.
 	html column
-		style: 'height: 100%';
+		style: 'min-height: 800px';
 		extraLargeSize: 12; 
 		with: [
 			html heading: 'Заявки'.
