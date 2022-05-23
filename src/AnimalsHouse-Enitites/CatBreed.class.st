@@ -7,11 +7,6 @@ Class {
 	#category : #'AnimalsHouse-Enitites'
 }
 
-{ #category : #'class initialization' }
-CatBreed class >> initialize [
-	breeds := OrderedCollection new.
-]
-
 { #category : #accessing }
 CatBreed >> animalSpecies [
 	^ Species cat.

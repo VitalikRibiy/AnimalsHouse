@@ -63,9 +63,6 @@ AHMainScreenComponent >> renderContentOn: html [
 				mediumSize: 8; mediumOffset:2;
 				with: grid.
 		].
-		html row 
-			with: [
-			html column style: 'padding:0px; text-align: center'; extraLargeSize: 12; with: footer. ]
 	]
 ]
 

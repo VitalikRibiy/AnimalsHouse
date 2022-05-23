@@ -22,26 +22,12 @@ Class {
 		'avgWeight',
 		'animalSpecies'
 	],
-	#classInstVars : [
-		'breeds'
-	],
 	#category : #'AnimalsHouse-Enitites'
 }
 
-{ #category : #adding }
-Breed class >> add: breedObject [
-	self breeds isNotNil 
-	   ifTrue: [ 
-			(breeds anySatisfy: [ :e | e name = breedObject name. ]) 
-			ifTrue: [ self error: 'This bread already exists'. ]
-			ifFalse: [ breeds addLast: breedObject. ]
-			]
-		ifFalse: [ breeds := OrderedCollection with: breedObject. ].
-]
-
 { #category : #accessing }
 Breed class >> breeds [
-	^ breeds.
+	^ self allInstances.
 ]
 
 { #category : #accessing }
@@ -69,16 +55,21 @@ Breed class >> withName: nameValue avgSize: avgSizeValue avgWeight: avgWeightVal
 	| instance |
 	self == Breed ifTrue: [
 		^ self error: 'Breed is an abstract class.  Make a concrete subclass.' ].
-	instance := self new.
-	instance name: nameValue; 
+	instance := self getByName: nameValue.
+	instance isNotNil 
+		ifFalse: [ 
+			instance := self new.
+			instance name: nameValue; 
 			   avgSize: avgSizeValue;
 			   avgWeight: avgWeightValue;
 			   avgLifespan: avgLifeSpanValue;
 			   avgDailySleep: avgDailySleepValue;
 			   avgSpeed: avgSpeedValue.
-   self add: instance.
-	instance save.
-	^ instance.
+			instance save.
+			].
+		^ instance.
+		
+	
 ]
 
 { #category : #accessing }
