@@ -7,6 +7,11 @@ Class {
 	#category : #'AnimalsHouse-Enitites'
 }
 
+{ #category : #initialization }
+Dog >> initialize [
+	animalSpecies := Species dog.
+]
+
 { #category : #testing }
 Dog >> isCat [
 	^ false.

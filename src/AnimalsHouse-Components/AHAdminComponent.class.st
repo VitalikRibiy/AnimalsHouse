@@ -30,7 +30,7 @@ AHAdminComponent >> renderContentOn: html [
 		style: 'height: 100%';
 		extraLargeSize: 12; 
 		with: [
-			html heading: 'Reports'.
+			html heading: 'Заявки'.
 			html row 
 				with: [ 
 					html column extraLargeSize: 8; extraLargeOffset: 2; 

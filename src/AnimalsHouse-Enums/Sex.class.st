@@ -6,10 +6,15 @@ Class {
 
 { #category : #initialization }
 Sex class >> female [
-	^ 'female'.
+	^ 'Самка'.
+]
+
+{ #category : #accessing }
+Sex class >> list [
+	^ OrderedCollection with: self male with: self female.
 ]
 
 { #category : #initialization }
 Sex class >> male [
-	^ 'male'.
+	^ 'Самець'.
 ]

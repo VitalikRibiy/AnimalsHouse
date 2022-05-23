@@ -18,7 +18,7 @@ Class {
 		'name',
 		'age',
 		'sex',
-		'species',
+		'animalSpecies',
 		'breed',
 		'weight',
 		'healthStatus',
@@ -110,8 +110,7 @@ Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValu
 	description: descriptionValue; 
 	donationProgress: donationProgressValue;
 	image: imageValue;
-	species: self class.
-	instance save.
+	save.
 	^ instance.
 ]
 
@@ -126,6 +125,11 @@ Animal >> age: anObject [
 	anObject isNumber 
 	ifTrue: [ age := anObject ]  
 	ifFalse: [ self error: 'age should be an instance of number' ]
+]
+
+{ #category : #accessing }
+Animal >> animalSpecies [
+	^ animalSpecies
 ]
 
 { #category : #accessing }
@@ -153,7 +157,7 @@ Animal >> description [
 
 { #category : #accessing }
 Animal >> description: desc [
-	desc isByteString 
+	desc isString 
 	ifTrue: [ description := desc ]  
 	ifFalse: [ self error: 'description should be an instance of ByteString' ]
 ]
@@ -179,7 +183,7 @@ Animal >> healthStatus [
 
 { #category : #accessing }
 Animal >> healthStatus: status [
-	status isByteString 
+	status isString 
 	ifTrue: [ healthStatus := status ]  
 	ifFalse: [ self error: 'healthStatus should be an instance of ByteString' ]
 ]
@@ -276,7 +280,7 @@ Animal >> name [
 
 { #category : #accessing }
 Animal >> name: nameValue [
-	nameValue isByteString 
+	nameValue isString 
 	ifTrue: [ name := nameValue ]  
 	ifFalse: [ self error: 'name should be an instance of ByteString' ]
 ]
@@ -289,20 +293,9 @@ Animal >> sex [
 
 { #category : #accessing }
 Animal >> sex: sexValue [
-	sexValue isByteString
+	sexValue isString
 	ifTrue: [ sex := sexValue ]  
 	ifFalse: [ self error: 'sex should be an instance of ByteString' ]
-]
-
-{ #category : #accessing }
-Animal >> species [
-	^ species
-]
-
-{ #category : #accessing }
-Animal >> species: anObject [
-	(anObject == 'Cat' or: anObject == 'Dog')
-	ifTrue: [ species := anObject ]
 ]
 
 { #category : #accessing }

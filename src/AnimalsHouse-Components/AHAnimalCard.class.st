@@ -52,7 +52,7 @@ AHAnimalCard >> renderContentOn: html [
 			bePrimary 
 			dataToggle: 'modal';
 			dataTarget: '#TakeAnimalModal';
-			with: 'Take animal' ] ].
+			with: 'Забрати додому' ] ].
 		html modal
 			id: 'TakeAnimalModal';
 			with: [ 
@@ -61,7 +61,7 @@ AHAnimalCard >> renderContentOn: html [
 						html modalHeader: [ 
 							html modalTitle
 								level5;
-								with: 'Take Animal'.
+								with: 'Забрати тварину'.
 							html modalCloseButton 
 						].
 						self renderFormBodyOn: html.
@@ -77,11 +77,11 @@ AHAnimalCard >> renderFormBodyOn: html [
 		html form multipart; 
 			with: [ 
 			html formGroup: [ 
-				html label: 'Name'.
+				html label style:'margin-right: 5px'; with: 'Ім`я'.
 				html textInput callback: [ :value | contactName := value ].
 			].
 			html formGroup: [ 
-				html label: 'Contact Phone'.
+				html label style:'margin-right: 5px'; with: 'Контактний телефон'.
 				html telephoneInput callback: [ :value | contactPhone := value ].
 			].
 			html modalFooter: [ 
@@ -89,11 +89,11 @@ AHAnimalCard >> renderFormBodyOn: html [
 					beSecondary;
 					dataDismiss: 'modal';
 					callback: [ self reset. ];
-					with: 'Close'.
+					with: 'Закрити'.
 				html formButton
 					bePrimary;
 					callback: [ self save. ];
-					with: 'Addopt' 
+					with: 'Забрати' 
 			].
 		].
 	].

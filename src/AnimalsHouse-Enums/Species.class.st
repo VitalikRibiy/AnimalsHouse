@@ -16,12 +16,12 @@ Species class >> breedsOf: aSpecies [
 
 { #category : #accessing }
 Species class >> cat [
-	^ 'Cat'.
+	^ 'Кіт'.
 ]
 
 { #category : #accessing }
 Species class >> dog [
-	^ 'Dog'.
+	^ 'Собака'.
 ]
 
 { #category : #accessing }

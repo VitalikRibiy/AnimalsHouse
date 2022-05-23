@@ -118,7 +118,7 @@ AHFoundAnimalCard >> renderContentOn: html [
 			bePrimary 
 			dataToggle: 'modal';
 			dataTarget: '#AddAnimalModal';
-			with: 'Add animal' ] ].
+			with: 'Зареєструвати' ] ].
 		html modal
 			id: 'AddAnimalModal';
 			with: [ 
@@ -127,7 +127,7 @@ AHFoundAnimalCard >> renderContentOn: html [
 						html modalHeader: [ 
 							html modalTitle
 								level5;
-								with: 'Add Animal'.
+								with: 'Зареєструвати тварину'.
 							html modalCloseButton 
 						].
 						self renderFormBodyOn: html.
@@ -143,37 +143,37 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 		html form multipart; 
 			with: [ 
 			html formGroup: [
-				html label: 'Photo'.
+				html label: 'Фото'.
 				html fileUpload callback: [ :file | self image: file ].
 			].
 			html formGroup: [ 
-				html label: 'Name'.
+				html label style: 'margin-right: 5px'; with: 'Кличка'.
 				html textInput callback: [ :value | name := value ].
 			].
 			html formGroup: [ 
-				html label: 'Sex'.
-				html select formControl list: #('male' 'female');
+				html label style: 'margin-right: 5px'; with: 'Стать'.
+				html select formControl list: (Sex list);
 					callback: [ :value | sex := value ].
 			].
 			html formGroup: [ 
-				html label: 'Breed'.
+				html label style: 'margin-right: 5px'; with: 'Порода'.
 				html select list: (Species breedsOf: report animalSpecies);
 					 callback: [ :value | self breed: value ].
 			].
 			html formGroup: [ 
-				html label: 'Age'.
+				html label style: 'margin-right: 5px'; with: 'Вік'.
 				html textInput callback: [ :value | age := value asNumber ].
 			].
 			html formGroup: [ 
-				html label: 'Weight'.
+				html label style: 'margin-right: 5px'; with: 'Вага'.
 				html textInput callback: [ :value | weight := value asNumber ].
 			].
 			html formGroup: [ 
-				html label: 'HealthStatus'.
+				html label style: 'margin-right: 5px'; with: 'Здоров`я'.
 				html textInput callback: [ :value | healthStatus := value ].
 			].
 			html formGroup: [ 
-				html label: 'Description'.
+				html label style: 'margin-right: 5px'; with: 'Опис'.
 				html textInput callback: [ :value | description := value ].
 			].
 			html modalFooter: [ 
@@ -181,11 +181,11 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 					beSecondary;
 					dataDismiss: 'modal';
 					callback: [ self reset. ];
-					with: 'Close'.
+					with: 'Закрити'.
 				html formButton
 					bePrimary;
 					callback: [ self save. ];
-					with: 'Add animal' 
+					with: 'Зареєструвати' 
 			].
 		].
 	].

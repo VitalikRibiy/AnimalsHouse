@@ -13,7 +13,7 @@ Class {
 AHSortingComponent >> initialize [
 	super initialize.
 	selectedSpeciesName := Species list at: 1.
-	selectedSex := self sexList at: 1.
+	selectedSex := Sex list at: 1.
 	selectedBreedName := (Species breedsOf: selectedSpeciesName) asArray at: 1.
 ]
 
@@ -53,7 +53,7 @@ AHSortingComponent >> renderContentOn: html [
 		html dropdownMenu 
 		attributeAt: 'aria-labelledby' put: 'navbarDropdown';
 		with: [ 
-			self sexList collect: [ :sex | self renderSexLinkOn: html with: sex ].
+			Sex list collect: [ :sex | self renderSexLinkOn: html with: sex ].
 		].
 	].
 	html dropdown 
@@ -122,9 +122,4 @@ AHSortingComponent >> selectedSex [
 AHSortingComponent >> selectedSpeciesName [
 
 	^ selectedSpeciesName
-]
-
-{ #category : #accessing }
-AHSortingComponent >> sexList [
-	^ OrderedCollection with: Sex male with: Sex female.
 ]

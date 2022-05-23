@@ -164,7 +164,7 @@ Breed >> name [
 
 { #category : #accessing }
 Breed >> name: nameValue [
-	nameValue isByteString  
+	nameValue isString  
 	ifTrue: [ name := nameValue ]  
 	ifFalse: [ self error: 'name should be an instance of ByteString' ]
 ]
