@@ -58,15 +58,14 @@ Animal class >> createDemoData [
 { #category : #demo }
 Animal class >> createSmallDemoData [
 	AHAdministrator login: 'admin' password: 'test'.
-	CatBreed initialize. DogBreed initialize.
-	CatBreed withName: 'Not purebred' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	CatBreed withName: 'British' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	CatBreed withName: 'Irish' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	CatBreed withName: 'Munchkin' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	DogBreed withName: 'Not purebred' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	DogBreed withName: 'Husky' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	DogBreed withName: 'Labrador' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
-	DogBreed withName: 'ToyTerier' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Безпородний' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Британець' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Шотландець' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	CatBreed withName: 'Манчкін' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Безпородний' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Хаскі' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Лабрадор' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
+	DogBreed withName: 'Той Тер`єр' avgSize: 13 avgWeight: 5 avgLifespan: 13 avgDailySleep: 16 avgSpeed: 7.
 ]
 
 { #category : #initialization }

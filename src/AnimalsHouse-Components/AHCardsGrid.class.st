@@ -31,7 +31,7 @@ AHCardsGrid >> initialize [
 { #category : #rendering }
 AHCardsGrid >> renderContentOn: html [
 	html column
-		style: 'background: #6F9DC8';
+		style: 'background: #6F9DC8 min-height: 100%';
 		extraLargeSize: 12;
 		mediumSize: 12;
 		smallSize: 12;

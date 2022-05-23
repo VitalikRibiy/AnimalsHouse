@@ -44,9 +44,12 @@ AHHeaderComponent >> renderAdminButtonOn: html [
 AHHeaderComponent >> renderBrandOn: html [
 	html tbsNavbarHeader: [ 
 		html tbsNavbarBrand
+			style: 'font-size: large; 
+				color: white; 
+    			padding: 15px;
+    			text-align: center;';
 			url: self application url;
-			with: 'AnimalsHouse'.
-		html tbsNavbarButton: 'SignIn' ].
+			with: 'Дім Тварин' ].
 ]
 
 { #category : #rendering }
@@ -62,9 +65,9 @@ AHHeaderComponent >> renderContentOn: html [
 	id := '#navbarCollapsed'.
 	bar := html navigationBar.
 	bar expandLarge;
-		style: 'font: 15px Monserat; color: white; background-color: #355070'.
+		style: 'font: 65px Montserrat; color: white; background-color: #355070'.
 	bar with: [ 
-		html navigationBarBrand: 'Animals House'.
+		self renderBrandOn: html.
 		self renderButtonsOn: html.
 		"The toggler that is only visible when reducing the width of screen"
 		html

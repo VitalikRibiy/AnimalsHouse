@@ -22,11 +22,11 @@ FoundAnimalModal >> renderContentOn: html [
 	html container
 		with: [
 			html formButton
-				style: 'width: 12rem; height: 6rem';
+				style: 'width: 14rem; height: 6rem';
 				bePrimary;
 				dataToggle: 'modal';
 				dataTarget: '#FoundAnimalModal';
-				with: 'Found Animal?'.			
+				with: 'Повідомити про тварину'.			
 			html modal
 				id: 'FoundAnimalModal';
 				with: [ 
@@ -35,7 +35,7 @@ FoundAnimalModal >> renderContentOn: html [
 							html modalHeader: [ 
 								html modalTitle
 									level5;
-									with: 'Found Animal?'.
+									with: 'Повідомити про тварину'.
 								html modalCloseButton 
 							].
 							self renderFormBodyOn: html.
@@ -53,28 +53,28 @@ FoundAnimalModal >> renderFormBodyOn: html [
 		html form multipart; 
 			with: [ 
 			html formGroup: [ 
-				html label: 'Photo'.
+				html label: 'Фото'.
 				html fileUpload callback: [ :file | photo := file ].
 			].
 			html formGroup: [ 
-				html label: 'Species'.
+				html label: 'Вид'.
 				html select list: Species list;
 					 callback: [ :value | animalSpecies := value ].
 			].
 			html formGroup: [ 
-				html label: 'Place'.
+				html label: 'Місце'.
 				html textInput callback: [ :value | place := value ].
 			].
 			html formGroup: [ 
-				html label: 'Description'.
+				html label: 'Опис'.
 				html textInput callback: [ :value | description := value ].
 			].
 			html formGroup: [ 
-				html label: 'Name'.
+				html label: 'Ваше Ім`я'.
 				html textInput callback: [ :value | contactName := value ].
 			].
 			html formGroup: [ 
-				html label: 'Contact Phone'.
+				html label: 'Контактний номер телефону'.
 				html telephoneInput callback: [ :value | contactPhone := value ].
 			].
 			html modalFooter: [ 
@@ -82,11 +82,11 @@ FoundAnimalModal >> renderFormBodyOn: html [
 					beSecondary;
 					dataDismiss: 'modal';
 					callback: [ self reset. ];
-					with: 'Close'.
+					with: 'Закрити'.
 				html formButton
 					bePrimary;
 					callback: [ self save. ];
-					with: 'Send application' 
+					with: 'Надіслати заявку' 
 			].
 		].
 	].

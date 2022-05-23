@@ -7,12 +7,6 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #accessing }
-AHCarouselPhotos >> animals: anObject [
-
-	animals := Animal selectAll.
-]
-
 { #category : #rendering }
 AHCarouselPhotos >> renderContentOn: html [
 	html carousel 

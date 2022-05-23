@@ -27,7 +27,7 @@ Class {
 
 { #category : #accessing }
 Breed class >> breeds [
-	^ self allInstances.
+	^ self selectAll.
 ]
 
 { #category : #accessing }
@@ -35,7 +35,10 @@ Breed class >> getByName: nameOfBreed [
 	| result |
 	result := (self breeds select: [ :e | e name = nameOfBreed ]).
 	result isNotEmpty ifTrue: [ ^ result at: 1 ]
-	ifFalse: [ self error: 'Breed with name:',nameOfBreed, 'does not exist' ]
+	ifFalse: [ ^ nil ]
+	
+
+
 ]
 
 { #category : #testing }

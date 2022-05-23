@@ -47,18 +47,28 @@ AHMainScreenComponent >> loginErrorOccurred [
 AHMainScreenComponent >> renderContentOn: html [
 	super renderContentOn: html.
 	html column
-		style: 'height: 100%';
+		style: 'min-height: 800px';
 		extraLargeSize: 12; with: [
 		self renderLoginErrorMessageIfAnyOn: html. 
 		html row
 			style: 'margin-top: 50px; margin-bottom: 50px;'; 
-			with: [ html column extraLargeSize:6; extraLargeOffset: 3; with: carousel. ].
+			with: [ 
+				html column extraLargeSize:6; extraLargeOffset: 3; with: carousel. 
+				].
 		html row justifyContentCenterVeryLarge;
 			style: 'margin-top: 50px; margin-bottom: 50px;';
 			with: [
-			html column style: 'text-align: center'; extraLargeSize: 2; with: FoundAnimalModal new.
-	 	].
-		html row with: [ 
+				html heading style: 'padding-top: 10px; marigin-bottom: 0px;'; level2; with: 'Знайшли тварину? Допоможіть нам знайти їй домівку:'.
+				html column style: 'text-align: center'; extraLargeSize: 2; with: FoundAnimalModal new.
+	 		].
+		html row justifyContentCenterVeryLarge;
+			  style: 'margin-top: 50px; margin-bottom: 50px;';
+			  with: [ 
+				html heading level2; with: 'Станьте власником чотирилапого чуда!'.
+			  ].
+		html row 
+			style: 'height: 50%; min-height: 400px'; 
+			with: [ 
 			html column extraLargeSize: 6; extraLargeOffset: 3; 
 				mediumSize: 8; mediumOffset:2;
 				with: grid.
