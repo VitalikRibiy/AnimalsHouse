@@ -15,6 +15,12 @@ AHWantAnimalCard class >> withRequest: requestValue [
 	^ instance.
 ]
 
+{ #category : #actions }
+AHWantAnimalCard >> approve [
+	request animal remove.
+	request remove.
+]
+
 { #category : #'submorphs - add/remove' }
 AHWantAnimalCard >> delete [
 	request remove.
@@ -70,7 +76,7 @@ AHWantAnimalCard >> renderFormBodyOn: html [
 					with: 'Ні'.
 				html formButton
 					bePrimary;
-					callback: [ self save. ];
+					callback: [ self approve. ];
 					with: 'Так' 
 			].
 		].
@@ -80,10 +86,4 @@ AHWantAnimalCard >> renderFormBodyOn: html [
 { #category : #accessing }
 AHWantAnimalCard >> request: requestValue [
 	request := requestValue.
-]
-
-{ #category : #actions }
-AHWantAnimalCard >> save [
-	request animal remove.
-	request remove.
 ]

@@ -21,7 +21,8 @@ AHFoundAnimal class >> isVoyageRoot [
 AHFoundAnimal class >> withSpecies: species contactName: contactName contactPhone: phone animalPhoto: photoValue animalDescription: description animalPlace: place [
 	| instance |
 	instance := self new.
-	instance animalSpecies: species; contactName: contactName; contactPhone: phone; photo: photoValue; description: description; place: place.
+	instance animalSpecies: species; contactName: contactName; contactPhone: phone; 
+	photo: photoValue; description: description; place: place.
 	instance save.
 	^ instance.
 ]

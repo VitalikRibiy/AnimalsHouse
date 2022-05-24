@@ -114,6 +114,22 @@ Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValu
 	^ instance.
 ]
 
+{ #category : #'instance creation' }
+Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValue weight: weightValue healthStatus: healthStatusValue description: descriptionValue image: imageValue [
+	| instance |
+	instance := self new.
+	instance name: nameValue; 
+	age: ageValue; 
+	sex: sexValue;
+	breed: breedValue;
+	weight: weightValue; 
+	healthStatus: healthStatusValue; 
+	description: descriptionValue; 
+	image: imageValue;
+	save.
+	^ instance.
+]
+
 { #category : #accessing }
 Animal >> age [
 

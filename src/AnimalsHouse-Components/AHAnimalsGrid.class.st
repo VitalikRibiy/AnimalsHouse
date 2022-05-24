@@ -11,7 +11,9 @@ AHAnimalsGrid >> children [
 
 { #category : #accessing }
 AHAnimalsGrid >> getData [
-	^ (Animal selectAll select: [ :animal | (animal sex = sorting selectedSex) and: ((sorting selectedSpeciesName = animal animalSpecies) and: (sorting selectedBreedName = (animal breed name))) ])
+	^ (Animal selectAll select: [ :animal | (animal sex = sorting selectedSex) and: 
+														((sorting selectedSpeciesName = animal animalSpecies) and: 
+														(sorting selectedBreedName = (animal breed name))) ])
 		 collect: [ :filteredAnimal | AHAnimalCard new animal: filteredAnimal ].
 
 ]

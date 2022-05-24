@@ -83,11 +83,6 @@ AHFoundAnimalCard >> image: anObject [
 	image := ('data:',(anObject contentType greaseString),';base64,',(ZnBase64Encoder new encode: anObject rawContents))
 ]
 
-{ #category : #initialization }
-AHFoundAnimalCard >> initialize [
-	super initialize.
-]
-
 { #category : #accessing }
 AHFoundAnimalCard >> name [
 
@@ -230,7 +225,6 @@ AHFoundAnimalCard >> save [
 		weight: weight
 		healthStatus: healthStatus
 		description: description
-		donationProgress: #( 0 1000 )
 		image: image.
 	report remove
 ]
@@ -245,12 +239,6 @@ AHFoundAnimalCard >> sex [
 AHFoundAnimalCard >> sex: anObject [
 
 	sex := anObject
-]
-
-{ #category : #accessing }
-AHFoundAnimalCard >> species [
-
-	^ species
 ]
 
 { #category : #accessing }

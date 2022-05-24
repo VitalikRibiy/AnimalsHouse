@@ -12,11 +12,6 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #initialization }
-FoundAnimalModal >> initialize [
-	super initialize.
-]
-
 { #category : #rendering }
 FoundAnimalModal >> renderContentOn: html [
 	html container

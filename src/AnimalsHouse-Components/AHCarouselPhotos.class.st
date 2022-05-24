@@ -1,9 +1,6 @@
 Class {
 	#name : #AHCarouselPhotos,
 	#superclass : #SBSComponent,
-	#instVars : [
-		'animals'
-	],
 	#category : #'AnimalsHouse-Components'
 }
 
