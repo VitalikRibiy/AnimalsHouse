@@ -26,7 +26,7 @@ AHSortingComponent >> renderBreedLinkOn: html with: breed [
 
 { #category : #rendering }
 AHSortingComponent >> renderContentOn: html [
-	html dropdown 
+		html dropdown 
 		style: 'margin: 10px';
 		with: [ 
 		html formButton 

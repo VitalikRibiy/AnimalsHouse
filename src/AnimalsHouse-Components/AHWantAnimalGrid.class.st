@@ -1,10 +1,10 @@
 Class {
 	#name : #AHWantAnimalGrid,
-	#superclass : #AHAdminPanelAnimalGrid,
+	#superclass : #AHGeneralGrid,
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 AHWantAnimalGrid >> getData [
 	^ AHWantAnimal selectAll collect: [ :request | AHWantAnimalCard withRequest: request ].
 ]

@@ -1,10 +1,10 @@
 Class {
 	#name : #AHFoundAnimalGrid,
-	#superclass : #AHAdminPanelAnimalGrid,
+	#superclass : #AHGeneralGrid,
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 AHFoundAnimalGrid >> getData [
 	^ AHFoundAnimal selectAll collect: [ :report | AHFoundAnimalCard withReport: report ].
 ]
