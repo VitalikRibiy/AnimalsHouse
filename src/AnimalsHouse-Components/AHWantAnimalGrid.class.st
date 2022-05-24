@@ -6,5 +6,5 @@ Class {
 
 { #category : #'as yet unclassified' }
 AHWantAnimalGrid >> getData [
-	^ AHWantAnimal selectAll collect: [ :report | AHWantAnimalCard withRequest: report ].
+	^ AHWantAnimal selectAll collect: [ :request | AHWantAnimalCard withRequest: request ].
 ]

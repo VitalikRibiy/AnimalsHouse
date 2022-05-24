@@ -9,7 +9,10 @@ Class {
 
 { #category : #'as yet unclassified' }
 AHWantAnimalCard class >> withRequest: requestValue [
-	^ (self new) request: requestValue; yourself.
+	| instance |
+	instance := self new.
+	instance request: requestValue.
+	^ instance.
 ]
 
 { #category : #rendering }
@@ -19,13 +22,13 @@ AHWantAnimalCard >> renderContentOn: html [
 		with: [ 
 		html tbsImage
 			style: 'display: flex; max-width: 100%; width: auto; height: auto';
-			url: request animal photo.
+			url: request animal image.
 		html cardBody: [ 
 		html cardTitle level5 with: request contactName, ',', request contactPhone.
 		html cardSubtitle 
 			level6; 
 			mutedText;
-			with: request animal name,',', request animal age, ',', request animal breed name.
+			with: request animal name printString,',', request animal age printString, ',', request animal breed name printString.
 		html formButton 
 			bePrimary 
 			dataToggle: 'modal';
@@ -51,7 +54,10 @@ AHWantAnimalCard >> renderContentOn: html [
 { #category : #rendering }
 AHWantAnimalCard >> renderFormBodyOn: html [
 	html modalBody: [
-			html render: 'Віддати тварину новому власнику?'.
+		html form multipart; with: [
+			html formGroup: [ 
+				 html render: 'Віддати тварину новому власнику?'.
+			].
 			html modalFooter: [ 
 				html formButton
 					beSecondary;
@@ -64,6 +70,7 @@ AHWantAnimalCard >> renderFormBodyOn: html [
 					with: 'Так' 
 			].
 		].
+	].
 ]
 
 { #category : #accessing }
@@ -71,7 +78,7 @@ AHWantAnimalCard >> request: requestValue [
 	request := requestValue.
 ]
 
-{ #category : #initialization }
+{ #category : #actions }
 AHWantAnimalCard >> reset [
 	request remove.
 ]
