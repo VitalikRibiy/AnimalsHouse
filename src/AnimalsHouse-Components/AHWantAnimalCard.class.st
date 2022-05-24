@@ -15,6 +15,11 @@ AHWantAnimalCard class >> withRequest: requestValue [
 	^ instance.
 ]
 
+{ #category : #'submorphs - add/remove' }
+AHWantAnimalCard >> delete [
+	request remove.
+]
+
 { #category : #rendering }
 AHWantAnimalCard >> renderContentOn: html [
 	html card
@@ -61,8 +66,7 @@ AHWantAnimalCard >> renderFormBodyOn: html [
 			html modalFooter: [ 
 				html formButton
 					beSecondary;
-					dataDismiss: 'modal';
-					callback: [ self reset. ];
+					callback: [ self delete. ];
 					with: 'Ні'.
 				html formButton
 					bePrimary;
@@ -76,11 +80,6 @@ AHWantAnimalCard >> renderFormBodyOn: html [
 { #category : #accessing }
 AHWantAnimalCard >> request: requestValue [
 	request := requestValue.
-]
-
-{ #category : #actions }
-AHWantAnimalCard >> reset [
-	request remove.
 ]
 
 { #category : #actions }
