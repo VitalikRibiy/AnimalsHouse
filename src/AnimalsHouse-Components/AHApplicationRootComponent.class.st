@@ -50,6 +50,8 @@ AHApplicationRootComponent >> renderContentOn: html [
 
 { #category : #rendering }
 AHApplicationRootComponent >> updateRoot: anHtmlRoot [
+	super updateRoot: anHtmlRoot.
 	anHtmlRoot beHtml5.
 	anHtmlRoot title: 'AnimalsHouse'.
+	
 ]

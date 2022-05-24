@@ -191,7 +191,11 @@ Animal >> healthStatus: status [
 { #category : #accessing }
 Animal >> image [
 
-	^ image
+	image
+		ifNotNil: [ :arg | ^ image ]
+		ifNil: [ ^ SBSCardExample imagePlaceHolderSVG ]
+		
+	
 ]
 
 { #category : #accessing }

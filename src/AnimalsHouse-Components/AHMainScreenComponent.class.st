@@ -28,9 +28,7 @@ AHMainScreenComponent >> hasLoginError [
 { #category : #initialization }
 AHMainScreenComponent >> initialize [
 	super initialize.
-	carousel := AHCarouselPhotos new.
-	grid := AHCardsGrid new.
-	adminView := AHAdminComponent new.
+	grid := AHAnimalsGrid new.
 ]
 
 { #category : #'as yet unclassified' }

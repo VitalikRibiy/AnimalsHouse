@@ -10,28 +10,8 @@ Class {
 }
 
 { #category : #accessing }
-AHAnimalCard >> age [
-	^ animal age.
-]
-
-{ #category : #accessing }
 AHAnimalCard >> animal: anObject [
 	animal := anObject
-]
-
-{ #category : #accessing }
-AHAnimalCard >> image [
-	animal image ifNotNil: [ ^ animal image ] ifNil: [ ^ SBSCardExample imagePlaceHolderSVG ]
-]
-
-{ #category : #initialization }
-AHAnimalCard >> initialize [
-	super initialize.
-]
-
-{ #category : #accessing }
-AHAnimalCard >> name [
-	^ animal name.
 ]
 
 { #category : #rendering }
@@ -41,13 +21,13 @@ AHAnimalCard >> renderContentOn: html [
 			with: [ 
 			html tbsImage
 				style: 'display: flex; max-width: 100%; width: auto; height: auto';
-				url: self image.
+				url: animal image.
 			html cardBody: [ 
-			html cardTitle level5 with: self name.
+			html cardTitle level5 with: animal name.
 			html cardSubtitle 
 				level6; 
 				mutedText;
-				with: self sex,',', self age printString.
+				with: animal sex,',', animal age printString.
 			html formButton 
 			bePrimary 
 			dataToggle: 'modal';
@@ -97,6 +77,8 @@ AHAnimalCard >> renderFormBodyOn: html [
 			].
 		].
 	].
+
+
 ]
 
 { #category : #initialization }
@@ -107,10 +89,6 @@ AHAnimalCard >> reset [
 
 { #category : #actions }
 AHAnimalCard >> save [
-	animal remove.
-]
-
-{ #category : #accessing }
-AHAnimalCard >> sex [
-	^ animal sex.
+	AHWantAnimal withAnimal: animal contactName: contactName contactPhone: contactPhone.
+	self reset.
 ]

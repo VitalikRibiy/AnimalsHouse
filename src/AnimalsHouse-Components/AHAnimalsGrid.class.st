@@ -1,35 +1,37 @@
 Class {
-	#name : #AHCardsGrid,
+	#name : #AHAnimalsGrid,
 	#superclass : #SBSComponent,
 	#instVars : [
-		'animalsComponents',
 		'sorting'
 	],
 	#category : #'AnimalsHouse-Components'
 }
 
 { #category : #accessing }
-AHCardsGrid >> animalsComponents [
-	animalsComponents := Animal selectAll collect: [ :each | AHAnimalCard new animal: each ].
-	^ animalsComponents.
+AHAnimalsGrid >> animalsComponents [
+	^ Animal selectAll collect: [ :each | AHAnimalCard new animal: each ].
+
 ]
 
 { #category : #accessing }
-AHCardsGrid >> animalsComponentsSpecies: speciesValue breed: breedValue sex: sexValue [
-	animalsComponents := (Animal selectAll select: [ :animal | (animal sex = sexValue) and: ((speciesValue = animal animalSpecies) and: (breedValue = (animal breed name))) ])
+AHAnimalsGrid >> animalsComponentsSpecies: speciesValue breed: breedValue sex: sexValue [
+	^ (Animal selectAll select: [ :animal | (animal sex = sexValue) and: ((speciesValue = animal animalSpecies) and: (breedValue = (animal breed name))) ])
 		 collect: [ :filteredAnimal | AHAnimalCard new animal: filteredAnimal ].
-	^ animalsComponents.
 ]
 
 { #category : #accessing }
-AHCardsGrid >> initialize [
+AHAnimalsGrid >> children [
+	^ { sorting }
+]
+
+{ #category : #accessing }
+AHAnimalsGrid >> initialize [
 	super initialize.
 	sorting := AHSortingComponent new.
-	animalsComponents := OrderedCollection new.
 ]
 
 { #category : #rendering }
-AHCardsGrid >> renderContentOn: html [
+AHAnimalsGrid >> renderContentOn: html [
 	html column
 		style: 'background: #6F9DC8 min-height: 100%';
 		extraLargeSize: 12;

@@ -2,7 +2,8 @@ Class {
 	#name : #AHAdminComponent,
 	#superclass : #AHScreenComponent,
 	#instVars : [
-		'grid'
+		'foundAnimalGrid',
+		'wantAnimalGrid'
 	],
 	#category : #'AnimalsHouse-Components'
 }
@@ -20,7 +21,8 @@ AHAdminComponent >> goToMainView [
 { #category : #initialization }
 AHAdminComponent >> initialize [
 	super initialize.
-	grid := AHFoundAnimalCardsGrid new.
+	foundAnimalGrid := AHFoundAnimalGrid new.
+	wantAnimalGrid := AHWantAnimalGrid new.
 ]
 
 { #category : #rendering }
@@ -30,13 +32,27 @@ AHAdminComponent >> renderContentOn: html [
 		style: 'min-height: 800px';
 		extraLargeSize: 12; 
 		with: [
-			html heading: 'Заявки'.
 			html row 
 				with: [ 
-					html column extraLargeSize: 8; extraLargeOffset: 2; 
-						mediumSize: 10; mediumOffset:1;
-						with: grid.
+					html column extraLargeSize: 1; with: [ html heading: 'Знайдені тварини' ].
+					html column extraLargeSize: 10; with: [ 
+						html column extraLargeSize: 8; extraLargeOffset: 2; 
+								mediumSize: 10; mediumOffset:1;
+								with: foundAnimalGrid. ]
 				].
+			html horizontalRule.
+			html row 
+				with: [
+					html column extraLargeSize: 1; with: [ html heading: 'Заявки на отримання' ].
+					html column extraLargeSize: 10; with: [
+							html column extraLargeSize: 8; extraLargeOffset: 2; 
+								mediumSize: 10; mediumOffset:1;
+								with: wantAnimalGrid.
+						].
+				]
 		].
+
+
+	
 	
 ]
