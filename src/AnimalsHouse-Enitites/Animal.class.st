@@ -126,6 +126,7 @@ Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValu
 	healthStatus: healthStatusValue; 
 	description: descriptionValue; 
 	image: imageValue;
+	animalSpecies: self;
 	save.
 	^ instance.
 ]
@@ -146,6 +147,11 @@ Animal >> age: anObject [
 { #category : #accessing }
 Animal >> animalSpecies [
 	^ animalSpecies
+]
+
+{ #category : #accessing }
+Animal >> animalSpecies: object [
+	animalSpecies := object.
 ]
 
 { #category : #accessing }
