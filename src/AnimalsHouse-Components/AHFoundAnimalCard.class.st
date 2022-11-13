@@ -213,10 +213,12 @@ AHFoundAnimalCard >> reset [
 
 { #category : #actions }
 AHFoundAnimalCard >> save [
+
 	| selectedClass |
 	selectedClass := report animalSpecies = Species cat
 		                 ifTrue: [ Cat ]
 		                 ifFalse: [ Dog ].
+	image ifNil: [ image := report photo ].
 	selectedClass
 		withName: name
 		age: age
