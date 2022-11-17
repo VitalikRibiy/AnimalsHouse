@@ -23,7 +23,6 @@ Class {
 		'weight',
 		'healthStatus',
 		'description',
-		'donationProgress',
 		'image'
 	],
 	#category : #'AnimalsHouse-Enitites'
@@ -100,7 +99,7 @@ Animal class >> reset [
 ]
 
 { #category : #'instance creation' }
-Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValue weight: weightValue healthStatus: healthStatusValue description: descriptionValue donationProgress: donationProgressValue image: imageValue [
+Animal class >> testWithName: nameValue age: ageValue sex: sexValue breed: breedValue weight: weightValue healthStatus: healthStatusValue description: descriptionValue image: imageValue [
 	| instance |
 	instance := self new.
 	instance name: nameValue; 
@@ -110,9 +109,7 @@ Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValu
 	weight: weightValue; 
 	healthStatus: healthStatusValue; 
 	description: descriptionValue; 
-	donationProgress: donationProgressValue;
-	image: imageValue;
-	save.
+	image: imageValue.
 	^ instance.
 ]
 
@@ -183,19 +180,6 @@ Animal >> description: desc [
 	desc isString 
 	ifTrue: [ description := desc ]  
 	ifFalse: [ self error: 'description should be an instance of ByteString' ]
-]
-
-{ #category : #accessing }
-Animal >> donationProgress [
-
-	^ donationProgress
-]
-
-{ #category : #accessing }
-Animal >> donationProgress: progress [
-	progress isArray 
-	ifTrue: [ donationProgress  := progress ]  
-	ifFalse: [ self error: 'donationProgress should be an instance of Array with 2 numbers' ]
 ]
 
 { #category : #accessing }
