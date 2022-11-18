@@ -2,31 +2,31 @@ Class {
 	#name : #AHSession,
 	#superclass : #WASession,
 	#instVars : [
-		'currentAdmin'
+		'currentUser'
 	],
 	#category : #'AnimalsHouse-Components'
 }
 
 { #category : #accessing }
-AHSession >> currentAdmin [
+AHSession >> currentUser [
 
-	^ currentAdmin
+	^ currentUser
 ]
 
 { #category : #accessing }
-AHSession >> currentAdmin: anObject [
+AHSession >> currentUser: anObject [
 
-	currentAdmin := anObject
+	currentUser := anObject
 ]
 
 { #category : #testing }
 AHSession >> isLogged [
-	^ self currentAdmin notNil
+	^ self currentUser notNil
 ]
 
 { #category : #initialization }
 AHSession >> reset [
-	currentAdmin := nil.
+	currentUser := nil.
 	self requestContext redirectTo: self application url.
 	self unregister.
 ]

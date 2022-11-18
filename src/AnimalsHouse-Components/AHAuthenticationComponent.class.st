@@ -57,20 +57,21 @@ AHAuthenticationComponent >> password: anObject [
 
 { #category : #rendering }
 AHAuthenticationComponent >> renderAccountFieldOn: html [
-	html
-	formGroup: [ 
-		html label with: 'Account'.
+	html formGroup: [ 
+		html label with: 'Логін'.
 		html textInput
 			formControl;
 			attributeAt: 'autofocus' put: 'true';
-			callback: [ :value | account := value ];
+			callback: [ :value | self account: value ];
 			value: account ]
 ]
 
 { #category : #rendering }
 AHAuthenticationComponent >> renderBodyOn: html [
 	html modalBody: [
-		html form: [
+		html form multipart;
+			style: 'color: black; font-size: small;';
+			with: [
 			self renderAccountFieldOn: html.
 			self renderPasswordFieldOn: html.
 			html modalFooter: [ self renderButtonsOn: html ]
@@ -115,10 +116,10 @@ AHAuthenticationComponent >> renderHeaderOn: html [
 { #category : #rendering }
 AHAuthenticationComponent >> renderPasswordFieldOn: html [
 	html tbsFormGroup: [
-	html label with: 'Password'.
+	html label with: 'Пароль'.
 	html passwordInput
 		tbsFormControl;
-		callback: [ :value | password := value ];
+		callback: [ :value | self password: value ];
 		value: password ]
 
 ]

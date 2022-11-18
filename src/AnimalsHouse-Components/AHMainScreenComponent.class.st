@@ -29,7 +29,7 @@ AHMainScreenComponent >> hasLoginError [
 AHMainScreenComponent >> initialize [
 	super initialize.
 	carousel := AHCarouselPhotos new.
-	grid := AHAnimalsGrid new.
+	grid := AHAnimalsGrid from: self.
 ]
 
 { #category : #'as yet unclassified' }
@@ -91,11 +91,21 @@ AHMainScreenComponent >> resetAdminView [
 
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> tryConnectionWithLogin: login andPassword: password [
-	| admin |
-	admin := self admin.
-	(login = admin login and: [ (SHA256 hashMessage: password) = admin password asByteArray ])
-		ifTrue: [ self session currentAdmin: admin.
-				    self resetAdminView.
-					 self goToAdministrationView ]
+	| user |
+	user := self userWithLogin: login.
+	user ifNil: [ self loginErrorOccurred ].
+	(login = user login and: [ (SHA256 hashMessage: password) = user password asByteArray ])
+		ifTrue: [ 
+			self session currentUser: user.
+			user isAdministrator ifTrue:[
+				self resetAdminView.
+				self goToAdministrationView
+			].
+		]
 		ifFalse: [ self loginErrorOccurred ]
+]
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> userWithLogin: login [
+	^ AHUser selectOne: [ :e| e login = login ].
 ]

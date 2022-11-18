@@ -12,6 +12,18 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
+{ #category : #accessing }
+FoundAnimalModal >> contactName [
+
+	^ contactName
+]
+
+{ #category : #accessing }
+FoundAnimalModal >> contactPhone [
+
+	^ contactPhone
+]
+
 { #category : #rendering }
 FoundAnimalModal >> renderContentOn: html [
 	html container

@@ -2,10 +2,28 @@ Class {
 	#name : #AHGeneralGrid,
 	#superclass : #SBSComponent,
 	#instVars : [
-		'sorting'
+		'sorting',
+		'component'
 	],
 	#category : #'AnimalsHouse-Components'
 }
+
+{ #category : #'instance creation' }
+AHGeneralGrid class >> from: aComponent [
+	^ self new
+	 component: aComponent;
+	yourself
+]
+
+{ #category : #accessing }
+AHGeneralGrid >> component [
+	^ component.
+]
+
+{ #category : #accessing }
+AHGeneralGrid >> component: componentObject [
+	component := componentObject.
+]
 
 { #category : #'private - protocol' }
 AHGeneralGrid >> getData [

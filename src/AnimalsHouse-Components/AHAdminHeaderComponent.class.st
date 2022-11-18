@@ -12,16 +12,6 @@ AHAdminHeaderComponent >> renderButtonsOn: html [
 ]
 
 { #category : #rendering }
-AHAdminHeaderComponent >> renderDisconnectButtonOn: html [
-	html tbsNavbarButton
-		tbsPullRight;
-		callback: [ self session reset ];
-		with: [
-			html text: 'Disconnect '.
-			html tbsGlyphIcon iconLogout ]
-]
-
-{ #category : #rendering }
 AHAdminHeaderComponent >> renderPublicViewButtonOn: html [
 	self session isLogged ifTrue: [ 
 		html tbsNavbarButton 
@@ -29,6 +19,6 @@ AHAdminHeaderComponent >> renderPublicViewButtonOn: html [
 			callback: [ component goToMainView ];
 			with: [ 
 				html tbsGlyphIcon iconEyeOpen.
-				html text: 'Public View' ]
+				html text: 'Публічний вигляд' ]
 		]
 ]

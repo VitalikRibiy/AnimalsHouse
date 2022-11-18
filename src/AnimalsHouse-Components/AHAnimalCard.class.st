@@ -4,14 +4,32 @@ Class {
 	#instVars : [
 		'animal',
 		'contactName',
-		'contactPhone'
+		'contactPhone',
+		'component'
 	],
 	#category : #'AnimalsHouse-Components'
 }
 
+{ #category : #'instance creation' }
+AHAnimalCard class >> from: aComponent [
+	^ self new
+	 component: aComponent;
+	yourself
+]
+
 { #category : #accessing }
 AHAnimalCard >> animal: anObject [
 	animal := anObject
+]
+
+{ #category : #accessing }
+AHAnimalCard >> component [ 
+	^ component.
+]
+
+{ #category : #accessing }
+AHAnimalCard >> component: componentObject [
+	component := componentObject.
 ]
 
 { #category : #rendering }
@@ -38,13 +56,23 @@ AHAnimalCard >> renderContentOn: html [
 			with: [ 
 				html modalDialog with: [ 
 					html modalContent: [ 
-						html modalHeader: [ 
-							html modalTitle
-								level5;
-								with: 'Забрати тварину'.
-							html modalCloseButton 
-						].
-						self renderFormBodyOn: html.
+						self session isLogged 
+							ifTrue: [ 
+								html modalHeader: [ 
+									html modalTitle
+									level5;
+									with: 'Забрати тварину'.
+									html modalCloseButton 
+								].
+								self renderFormBodyOn: html. ] 
+							ifFalse: [
+								html modalHeader: [ 
+									html modalTitle
+									level5;
+									with: 'Доступно лише зареєстрованим користувачам'.
+									html modalCloseButton 
+								].
+								]. 
 					]
 				]
 			]

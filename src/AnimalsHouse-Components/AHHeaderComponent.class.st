@@ -55,8 +55,12 @@ AHHeaderComponent >> renderBrandOn: html [
 { #category : #rendering }
 AHHeaderComponent >> renderButtonsOn: html [
 	self session isLogged
-		ifTrue: [ self renderAdminButtonOn: html ]
-		ifFalse: [ self renderModalLoginButtonOn: html. ].
+		ifTrue: [ 
+			self session currentUser isAdministrator 
+				ifTrue: [ self renderAdminButtonOn: html  ]
+				ifFalse:	[ self renderDisconnectButtonOn: html ]
+			 ]
+		ifFalse: [ self renderModalLoginButtonOn: html; renderModalRegisterButtonOn: html ].
 ]
 
 { #category : #rendering }
@@ -80,6 +84,16 @@ AHHeaderComponent >> renderContentOn: html [
 ]
 
 { #category : #rendering }
+AHHeaderComponent >> renderDisconnectButtonOn: html [
+	html tbsNavbarButton
+		tbsPullRight;
+		callback: [ self session reset ];
+		with: [
+			html text: 'Вийти'.
+			html tbsGlyphIcon iconLogout ]
+]
+
+{ #category : #rendering }
 AHHeaderComponent >> renderModalLoginButtonOn: html [
 	html render: (AHAuthenticationComponent from: component).
 	html tbsNavbarButton
@@ -88,5 +102,17 @@ AHHeaderComponent >> renderModalLoginButtonOn: html [
 		attributeAt: 'data-toggle' put: 'modal';
 		with: [ 
 			html tbsGlyphIcon iconLock.
-			html text: 'Login' ]
+			html text: 'Залогуватись' ]
+]
+
+{ #category : #rendering }
+AHHeaderComponent >> renderModalRegisterButtonOn: html [
+	html render: (AHRegisterComponent from: component).
+	html tbsNavbarButton
+		tbsPullRight;
+		attributeAt: 'data-target' put: '#registerModalDialog';
+		attributeAt: 'data-toggle' put: 'modal';
+		with: [ 
+			html tbsGlyphIcon iconLock.
+			html text: 'Реєстрація' ]
 ]
