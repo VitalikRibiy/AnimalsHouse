@@ -1,36 +1,12 @@
 Class {
 	#name : #AHAnimalCard,
-	#superclass : #SBSComponent,
+	#superclass : #AHBasicCard,
 	#instVars : [
-		'animal',
 		'contactName',
-		'contactPhone',
-		'component'
+		'contactPhone'
 	],
 	#category : #'AnimalsHouse-Components'
 }
-
-{ #category : #'instance creation' }
-AHAnimalCard class >> from: aComponent [
-	^ self new
-	 component: aComponent;
-	yourself
-]
-
-{ #category : #accessing }
-AHAnimalCard >> animal: anObject [
-	animal := anObject
-]
-
-{ #category : #accessing }
-AHAnimalCard >> component [ 
-	^ component.
-]
-
-{ #category : #accessing }
-AHAnimalCard >> component: componentObject [
-	component := componentObject.
-]
 
 { #category : #rendering }
 AHAnimalCard >> renderContentOn: html [
@@ -39,13 +15,13 @@ AHAnimalCard >> renderContentOn: html [
 			with: [ 
 			html tbsImage
 				style: 'display: flex; max-width: 100%; width: auto; height: auto';
-				url: animal image.
+				url: data image.
 			html cardBody: [ 
-			html cardTitle level5 with: animal name.
+			html cardTitle level5 with: data name.
 			html cardSubtitle 
 				level6; 
 				mutedText;
-				with: animal sex,',', animal age printString.
+				with: data sex,',', data age printString.
 			html formButton 
 			bePrimary 
 			dataToggle: 'modal';
@@ -117,6 +93,6 @@ AHAnimalCard >> reset [
 
 { #category : #actions }
 AHAnimalCard >> save [
-	AHWantAnimal withAnimal: animal contactName: contactName contactPhone: contactPhone.
+	AHWantAnimal withAnimal: data contactName: contactName contactPhone: contactPhone.
 	self reset.
 ]

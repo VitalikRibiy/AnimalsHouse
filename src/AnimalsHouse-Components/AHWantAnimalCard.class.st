@@ -1,29 +1,18 @@
 Class {
 	#name : #AHWantAnimalCard,
-	#superclass : #SBSComponent,
-	#instVars : [
-		'request'
-	],
+	#superclass : #AHBasicCard,
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #'as yet unclassified' }
-AHWantAnimalCard class >> withRequest: requestValue [
-	| instance |
-	instance := self new.
-	instance request: requestValue.
-	^ instance.
-]
-
 { #category : #actions }
 AHWantAnimalCard >> approve [
-	request animal remove.
-	request remove.
+	data animal remove.
+	data remove.
 ]
 
 { #category : #'submorphs - add/remove' }
 AHWantAnimalCard >> delete [
-	request remove.
+	data remove.
 ]
 
 { #category : #rendering }
@@ -33,13 +22,13 @@ AHWantAnimalCard >> renderContentOn: html [
 		with: [ 
 		html tbsImage
 			style: 'display: flex; max-width: 100%; width: auto; height: auto';
-			url: request animal image.
+			url: data animal image.
 		html cardBody: [ 
-		html cardTitle level5 with: request contactName, ',', request contactPhone.
+		html cardTitle level5 with: data contactName, ',', data contactPhone.
 		html cardSubtitle 
 			level6; 
 			mutedText;
-			with: request animal name printString,',', request animal age printString, ',', request animal breed name printString.
+			with: data animal name printString,',', data animal age printString, ',', data animal breed name printString.
 		html formButton 
 			bePrimary 
 			dataToggle: 'modal';
@@ -81,9 +70,4 @@ AHWantAnimalCard >> renderFormBodyOn: html [
 			].
 		].
 	].
-]
-
-{ #category : #accessing }
-AHWantAnimalCard >> request: requestValue [
-	request := requestValue.
 ]

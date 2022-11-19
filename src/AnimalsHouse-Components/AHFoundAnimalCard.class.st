@@ -1,8 +1,7 @@
 Class {
 	#name : #AHFoundAnimalCard,
-	#superclass : #SBSComponent,
+	#superclass : #AHBasicCard,
 	#instVars : [
-		'report',
 		'name',
 		'age',
 		'sex',
@@ -15,14 +14,6 @@ Class {
 	],
 	#category : #'AnimalsHouse-Components'
 }
-
-{ #category : #'as yet unclassified' }
-AHFoundAnimalCard class >> withReport: aReport [
-	| instance |
-	instance := self new.
-	instance report: aReport.
-	^ instance.
-]
 
 { #category : #accessing }
 AHFoundAnimalCard >> age [
@@ -102,13 +93,13 @@ AHFoundAnimalCard >> renderContentOn: html [
 		with: [ 
 		html tbsImage
 			style: 'display: flex; max-width: 100%; width: auto; height: auto';
-			url: report photo.
+			url: data photo.
 		html cardBody: [ 
-		html cardTitle level5 with: report contactName, ',', report contactPhone.
+		html cardTitle level5 with: data contactName, ',', data contactPhone.
 		html cardSubtitle 
 			level6; 
 			mutedText;
-			with: report place,',', report description.
+			with: data place,',', data description.
 		html formButton 
 			bePrimary 
 			dataToggle: 'modal';
@@ -152,7 +143,7 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 			].
 			html formGroup: [ 
 				html label style: 'margin-right: 5px'; with: 'Порода'.
-				html select list: (Species breedsOf: report animalSpecies);
+				html select list: (Species breedsOf: data animalSpecies);
 					 callback: [ :value | self breed: value ].
 			].
 			html formGroup: [ 
@@ -186,24 +177,12 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 	].
 ]
 
-{ #category : #accessing }
-AHFoundAnimalCard >> report [
-
-	^ report
-]
-
-{ #category : #accessing }
-AHFoundAnimalCard >> report: anObject [
-
-	report := anObject
-]
-
 { #category : #actions }
 AHFoundAnimalCard >> reset [
 	name := nil.
 	age := nil.
 	sex := nil.
-	species := report animalSpecies.
+	species := data animalSpecies.
 	breed := (Species breedsOf: species) asArray at: 1.
 	weight := nil.
 	healthStatus := nil.
@@ -215,10 +194,10 @@ AHFoundAnimalCard >> reset [
 AHFoundAnimalCard >> save [
 
 	| selectedClass |
-	selectedClass := report animalSpecies = Species cat
+	selectedClass := data animalSpecies = Species cat
 		                 ifTrue: [ Cat ]
 		                 ifFalse: [ Dog ].
-	image ifNil: [ image := report photo ].
+	image ifNil: [ image := data photo ].
 	selectedClass
 		withName: name
 		age: age
@@ -228,7 +207,7 @@ AHFoundAnimalCard >> save [
 		healthStatus: healthStatus
 		description: description
 		image: image.
-	report remove
+	data remove
 ]
 
 { #category : #accessing }

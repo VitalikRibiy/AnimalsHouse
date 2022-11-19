@@ -6,5 +6,5 @@ Class {
 
 { #category : #accessing }
 AHWantAnimalGrid >> getData [
-	^ AHWantAnimal selectAll collect: [ :request | AHWantAnimalCard withRequest: request ].
+	^ AHWantAnimal selectAll collect: [ :request | AHWantAnimalCard from: component withData: request ].
 ]

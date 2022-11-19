@@ -6,5 +6,5 @@ Class {
 
 { #category : #accessing }
 AHFoundAnimalGrid >> getData [
-	^ AHFoundAnimal selectAll collect: [ :report | AHFoundAnimalCard withReport: report ].
+	^ AHFoundAnimal selectAll collect: [ :report | AHFoundAnimalCard from: component withData: report ].
 ]

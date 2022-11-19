@@ -57,10 +57,10 @@ AHHeaderComponent >> renderButtonsOn: html [
 	self session isLogged
 		ifTrue: [ 
 			self session currentUser isAdministrator 
-				ifTrue: [ self renderAdminButtonOn: html  ]
-				ifFalse:	[ self renderDisconnectButtonOn: html ]
+				ifTrue: [ html form: [ self renderAdminButtonOn: html ].  ]
+				ifFalse:	[ html form: [ self renderDisconnectButtonOn: html ]. ]
 			 ]
-		ifFalse: [ self renderModalLoginButtonOn: html; renderModalRegisterButtonOn: html ].
+		ifFalse: [ html form: [ self renderModalLoginButtonOn: html; renderModalRegisterButtonOn: html ]. ].
 ]
 
 { #category : #rendering }
