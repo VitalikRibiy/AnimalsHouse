@@ -2,9 +2,8 @@ Class {
 	#name : #AHWantAnimal,
 	#superclass : #Object,
 	#instVars : [
-		'contactName',
-		'contactPhone',
-		'animal'
+		'animal',
+		'user'
 	],
 	#category : #'AnimalsHouse-Enitites'
 }
@@ -14,15 +13,16 @@ AHWantAnimal class >> isVoyageRoot [
 	^ true.
 ]
 
-{ #category : #'as yet unclassified' }
-AHWantAnimal class >> withAnimal: animal contactName: nameValue contactPhone: phoneValue [
+{ #category : #'instance creation' }
+AHWantAnimal class >> withAnimal: animal user: userObject [
+
 	| instance |
 	instance := self new.
-	instance animal: animal;
-				contactName: nameValue;
-				contactPhone: phoneValue;
-				save.
-	^ instance.
+	instance
+		animal: animal;
+		user: userObject;
+		save.
+	^ instance
 ]
 
 { #category : #accessing }
@@ -38,25 +38,13 @@ AHWantAnimal >> animal: anObject [
 ]
 
 { #category : #accessing }
-AHWantAnimal >> contactName [
+AHWantAnimal >> user [
 
-	^ contactName
+	^ user
 ]
 
 { #category : #accessing }
-AHWantAnimal >> contactName: anObject [
+AHWantAnimal >> user: anObject [
 
-	contactName := anObject
-]
-
-{ #category : #accessing }
-AHWantAnimal >> contactPhone [
-
-	^ contactPhone
-]
-
-{ #category : #accessing }
-AHWantAnimal >> contactPhone: anObject [
-
-	contactPhone := anObject
+	user := anObject
 ]

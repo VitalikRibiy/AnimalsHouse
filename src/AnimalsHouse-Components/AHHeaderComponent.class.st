@@ -95,7 +95,7 @@ AHHeaderComponent >> renderDisconnectButtonOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderModalLoginButtonOn: html [
-	html render: (AHAuthenticationComponent from: component).
+	html render: (AHAuthenticationModal from: component).
 	html tbsNavbarButton
 		tbsPullRight;
 		attributeAt: 'data-target' put: '#authModalDialog';

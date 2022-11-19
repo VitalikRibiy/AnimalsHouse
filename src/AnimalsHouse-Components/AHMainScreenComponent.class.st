@@ -58,7 +58,7 @@ AHMainScreenComponent >> renderContentOn: html [
 			style: 'margin-top: 50px; margin-bottom: 50px;';
 			with: [
 				html heading style: 'padding-top: 10px; marigin-bottom: 0px;'; level2; with: 'Знайшли тварину? Допоможіть нам знайти їй домівку:'.
-				html column style: 'text-align: center'; extraLargeSize: 2; with: FoundAnimalModal new.
+				html column style: 'text-align: center'; extraLargeSize: 2; with: (FoundAnimalModal from: self).
 	 		].
 		html row justifyContentCenterVeryLarge;
 			  style: 'margin-top: 50px; margin-bottom: 50px;';

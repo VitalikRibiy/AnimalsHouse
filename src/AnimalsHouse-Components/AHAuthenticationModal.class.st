@@ -1,10 +1,9 @@
 Class {
-	#name : #AHAuthenticationComponent,
-	#superclass : #SBSComponent,
+	#name : #AHAuthenticationModal,
+	#superclass : #AHBasicModal,
 	#instVars : [
 		'password',
-		'account',
-		'component'
+		'account'
 	],
 	#classInstVars : [
 		'html'
@@ -12,51 +11,32 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #'instance creation' }
-AHAuthenticationComponent class >> from: aComponent [
-	^ self new
-		component: aComponent;
-		yourself.
-]
-
 { #category : #accessing }
-AHAuthenticationComponent >> account [
+AHAuthenticationModal >> account [
 
 	^ account
 ]
 
 { #category : #accessing }
-AHAuthenticationComponent >> account: anObject [
+AHAuthenticationModal >> account: anObject [
 
 	account:= anObject
 ]
 
 { #category : #accessing }
-AHAuthenticationComponent >> component [
-
-	^ component
-]
-
-{ #category : #accessing }
-AHAuthenticationComponent >> component: anObject [
-
-	component := anObject
-]
-
-{ #category : #accessing }
-AHAuthenticationComponent >> password [
+AHAuthenticationModal >> password [
 
 	^ password
 ]
 
 { #category : #accessing }
-AHAuthenticationComponent >> password: anObject [
+AHAuthenticationModal >> password: anObject [
 
 	password := anObject
 ]
 
 { #category : #rendering }
-AHAuthenticationComponent >> renderAccountFieldOn: html [
+AHAuthenticationModal >> renderAccountFieldOn: html [
 		html label with: 'Логін'.
 		html textInput
 			formControl;
@@ -66,7 +46,7 @@ AHAuthenticationComponent >> renderAccountFieldOn: html [
 ]
 
 { #category : #rendering }
-AHAuthenticationComponent >> renderBodyOn: html [
+AHAuthenticationModal >> renderBodyOn: html [
 	html modalBody: [
 		html form multipart;
 			with: [ 
@@ -92,7 +72,7 @@ AHAuthenticationComponent >> renderBodyOn: html [
 ]
 
 { #category : #rendering }
-AHAuthenticationComponent >> renderButtonsOn: html [
+AHAuthenticationModal >> renderButtonsOn: html [
 	html tbsButton
 		attributeAt: 'type' put: 'button';
 		attributeAt: 'data-dismiss' put: 'modal';
@@ -105,7 +85,7 @@ AHAuthenticationComponent >> renderButtonsOn: html [
 ]
 
 { #category : #rendering }
-AHAuthenticationComponent >> renderContentOn: html [
+AHAuthenticationModal >> renderContentOn: html [
 	html modal
 		id: 'authModalDialog';
 		with: [ 
@@ -116,7 +96,7 @@ AHAuthenticationComponent >> renderContentOn: html [
 ]
 
 { #category : #rendering }
-AHAuthenticationComponent >> renderHeaderOn: html [
+AHAuthenticationModal >> renderHeaderOn: html [
 	html modalHeader: [ 
 		html modalTitle
 			level5;
@@ -126,7 +106,7 @@ AHAuthenticationComponent >> renderHeaderOn: html [
 ]
 
 { #category : #rendering }
-AHAuthenticationComponent >> renderPasswordFieldOn: html [
+AHAuthenticationModal >> renderPasswordFieldOn: html [
 	html tbsFormGroup: [
 	html label with: 'Пароль'.
 	html passwordInput
@@ -137,7 +117,7 @@ AHAuthenticationComponent >> renderPasswordFieldOn: html [
 ]
 
 { #category : #accessing }
-AHAuthenticationComponent >> validate [
+AHAuthenticationModal >> validate [
 	^ component tryConnectionWithLogin: self account andPassword: self password
 
 ]

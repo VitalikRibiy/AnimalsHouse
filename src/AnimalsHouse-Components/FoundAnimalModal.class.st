@@ -1,6 +1,6 @@
 Class {
 	#name : #FoundAnimalModal,
-	#superclass : #SBSComponent,
+	#superclass : #AHBasicModal,
 	#instVars : [
 		'contactName',
 		'contactPhone',

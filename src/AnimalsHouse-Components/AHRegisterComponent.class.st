@@ -1,42 +1,16 @@
 Class {
 	#name : #AHRegisterComponent,
-	#superclass : #SBSComponent,
+	#superclass : #AHBasicModal,
 	#instVars : [
 		'login',
 		'password',
 		'firstName',
 		'lastName',
 		'phoneNumber',
-		'email',
-		'component'
+		'email'
 	],
 	#category : #'AnimalsHouse-Components'
 }
-
-{ #category : #'instance creation' }
-AHRegisterComponent class >> from: component [
-	^ self new
-		component: component;
-		login: nil;
-		password: nil;
-		firstName: nil;
-		lastName: nil;
-		phoneNumber: nil;
-		email: nil;
-		yourself.
-]
-
-{ #category : #accessing }
-AHRegisterComponent >> component [
-
-	^ component
-]
-
-{ #category : #accessing }
-AHRegisterComponent >> component: anObject [
-
-	component := anObject
-]
 
 { #category : #accessing }
 AHRegisterComponent >> email [
@@ -110,7 +84,7 @@ AHRegisterComponent >> phoneNumber: anObject [
 	phoneNumber := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 AHRegisterComponent >> registerErrorMessage [
 	^ 'Заповніть усі поля'
 ]
