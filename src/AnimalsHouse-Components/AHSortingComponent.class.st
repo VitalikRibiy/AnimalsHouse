@@ -9,6 +9,14 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
+{ #category : #'as yet unclassified' }
+AHSortingComponent >> clearFilters [
+	
+	selectedSpeciesName := 'Вид'.
+	selectedSex := 'Стать'.
+	selectedBreedName := 'Порода'
+]
+
 { #category : #initialization }
 AHSortingComponent >> initialize [
 
@@ -32,9 +40,12 @@ AHSortingComponent >> renderContentOn: html [
 		style: 'display: inline-flex';
 		with: [ 
 			html container
-				style: 'display: inline-flex; justify-content: space-evenly; padding: 10px';
+				style:
+					'display: inline-flex; justify-content: flex-start; padding: 10px';
 				with: [ 
-					html dropdown with: [ 
+					html dropdown
+						style: 'margin-right: 2%;';
+						with: [ 
 							html formButton
 								bePrimary;
 								beLarge;
@@ -47,41 +58,45 @@ AHSortingComponent >> renderContentOn: html [
 									(Species list collect: [ :species | 
 											 self renderSpeciesLinkOn: html with: species ]) addFirst:
 											'Вид' ] ].
-					html dropdown with: [ 
-						html formButton
-							bePrimary;
-							beLarge;
-							dropdown;
-							dataToggle: 'dropdown';
-							with: selectedSex.
-						html dropdownMenu
-							attributeAt: 'aria-labelledby' put: 'navbarDropdown';
-							with: [ 
-								(Sex list collect: [ :sex | 
-										 self renderSexLinkOn: html with: sex ]) addFirst: 'Стать' ] ].
-					html dropdown with: [ 
-						html formButton
-							class: 'disabled' if: selectedSpeciesName = 'Вид';
-							bePrimary;
-							beLarge;
-							dropdown;
-							dataToggle: 'dropdown';
-							with: selectedBreedName.
-						html dropdownMenu
-							attributeAt: 'aria-labelledby' put: 'navbarDropdown';
-							with: [ 
-								((Species breedsOf: selectedSpeciesName) collect: [ :breed | 
-										 self renderBreedLinkOn: html with: breed ]) addFirst:
-										'Порода' ] ] ].
+					html dropdown
+						style: 'margin-right: 2%;';
+						with: [ 
+							html formButton
+								bePrimary;
+								beLarge;
+								dropdown;
+								dataToggle: 'dropdown';
+								with: selectedSex.
+							html dropdownMenu
+								attributeAt: 'aria-labelledby' put: 'navbarDropdown';
+								with: [ 
+									(Sex list collect: [ :sex | 
+											 self renderSexLinkOn: html with: sex ]) addFirst: 'Стать' ] ].
+					html dropdown
+						style: 'margin-right: 2%;';
+						with: [ 
+							html formButton
+								class: 'disabled' if: selectedSpeciesName = 'Вид';
+								bePrimary;
+								beLarge;
+								dropdown;
+								dataToggle: 'dropdown';
+								with: selectedBreedName.
+							html dropdownMenu
+								attributeAt: 'aria-labelledby' put: 'navbarDropdown';
+								with: [ 
+									((Species breedsOf: selectedSpeciesName) collect: [ :breed | 
+											 self renderBreedLinkOn: html with: breed ]) addFirst:
+											'Порода' ] ] ].
 			html container
 				style: 'justify-content: end; display: inline-flex;padding: 10px;';
 				with: [ 
-					html formButton
-						bePrimary;
-						beLarge;
-						style: '';
-						with: 'Очистити фільтрування';
-						callback: [  ] ] ]
+					html form: [ 
+							html formButton
+								bePrimary;
+								beLarge;
+								callback: [ self clearFilters ];
+								with: ' Очистити фільтри' ] ] ]
 ]
 
 { #category : #rendering }
