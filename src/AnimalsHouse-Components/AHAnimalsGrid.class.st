@@ -11,11 +11,17 @@ AHAnimalsGrid >> children [
 
 { #category : #accessing }
 AHAnimalsGrid >> getData [
-	^ (Animal selectAll select: [ :animal | (animal sex = sorting selectedSex) and: 
-														((sorting selectedSpeciesName = animal animalSpecies) and: 
-														(sorting selectedBreedName = (animal breed name))) ])
-		 collect: [ :filteredAnimal | AHAnimalCard from: self component withData: filteredAnimal ].
 
+	^ (Animal selectAll select: [ :animal | 
+		   animal status = AnimalStatus inShelter and:
+			   ((animal sex = sorting selectedSex or:
+				     sorting selectedSex = 'Стать') and:
+				    ((sorting selectedSpeciesName = animal animalSpecies or:
+					      sorting selectedSpeciesName = 'Вид') and:
+					     (sorting selectedBreedName = animal breed name or:
+						      sorting selectedBreedName = 'Порода'))) ]) collect: [ 
+		  :filteredAnimal | 
+		  AHAnimalCard from: self component withData: filteredAnimal ]
 ]
 
 { #category : #accessing }

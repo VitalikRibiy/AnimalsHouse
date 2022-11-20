@@ -23,7 +23,9 @@ Class {
 		'weight',
 		'healthStatus',
 		'description',
-		'image'
+		'image',
+		'status',
+		'owner'
 	],
 	#category : #'AnimalsHouse-Enitites'
 }
@@ -116,18 +118,22 @@ Animal class >> testWithName: nameValue age: ageValue sex: sexValue breed: breed
 
 { #category : #'instance creation' }
 Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValue weight: weightValue healthStatus: healthStatusValue description: descriptionValue image: imageValue [
+
 	| instance |
 	instance := self new.
-	instance name: nameValue; 
-	age: ageValue; 
-	sex: sexValue;
-	breed: breedValue;
-	weight: weightValue; 
-	healthStatus: healthStatusValue; 
-	description: descriptionValue; 
-	image: imageValue;
-	save.
-	^ instance.
+	instance
+		name: nameValue;
+		age: ageValue;
+		sex: sexValue;
+		breed: breedValue;
+		weight: weightValue;
+		healthStatus: healthStatusValue;
+		description: descriptionValue;
+		image: imageValue;
+		status: AnimalStatus inShelter;
+		owner: nil;
+		save.
+	^ instance
 ]
 
 { #category : #accessing }
@@ -298,6 +304,18 @@ Animal >> name: nameValue [
 ]
 
 { #category : #accessing }
+Animal >> owner [
+	
+	^ owner.
+]
+
+{ #category : #accessing }
+Animal >> owner: ownerUser [
+	
+	owner := ownerUser.
+]
+
+{ #category : #accessing }
 Animal >> sex [
 
 	^ sex
@@ -308,6 +326,18 @@ Animal >> sex: sexValue [
 	sexValue isString
 	ifTrue: [ sex := sexValue ]  
 	ifFalse: [ self error: 'sex should be an instance of ByteString' ]
+]
+
+{ #category : #accessing }
+Animal >> status [
+
+	^ status
+]
+
+{ #category : #accessing }
+Animal >> status: anObject [
+
+	status := anObject
 ]
 
 { #category : #accessing }

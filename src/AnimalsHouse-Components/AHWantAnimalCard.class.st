@@ -6,8 +6,12 @@ Class {
 
 { #category : #actions }
 AHWantAnimalCard >> approve [
-	data animal remove.
-	data remove.
+
+	data animal
+		status: AnimalStatus taken;
+		owner: data user;
+		save.
+	data remove
 ]
 
 { #category : #'submorphs - add/remove' }
@@ -26,7 +30,8 @@ AHWantAnimalCard >> renderContentOn: html [
 				url: data animal image.
 			html cardBody: [ 
 				html cardTitle level5 with:
-					data user userInfo firstName , ',' , data user userInfo phoneNumber.
+					data user userInfo firstName , ','
+					, data user userInfo phoneNumber.
 				html cardSubtitle
 					level6;
 					mutedText;
@@ -47,26 +52,62 @@ AHWantAnimalCard >> renderContentOn: html [
 										level5;
 										with: 'Віддати тварину'.
 									html modalCloseButton ].
-							self renderFormBodyOn: html ] ] ]
+							self renderModalBodyOn: html ] ] ]
 ]
 
 { #category : #rendering }
-AHWantAnimalCard >> renderFormBodyOn: html [
-	html modalBody: [
-		html form multipart; with: [
-			html formGroup: [ 
-				 html render: 'Віддати тварину новому власнику?'.
-			].
-			html modalFooter: [ 
-				html formButton
-					beSecondary;
-					callback: [ self delete. ];
-					with: 'Ні'.
-				html formButton
-					bePrimary;
-					callback: [ self approve. ];
-					with: 'Так' 
-			].
-		].
-	].
+AHWantAnimalCard >> renderModalBodyOn: html [
+
+	html modalBody: [ 
+		self renderUserInfoOn: html.
+		html form
+			multipart;
+			with: [ 
+				html modalFooter: [ 
+						html label style: 'justify-content: start;';
+						with: 'Віддати тварину новому власнику?'.
+						html formButton
+							beSecondary;
+							callback: [ self delete ];
+							with: 'Ні'.
+						html formButton
+							bePrimary;
+							callback: [ self approve ];
+							with: 'Так' ] ] ]
+]
+
+{ #category : #rendering }
+AHWantAnimalCard >> renderUserInfoOn: html [
+
+	html container
+		style: 'margin-left: 10%; width:50%';
+		with: [ 
+			html row
+				style: 'justify-content: start;';
+				with: [ 
+					html label
+						style: 'font-size: bold; margin-right: 3%;';
+						with: 'Ім`я:'.
+					html paragraph: data user userInfo firstName ].
+			html row
+				style: 'justify-content: start;';
+				with: [ 
+					html label
+						style: 'font-size: bold; margin-right: 3%;';
+						with: 'Прізвище:'.
+					html paragraph: data user userInfo lastName ].
+			html row
+				style: 'justify-content: start;';
+				with: [ 
+					html label
+						style: 'font-size: bold; margin-right: 3%;';
+						with: 'Електронна адреса:'.
+					html paragraph: data user userInfo email ].
+			html row
+				style: 'justify-content: start; ';
+				with: [ 
+					html label
+						style: 'font-size: bold; margin-right: 3%;';
+						with: 'Номер телефону:'.
+					html paragraph: data user userInfo phoneNumber ] ]
 ]

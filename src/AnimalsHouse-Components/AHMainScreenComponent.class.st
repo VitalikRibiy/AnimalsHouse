@@ -10,11 +10,6 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #private }
-AHMainScreenComponent >> admin [ 
-	^ AHAdministrator selectAll at: 1.
-]
-
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> goToAdministrationView [
 	self call: adminView.
