@@ -67,19 +67,17 @@ AHAnimalCard >> renderContentOn: html [
 	html card
 		style: 'margin: 15px; border: 2px solid #355070;';
 		with: [ 
-			html tbsImage
-				style: 'display: flex; max-width: 100%; width: auto; height: auto';
-				url: data image.
+			self renderAnimalImageOn: html with: data image.
 			html cardBody: [ 
-				html cardTitle level5 with: data name.
-				html cardSubtitle
-					level6;
-					mutedText;
-					with: data sex , ',' , data age printString.
-				html formButton bePrimary
-					dataToggle: 'modal';
-					dataTarget: '#TakeAnimalModal';
-					with: 'Забрати додому' ].
+					html cardTitle level5 with: data name.
+					html cardSubtitle
+						level6;
+						mutedText;
+						with: data sex , ',' , data age printString.
+					html formButton bePrimary
+						dataToggle: 'modal';
+						dataTarget: '#TakeAnimalModal';
+						with: 'Забрати додому' ].
 			self renderModalOn: html ]
 ]
 

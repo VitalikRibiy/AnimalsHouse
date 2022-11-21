@@ -88,38 +88,33 @@ AHFoundAnimalCard >> name: anObject [
 
 { #category : #rendering }
 AHFoundAnimalCard >> renderContentOn: html [
+
 	html card
 		style: 'margin: 15px';
 		with: [ 
-		html tbsImage
-			style: 'display: flex; max-width: 100%; width: auto; height: auto';
-			url: data photo.
-		html cardBody: [ 
-		html cardTitle level5 with: data contactName, ',', data contactPhone.
-		html cardSubtitle 
-			level6; 
-			mutedText;
-			with: data place,',', data description.
-		html formButton 
-			bePrimary 
-			dataToggle: 'modal';
-			dataTarget: '#AddAnimalModal';
-			with: 'Зареєструвати' ] ].
-		html modal
-			id: 'AddAnimalModal';
-			with: [ 
-				html modalDialog with: [ 
+			self renderAnimalImageOn: html with: data photo.
+			html cardBody: [ 
+					html cardTitle level5 with:
+							data contactName , ',' , data contactPhone.
+					html cardSubtitle
+						level6;
+						mutedText;
+						with: data place , ',' , data description.
+					html formButton bePrimary
+						dataToggle: 'modal';
+						dataTarget: '#AddAnimalModal';
+						with: 'Зареєструвати' ] ].
+	html modal
+		id: 'AddAnimalModal';
+		with: [ 
+			html modalDialog with: [ 
 					html modalContent: [ 
-						html modalHeader: [ 
-							html modalTitle
-								level5;
-								with: 'Зареєструвати тварину'.
-							html modalCloseButton 
-						].
-						self renderFormBodyOn: html.
-					]
-				]
-			]
+							html modalHeader: [ 
+									html modalTitle
+										level5;
+										with: 'Зареєструвати тварину'.
+									html modalCloseButton ].
+							self renderFormBodyOn: html ] ] ]
 ]
 
 { #category : #rendering }

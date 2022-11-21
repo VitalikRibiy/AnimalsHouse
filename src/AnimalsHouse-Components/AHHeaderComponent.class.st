@@ -54,13 +54,18 @@ AHHeaderComponent >> renderBrandOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderButtonsOn: html [
+
 	self session isLogged
 		ifTrue: [ 
-			self session currentUser isAdministrator 
-				ifTrue: [ html form: [ self renderAdminButtonOn: html ].  ]
-				ifFalse:	[ html form: [ self renderDisconnectButtonOn: html ]. ]
-			 ]
-		ifFalse: [ html form: [ self renderModalLoginButtonOn: html; renderModalRegisterButtonOn: html ]. ].
+			self session currentUser isAdministrator
+				ifTrue: [ html form: [ self renderAdminButtonOn: html ] ]
+				ifFalse: [ html form: [ self renderDisconnectButtonOn: html ] ] ]
+		ifFalse: [ 
+			html form: [ 
+				self
+					renderModalLoginButtonOn: html;
+					renderModalRegisterButtonOn: html ] ].
+	self renderTakenAnimalsButtonOn: html.
 ]
 
 { #category : #rendering }
@@ -115,4 +120,16 @@ AHHeaderComponent >> renderModalRegisterButtonOn: html [
 		with: [ 
 			html tbsGlyphIcon iconLock.
 			html text: 'Реєстрація' ]
+]
+
+{ #category : #rendering }
+AHHeaderComponent >> renderTakenAnimalsButtonOn: html [
+
+html form: [ 
+	html tbsNavbarButton
+		tbsPullRight;
+		callback: [ component goToTakenAnimalsView ];
+		with: [ html text: 'Забрані тварини' ]
+	 ]
+	
 ]

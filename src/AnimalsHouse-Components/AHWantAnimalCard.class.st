@@ -25,23 +25,22 @@ AHWantAnimalCard >> renderContentOn: html [
 	html card
 		style: 'margin: 15px';
 		with: [ 
-			html tbsImage
-				style: 'display: flex; max-width: 100%; width: auto; height: auto';
-				url: data animal image.
+			self renderAnimalImageOn: html with: data animal image.
 			html cardBody: [ 
-				html cardTitle level5 with:
-					data user userInfo firstName , ','
-					, data user userInfo phoneNumber.
-				html cardSubtitle
-					level6;
-					mutedText;
-					with:
-						data animal name printString , ',' , data animal age printString
-						, ',' , data animal breed name printString.
-				html formButton bePrimary
-					dataToggle: 'modal';
-					dataTarget: '#GiveAnimalModal';
-					with: 'Віддати' ] ].
+					html cardTitle level5 with:
+							data user userInfo firstName , ','
+							, data user userInfo phoneNumber.
+					html cardSubtitle
+						level6;
+						mutedText;
+						with:
+							data animal name printString , ','
+							, data animal age printString , ','
+							, data animal breed name printString.
+					html formButton bePrimary
+						dataToggle: 'modal';
+						dataTarget: '#GiveAnimalModal';
+						with: 'Віддати' ] ].
 	html modal
 		id: 'GiveAnimalModal';
 		with: [ 
