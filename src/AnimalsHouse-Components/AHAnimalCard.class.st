@@ -65,7 +65,7 @@ AHAnimalCard >> renderAnimalDataOn: html [
 AHAnimalCard >> renderContentOn: html [
 
 	html card
-		style: 'margin: 15px';
+		style: 'margin: 15px; border: 2px solid #355070;';
 		with: [ 
 			html tbsImage
 				style: 'display: flex; max-width: 100%; width: auto; height: auto';
@@ -80,9 +80,7 @@ AHAnimalCard >> renderContentOn: html [
 					dataToggle: 'modal';
 					dataTarget: '#TakeAnimalModal';
 					with: 'Забрати додому' ].
-			self renderModalOn: html.
-		].
-	
+			self renderModalOn: html ]
 ]
 
 { #category : #rendering }

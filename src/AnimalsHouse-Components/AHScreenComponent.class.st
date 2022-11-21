@@ -38,6 +38,6 @@ AHScreenComponent >> renderContentOn: html [
 AHScreenComponent >> renderFooterOn: html [
 
 	html row
-		style: 'background-color: #355070; margin-top: 1%';
+		style: 'background-color: #355070; margin-top: 1%; min-height: 25px;';
 		with: [ html label: 'footer' ]
 ]
