@@ -5,7 +5,8 @@ Class {
 		'carousel',
 		'grid',
 		'showLoginError',
-		'adminView'
+		'adminView',
+		'takenAnimalsView'
 	],
 	#category : #'AnimalsHouse-Components'
 }
@@ -13,6 +14,18 @@ Class {
 { #category : #'as yet unclassified' }
 AHMainScreenComponent >> goToAdministrationView [
 	self call: adminView.
+]
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> goToMainView [
+
+	self subclassResponsibility.
+]
+
+{ #category : #'as yet unclassified' }
+AHMainScreenComponent >> goToTakenAnimalsView [
+	
+	self call: takenAnimalsView.
 ]
 
 { #category : #'as yet unclassified' }
@@ -39,35 +52,43 @@ AHMainScreenComponent >> loginErrorOccurred [
 
 { #category : #rendering }
 AHMainScreenComponent >> renderContentOn: html [
+
 	super renderContentOn: html.
 	html column
-		style: 'min-height: 800px';
-		extraLargeSize: 12; with: [
-		self renderLoginErrorMessageIfAnyOn: html. 
-		html row
-			style: 'margin-top: 50px; margin-bottom: 50px;'; 
-			with: [ 
-				html column extraLargeSize:6; extraLargeOffset: 3; with: carousel. 
-				].
-		html row justifyContentCenterVeryLarge;
-			style: 'margin-top: 50px; margin-bottom: 50px;';
-			with: [
-				html heading style: 'padding-top: 10px; marigin-bottom: 0px;'; level2; with: 'Знайшли тварину? Допоможіть нам знайти їй домівку:'.
-				html column style: 'text-align: center'; extraLargeSize: 2; with: (FoundAnimalModal from: self).
-	 		].
-		html row justifyContentCenterVeryLarge;
-			  style: 'margin-top: 50px; margin-bottom: 50px;';
-			  with: [ 
-				html heading level2; with: 'Станьте власником чотирилапого чуда!'.
-			  ].
-		html row 
-			style: 'height: 50%; min-height: 400px'; 
-			with: [ 
-			html column extraLargeSize: 6; extraLargeOffset: 3; 
-				mediumSize: 8; mediumOffset:2;
-				with: grid.
-		].
-	]
+		style:
+			'display: inline-flex; flex-direction: column; vertical-align: top;';
+		extraLargeSize: 12;
+		with: [ 
+			self renderLoginErrorMessageIfAnyOn: html.
+			html row
+				style: 'justify-content: center; max-height: 300px';
+				with: carousel.
+			html row
+				style:
+					'display:flex; flex-direction: column; align-items: center;';
+				justifyContentCenterVeryLarge;
+				with: [ 
+					html heading
+						style: 'padding-top: 10px; marigin-bottom: 0px;';
+						level2;
+						with: 'Знайшли тварину? Допоможіть нам знайти їй домівку:'.
+					html column
+						style: 'text-align: center';
+						extraLargeSize: 2;
+						with: (FoundAnimalModal from: self).
+					html heading
+						level2;
+						with: 'Станьте власником чотирилапого чуда!' ].
+			html row
+				style: 'height: 50%; min-height: 400px';
+				with: [ 
+					html column
+						extraLargeSize: 6;
+						extraLargeOffset: 3;
+						mediumSize: 8;
+						mediumOffset: 2;
+						with: grid ] ].
+	self renderFooterOn: html
 ]
 
 { #category : #rendering }

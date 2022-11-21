@@ -11,22 +11,31 @@ AHCarouselPhotos >> firstPhoto [
 
 { #category : #rendering }
 AHCarouselPhotos >> renderContentOn: html [
-	html carousel 
+
+	html carousel
+		style: 'height: 80%; width: 50%;';
 		id: 'example';
-		slide; with:[ 
-		html carouselInner: [
-			html carouselItem active with: [ html tbsImage style: 'height: 100%; width: 100%; max-height: 650px'; url: self firstPhoto ].
-			html carouselItem with: [ 
-				html tbsImage style: 'height: 100%; width: 100%; max-height: 650px'; url: self secondPhoto.
-				 ].	
-			html carouselItem with: [ 
-				html tbsImage style: 'height: 100%; width: 100%; max-height: 650px'; url: self thirdPhoto.
-				 ].					
-		].		
-		html carouselControlPreviousFor: 'example'.	
-		html carouselControlNextFor: 'example'. 	
-	].
+		slide;
+		with: [ 
+			html carouselInner with: [ 
+					self renderImageOn: html with: self firstPhoto active: true.
+					self renderImageOn: html with: self secondPhoto active: false.
+					self renderImageOn: html with: self thirdPhoto active: false ].
+			html carouselControlPreviousFor: 'example'.
+			html carouselControlNextFor: 'example' ].
 	html script: '$(".carousel").carousel()'
+]
+
+{ #category : #rendering }
+AHCarouselPhotos >> renderImageOn: html with: url active: boolean [
+
+	^ html carouselItem
+		  style: 'display:flex; justify-content: center; background: white;';
+		  class: 'active' if: boolean;
+		  with: [ 
+			  html tbsImage
+				  style: 'width: auto; height: 300px;';
+				  url: url ]
 ]
 
 { #category : #'as yet unclassified' }

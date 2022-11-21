@@ -32,18 +32,24 @@ AHGeneralGrid >> getData [
 
 { #category : #rendering }
 AHGeneralGrid >> renderContentOn: html [
+
 	html column
-		style: 'background: #6F9DC8; paddign: 0px';
+		style: 'background: #6F9DC8; paddign: 0px; height: inherit';
 		extraLargeSize: 12;
 		mediumSize: 12;
 		smallSize: 12;
-		with: [
+		with: [ 
 			sorting isNotNil ifTrue: [ 
-				html row style: 'background: #2e608f';
-					with: sorting. 
-				].
-			html row with: [ 
-				self getData collect: [ :a | html column extraLargeSize: 3; mediumSize: 4; smallSize: 6; with: a. ]
-			]
-		].
+					html row
+						style: 'background: #2e608f';
+						with: sorting ].
+			html row
+				style: 'overflow-y:auto; overflow-x: hidden; max-height: 500px;';
+				with: [ 
+					self getData collect: [ :a | 
+							html column
+								extraLargeSize: 3;
+								mediumSize: 4;
+								smallSize: 6;
+								with: a ] ] ]
 ]
