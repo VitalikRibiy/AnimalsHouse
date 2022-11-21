@@ -37,7 +37,7 @@ AHScreenComponent >> renderContentOn: html [
 { #category : #rendering }
 AHScreenComponent >> renderFooterOn: html [
 
-	html container:[ 
-		html label: 'footer'.
-		]
+	html row
+		style: 'background-color: #355070; margin-top: 1%';
+		with: [ html label: 'footer' ]
 ]

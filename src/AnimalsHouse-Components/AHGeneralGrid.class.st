@@ -34,7 +34,8 @@ AHGeneralGrid >> getData [
 AHGeneralGrid >> renderContentOn: html [
 
 	html column
-		style: 'background: #6F9DC8; paddign: 0px; height: inherit';
+		style:
+			'background: #6F9DC8; paddign: 0px; height: inherit; border: 1px solid #355070;';
 		extraLargeSize: 12;
 		mediumSize: 12;
 		smallSize: 12;
@@ -44,7 +45,7 @@ AHGeneralGrid >> renderContentOn: html [
 						style: 'background: #2e608f';
 						with: sorting ].
 			html row
-				style: 'overflow-y:auto; overflow-x: hidden; max-height: 500px;';
+				style: 'overflow-y:auto; overflow-x: hidden; max-height: 800px;';
 				with: [ 
 					self getData collect: [ :a | 
 							html column
