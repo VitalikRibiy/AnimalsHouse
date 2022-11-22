@@ -111,5 +111,24 @@ FoundAnimalModal >> reset [
 
 { #category : #actions }
 FoundAnimalModal >> save [
-	AHFoundAnimal withSpecies: animalSpecies contactName: contactName contactPhone: contactPhone animalPhoto: ('data:',(photo contentType greaseString),';base64,',(ZnBase64Encoder new encode: photo rawContents)) animalDescription: description animalPlace: place.
+
+	AHFoundAnimal
+		withSpecies: animalSpecies
+		contactName: contactName
+		contactPhone: contactPhone
+		animalPhoto: (self saveImage: photo)
+		animalDescription: description
+		animalPlace: place
+]
+
+{ #category : #accessing }
+FoundAnimalModal >> saveImage: image [
+
+	| filepath |
+	filepath := FileSystem disk workingDirectory / image fileName.
+	filepath
+		binaryWriteStream 
+		nextPutAll: image rawContents;
+		close.
+	^ filepath
 ]

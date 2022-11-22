@@ -39,15 +39,6 @@ AHBasicCard >> data: anObject [
 ]
 
 { #category : #rendering }
-AHBasicCard >> renderAnimalImageOn: html [
-	
-	html tbsImage
-				style:
-					'display: flex; max-width: 100%; width: auto; height: 200px; object-fit: cover;';
-				url: data photo.
-]
-
-{ #category : #rendering }
 AHBasicCard >> renderAnimalImageOn: html with: image [
 
 	html tbsImage

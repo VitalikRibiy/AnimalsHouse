@@ -71,7 +71,7 @@ AHFoundAnimalCard >> image [
 { #category : #accessing }
 AHFoundAnimalCard >> image: anObject [
 
-	image := ('data:',(anObject contentType greaseString),';base64,',(ZnBase64Encoder new encode: anObject rawContents))
+	image := anObject.
 ]
 
 { #category : #accessing }
@@ -201,8 +201,19 @@ AHFoundAnimalCard >> save [
 		weight: weight
 		healthStatus: healthStatus
 		description: description
-		image: image.
+		image: (self saveImage: image).
 	data remove
+]
+
+{ #category : #accessing }
+AHFoundAnimalCard >> saveImage: imageObject [
+
+	| filepath |
+	filepath := FileSystem disk workingDirectory / imageObject fileName.
+	filepath binaryWriteStream
+		nextPutAll: imageObject rawContents;
+		close.
+	^ filepath
 ]
 
 { #category : #accessing }
