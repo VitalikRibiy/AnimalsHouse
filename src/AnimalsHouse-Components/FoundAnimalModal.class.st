@@ -126,9 +126,8 @@ FoundAnimalModal >> saveImage: image [
 
 	| filepath |
 	filepath := FileSystem disk workingDirectory / image fileName.
-	filepath
-		binaryWriteStream 
+	filepath binaryWriteStream
 		nextPutAll: image rawContents;
 		close.
-	^ filepath
+	^ filepath pathString
 ]

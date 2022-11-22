@@ -213,7 +213,7 @@ AHFoundAnimalCard >> saveImage: imageObject [
 	filepath binaryWriteStream
 		nextPutAll: imageObject rawContents;
 		close.
-	^ filepath
+	^ filepath pathString.
 ]
 
 { #category : #accessing }
