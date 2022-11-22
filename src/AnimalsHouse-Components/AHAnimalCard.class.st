@@ -76,7 +76,7 @@ AHAnimalCard >> renderContentOn: html [
 						with: data sex , ',' , data age printString.
 					html formButton bePrimary
 						dataToggle: 'modal';
-						dataTarget: '#TakeAnimalModal' , data name , data sex , data breed name;
+						dataTarget: '#TakeAnimalModal' , data id;
 						with: 'Забрати додому' ].
 			self renderModalOn: html ]
 ]
@@ -90,29 +90,27 @@ AHAnimalCard >> renderModalBodyOn: html [
 			html tbsImage
 				style:
 					'border: 3px solid black; max-width: 50%; margin-left: 25%; margin-right: 25%; margin-bottom: 3%;';
-				url: data image.
+				url: (self readImageFrom: data image).
 			self renderAnimalDataOn: html ].
 	html modalFooter
 		style: 'justify-content: space-evenly;';
-		with: [
+		with: [ 
 			html form: [ 
-				html formButton
-				beSecondary;
-				dataDismiss: 'modal';
-				with: 'Закрити'.
-			html formButton
-				bePrimary;
-				callback: [ self save ];
-				with: 'Забрати'
-				] 
-			 ]
+					html formButton
+						beSecondary;
+						dataDismiss: 'modal';
+						with: 'Закрити'.
+					html formButton
+						bePrimary;
+						callback: [ self save ];
+						with: 'Забрати' ] ]
 ]
 
 { #category : #rendering }
 AHAnimalCard >> renderModalOn: html [
 
 	html modal
-		id: 'TakeAnimalModal' , data name, data sex, data breed name;
+		id: 'TakeAnimalModal' , data id;
 		with: [ 
 			html modalDialog with: [ 
 					html modalContent: [ 

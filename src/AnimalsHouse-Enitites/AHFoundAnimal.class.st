@@ -2,6 +2,7 @@ Class {
 	#name : #AHFoundAnimal,
 	#superclass : #Object,
 	#instVars : [
+		'id',
 		'photo',
 		'description',
 		'place',
@@ -73,6 +74,12 @@ AHFoundAnimal >> description [
 AHFoundAnimal >> description: anObject [
 
 	description := anObject
+]
+
+{ #category : #accessing }
+AHFoundAnimal >> id [
+
+	^ self voyageId value printStringHex
 ]
 
 { #category : #accessing }

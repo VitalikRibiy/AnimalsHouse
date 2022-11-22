@@ -102,10 +102,10 @@ AHFoundAnimalCard >> renderContentOn: html [
 						with: data place , ',' , data description.
 					html formButton bePrimary
 						dataToggle: 'modal';
-						dataTarget: '#AddAnimalModal';
+						dataTarget: '#AddAnimalModal' , data id;
 						with: 'Зареєструвати' ] ].
 	html modal
-		id: 'AddAnimalModal';
+		id: 'AddAnimalModal' , data id;
 		with: [ 
 			html modalDialog with: [ 
 					html modalContent: [ 

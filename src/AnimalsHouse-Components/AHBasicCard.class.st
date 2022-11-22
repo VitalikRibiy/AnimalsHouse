@@ -38,11 +38,24 @@ AHBasicCard >> data: anObject [
 	data := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+AHBasicCard >> readImageFrom: fullPath [
+
+	| file content stream |
+	file := fullPath asFileReference.
+	stream := file binaryReadStream.
+	content := 'data:image/' , file path extension , ';base64,'
+	           , (ZnBase64Encoder new encode: stream contents).
+	stream close.
+	^ content
+]
+
 { #category : #rendering }
 AHBasicCard >> renderAnimalImageOn: html with: image [
 
 	html tbsImage
+		beResponsive;
 		style:
 			'display: flex; max-width: 100%; width: auto; height: 200px; object-fit: cover;';
-		url: image
+		url: (self readImageFrom: image)
 ]
