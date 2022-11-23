@@ -54,18 +54,10 @@ AHTakenAnimalCard >> renderModalOn: html [
 		with: [ 
 			html modalDialog with: [ 
 					html modalContent: [ 
-							self session isLogged
-								ifTrue: [ 
-									html modalHeader: [ 
-											html modalTitle
-												level5;
-												with: 'Забрати тварину'.
-											html modalCloseButton ].
-									self renderModalBodyOn: html ]
-								ifFalse: [ 
-									html modalHeader: [ 
-										html modalTitle
-											level5;
-											with: 'Доступно лише зареєстрованим користувачам'.
-										html modalCloseButton ] ] ] ] ]
+							html modalHeader: [ 
+									html modalTitle
+										level5;
+										with: 'Забрана тварина'.
+									html modalCloseButton ].
+							self renderModalBodyOn: html ] ] ]
 ]

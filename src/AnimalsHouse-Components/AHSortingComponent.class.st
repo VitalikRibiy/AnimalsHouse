@@ -37,7 +37,7 @@ AHSortingComponent >> renderBreedLinkOn: html with: breed [
 AHSortingComponent >> renderContentOn: html [
 
 	html container
-		style: 'display: inline-flex';
+		style: 'display: flex; margin: 0';
 		with: [ 
 			html container
 				style:

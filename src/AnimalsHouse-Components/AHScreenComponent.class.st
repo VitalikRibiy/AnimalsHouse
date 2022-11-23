@@ -33,7 +33,8 @@ AHScreenComponent >> initialize [
 AHScreenComponent >> renderAdOn: html [
 
 	html container
-		style: 'height: 100%; background-color: lightgreen;';
+		style:
+			'height: 100%; background-color: #6F9DC8;';
 		with: [ html label with: 'Реклама' ]
 ]
 
