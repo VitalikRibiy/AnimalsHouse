@@ -55,17 +55,23 @@ AHHeaderComponent >> renderBrandOn: html [
 { #category : #rendering }
 AHHeaderComponent >> renderButtonsOn: html [
 
-	self session isLogged
-		ifTrue: [ 
-			self session currentUser isAdministrator
-				ifTrue: [ html form: [ self renderAdminButtonOn: html ] ]
-				ifFalse: [ html form: [ self renderDisconnectButtonOn: html ] ] ]
-		ifFalse: [ 
+	html container
+		style: 'justify-content: flex-start';
+		with: [ 
 			html form: [ 
-				self
-					renderModalLoginButtonOn: html;
-					renderModalRegisterButtonOn: html ] ].
-	self renderTakenAnimalsButtonOn: html.
+					self renderHomeButtonOn: html.
+					self renderTakenAnimalsButtonOn: html ] ].
+	html container 		style: 'justify-content: flex-end';with: [ 
+		self session isLogged
+			ifTrue: [ 
+				self session currentUser isAdministrator
+					ifTrue: [ html form: [ self renderAdminButtonOn: html ] ]
+					ifFalse: [ html form: [ self renderDisconnectButtonOn: html ] ] ]
+			ifFalse: [ 
+				html form: [ 
+					self
+						renderModalLoginButtonOn: html;
+						renderModalRegisterButtonOn: html ] ] ]
 ]
 
 { #category : #rendering }
@@ -96,6 +102,14 @@ AHHeaderComponent >> renderDisconnectButtonOn: html [
 ]
 
 { #category : #rendering }
+AHHeaderComponent >> renderHomeButtonOn: html [
+
+	html tbsNavbarButton
+		callback: [ self application url ];
+		with: [ html text: 'Головна' ]
+]
+
+{ #category : #rendering }
 AHHeaderComponent >> renderModalLoginButtonOn: html [
 	html render: (AHAuthenticationModal from: component).
 	html tbsNavbarButton
@@ -122,11 +136,8 @@ AHHeaderComponent >> renderModalRegisterButtonOn: html [
 { #category : #rendering }
 AHHeaderComponent >> renderTakenAnimalsButtonOn: html [
 
-html form: [ 
 	html tbsNavbarButton
-		tbsPullRight;
+		tbsPullLeft 
 		callback: [ component goToTakenAnimalsView ];
 		with: [ html text: 'Забрані тварини' ]
-	 ]
-	
 ]
