@@ -30,6 +30,11 @@ AHAdminComponent >> initialize [
 AHAdminComponent >> renderContentOn: html [
 
 	super renderContentOn: html.
+]
+
+{ #category : #rendering }
+AHAdminComponent >> renderMainContentOn: html [
+
 	html column
 		style: 'min-height: 800px';
 		extraLargeSize: 12;
@@ -61,5 +66,4 @@ AHAdminComponent >> renderContentOn: html [
 							mediumSize: 10;
 							mediumOffset: 1;
 							with: wantAnimalGrid ] ] ].
-		self renderFooterOn: html
 ]

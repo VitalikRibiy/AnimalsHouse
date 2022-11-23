@@ -9,5 +9,5 @@ AHTakenAnimalsGrid >> getData [
 
 	^ (Animal selectAll select: [ :animal | 
 		   animal status = AnimalStatus taken ]) collect: [ :filteredAnimal | 
-		  AHAnimalCard from: self component withData: filteredAnimal ]
+		  AHTakenAnimalCard from: self component withData: filteredAnimal ]
 ]

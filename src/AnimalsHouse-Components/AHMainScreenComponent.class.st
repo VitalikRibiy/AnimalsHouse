@@ -56,6 +56,20 @@ AHMainScreenComponent >> loginErrorOccurred [
 AHMainScreenComponent >> renderContentOn: html [
 
 	super renderContentOn: html.
+]
+
+{ #category : #rendering }
+AHMainScreenComponent >> renderLoginErrorMessageIfAnyOn: html [
+	self hasLoginError ifFalse: [ ^ self ].
+	showLoginError := false.
+	html alert
+		beDanger;
+		with: self loginErrorMessage
+]
+
+{ #category : #rendering }
+AHMainScreenComponent >> renderMainContentOn: html [
+
 	html column
 		style:
 			'display: inline-flex; flex-direction: column; vertical-align: top;';
@@ -82,24 +96,13 @@ AHMainScreenComponent >> renderContentOn: html [
 						level2;
 						with: 'Станьте власником чотирилапого чуда!' ].
 			html row
-				style: 'height: 50%; min-height: 400px';
 				with: [ 
 					html column
-						extraLargeSize: 6;
-						extraLargeOffset: 3;
-						mediumSize: 8;
-						mediumOffset: 2;
-						with: grid ] ].
-	self renderFooterOn: html
-]
-
-{ #category : #rendering }
-AHMainScreenComponent >> renderLoginErrorMessageIfAnyOn: html [
-	self hasLoginError ifFalse: [ ^ self ].
-	showLoginError := false.
-	html alert
-		beDanger;
-		with: self loginErrorMessage
+						extraLargeSize: 10;
+						extraLargeOffset: 1;
+						mediumSize: 10;
+						mediumOffset: 1;
+						with: grid ] ]
 ]
 
 { #category : #initialization }

@@ -46,14 +46,14 @@ AHApplicationRootComponent >> renderContentOn: html [
 
 	html div
 		style:
-			'background-color: #EAF6FF; height: 100%; width: 100%; min-height: 800px; max-height: 1440px';
+			'background-color: #EAF6FF; height: 100%; width: 100%; min-height: 100vh; overflow-x: hidden';
 		with: main
 ]
 
 { #category : #rendering }
 AHApplicationRootComponent >> updateRoot: anHtmlRoot [
+
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot beHtml5.
 	anHtmlRoot title: 'AnimalsHouse'.
-	
 ]

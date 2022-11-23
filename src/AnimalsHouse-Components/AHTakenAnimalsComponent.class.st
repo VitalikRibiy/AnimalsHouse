@@ -24,5 +24,19 @@ AHTakenAnimalsComponent >> initialize [
 AHTakenAnimalsComponent >> renderContentOn: html [
 
 	super renderContentOn: html.
-	html row: [ html label: 'Забрані тварини' ]. self renderFooterOn: html
+]
+
+{ #category : #rendering }
+AHTakenAnimalsComponent >> renderMainContentOn: html [
+
+	html column
+		style: 'min-height: 86vh';
+		extraLargeSize: 10;
+		extraLargeOffset: 1;
+		mediumSize: 8;
+		mediumOffset: 2;
+		with: [ 
+			html row
+				style: 'min-height: inherit;';
+				with: takenAnimalsGrid ]
 ]

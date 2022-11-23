@@ -49,7 +49,8 @@ AHGeneralGrid >> renderContentOn: html [
 				with: [ 
 					self getData collect: [ :a | 
 							html column
-								extraLargeSize: 3;
+								extraLargeSize: 2;
+								largeSize: 3;
 								mediumSize: 4;
 								smallSize: 6;
 								with: a ] ] ]

@@ -70,22 +70,19 @@ AHHeaderComponent >> renderButtonsOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderContentOn: html [
-	| bar id |
-	id := '#navbarCollapsed'.
-	bar := html navigationBar.
-	bar expandLarge;
-		style: 'font: 65px Montserrat; color: white; background-color: #355070';
+
+	html navigationBar
+		expandLarge;
+		style:
+			'width:100%; font: 65px Montserrat; color: white; background-color: #355070';
 		with: [ 
 			self renderBrandOn: html.
 			self renderButtonsOn: html.
-			"The toggler that is only visible when reducing the width of screen"
-			html
-				navigationBarToggler
+			html navigationBarToggler
 				beButtonType;
 				collapse;
-				dataTarget: id;
-				with: [ html navigationBarTogglerIcon ].
-		].
+				dataTarget: #navbarCollapsed;
+				with: [ html navigationBarTogglerIcon ] ]
 ]
 
 { #category : #rendering }
