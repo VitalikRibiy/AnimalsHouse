@@ -31,7 +31,7 @@ AHHeaderComponent >> renderAdminButtonOn: html [
 	html form: [
 		html tbsNavbarButton
 			tbsPullRight;
-			callback: [ component goToAdministrationView ];
+			callback: [ component goToAdminView ];
 			with: [
 				html tbsGlyphIcon iconListAlt.
 				html text: ' Admin View' 
@@ -104,8 +104,8 @@ AHHeaderComponent >> renderDisconnectButtonOn: html [
 { #category : #rendering }
 AHHeaderComponent >> renderHomeButtonOn: html [
 
-	html tbsNavbarButton
-		callback: [ self application url ];
+	html tbsNavbarButton tbsPullLeft
+		callback: [ component answer ];
 		with: [ html text: 'Головна' ]
 ]
 
@@ -136,8 +136,8 @@ AHHeaderComponent >> renderModalRegisterButtonOn: html [
 { #category : #rendering }
 AHHeaderComponent >> renderTakenAnimalsButtonOn: html [
 
-	html tbsNavbarButton
-		tbsPullLeft 
+	html tbsNavbarButton tbsPullLeft
+		disabled: component class = AHTakenAnimalsComponent ;
 		callback: [ component goToTakenAnimalsView ];
 		with: [ html text: 'Забрані тварини' ]
 ]

@@ -43,7 +43,12 @@ AHTakenAnimalCard >> renderModalBodyOn: html [
 						beSecondary;
 						dataDismiss: 'modal';
 						with: 'Закрити'.
-		 ] ]
+
+					self session currentUser voyageId = data owner voyageId ifTrue: [ 
+						html formButton
+							bePrimary;
+							dataDismiss: 'modal';
+							with: 'Додати звіт' ] ] ]
 ]
 
 { #category : #rendering }

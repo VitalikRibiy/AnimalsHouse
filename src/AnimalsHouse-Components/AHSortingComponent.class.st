@@ -36,12 +36,13 @@ AHSortingComponent >> renderBreedLinkOn: html with: breed [
 { #category : #rendering }
 AHSortingComponent >> renderContentOn: html [
 
-	html container
-		style: 'display: flex; margin: 0';
+	html row
+		style:
+			'display: flex; margin: 0; justify-content: space-between; width: 100%';
 		with: [ 
-			html container
+			html div
 				style:
-					'display: inline-flex; justify-content: flex-start; padding: 10px';
+					'display: inline-flex; justify-content: flex-start; padding: 10px; width: 50%';
 				with: [ 
 					html dropdown
 						style: 'margin-right: 2%;';
@@ -88,8 +89,8 @@ AHSortingComponent >> renderContentOn: html [
 									((Species breedsOf: selectedSpeciesName) collect: [ :breed | 
 											 self renderBreedLinkOn: html with: breed ]) addFirst:
 											'Порода' ] ] ].
-			html container
-				style: 'justify-content: end; display: inline-flex;padding: 10px;';
+			html div
+				style: 'justify-content: end; display: inline-flex;padding: 10px; width: 50%';
 				with: [ 
 					html form: [ 
 							html formButton

@@ -2,7 +2,9 @@ Class {
 	#name : #AHScreenComponent,
 	#superclass : #SBSComponent,
 	#instVars : [
-		'header'
+		'header',
+		'showLoginError',
+		'adminView'
 	],
 	#category : #'AnimalsHouse-Components'
 }
@@ -18,15 +20,42 @@ AHScreenComponent >> createHeaderComponent [
 ]
 
 { #category : #'as yet unclassified' }
+AHScreenComponent >> goToAdminView [
+	
+	self subclassResponsibility.
+]
+
+{ #category : #'as yet unclassified' }
 AHScreenComponent >> goToMainView [
 	
 	self subclassResponsibility.
+]
+
+{ #category : #'as yet unclassified' }
+AHScreenComponent >> goToTakenAnimalsView [ 
+
+	self subclassResponsibility.
+]
+
+{ #category : #'as yet unclassified' }
+AHScreenComponent >> hasLoginError [
+	^ showLoginError ifNil: [ false ]
 ]
 
 { #category : #initialization }
 AHScreenComponent >> initialize [
 	super initialize.
 	header := self createHeaderComponent.
+]
+
+{ #category : #'as yet unclassified' }
+AHScreenComponent >> loginErrorMessage [
+	^ 'Incorrect login or password'
+]
+
+{ #category : #'as yet unclassified' }
+AHScreenComponent >> loginErrorOccurred [
+	showLoginError := true.
 ]
 
 { #category : #rendering }
@@ -76,7 +105,42 @@ AHScreenComponent >> renderFooterOn: html [
 ]
 
 { #category : #rendering }
+AHScreenComponent >> renderLoginErrorMessageIfAnyOn: html [
+	self hasLoginError ifFalse: [ ^ self ].
+	showLoginError := false.
+	html alert
+		beDanger;
+		with: self loginErrorMessage
+]
+
+{ #category : #rendering }
 AHScreenComponent >> renderMainContentOn: html [
 	
 	^ self subclassResponsibility.
+]
+
+{ #category : #initialization }
+AHScreenComponent >> resetAdminView [
+	adminView := AHAdminComponent new.
+]
+
+{ #category : #'as yet unclassified' }
+AHScreenComponent >> tryConnectionWithLogin: login andPassword: password [
+	| user |
+	user := self userWithLogin: login.
+	user ifNil: [ self loginErrorOccurred ].
+	(login = user login and: [ (SHA256 hashMessage: password) = user password asByteArray ])
+		ifTrue: [ 
+			self session currentUser: user.
+			user isAdministrator ifTrue:[
+				self resetAdminView.
+				self goToAdminView
+			].
+		]
+		ifFalse: [ self loginErrorOccurred ]
+]
+
+{ #category : #'as yet unclassified' }
+AHScreenComponent >> userWithLogin: login [
+	^ AHUser selectOne: [ :e| e login = login ].
 ]

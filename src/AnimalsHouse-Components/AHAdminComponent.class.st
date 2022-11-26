@@ -14,8 +14,20 @@ AHAdminComponent >> createHeaderComponent [
 ]
 
 { #category : #'as yet unclassified' }
+AHAdminComponent >> goToAdminView [
+
+	self shouldNotImplement
+]
+
+{ #category : #'as yet unclassified' }
 AHAdminComponent >> goToMainView [
 	self answer
+]
+
+{ #category : #'as yet unclassified' }
+AHAdminComponent >> goToTakenAnimalsView [
+
+	self call: AHTakenAnimalsComponent.
 ]
 
 { #category : #initialization }

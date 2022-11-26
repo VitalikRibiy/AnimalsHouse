@@ -8,9 +8,21 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-AHTakenAnimalsComponent >> goToMainView [ 
+AHTakenAnimalsComponent >> goToAdminView [
 
-	self answer.
+	self call: AHAdminComponent new
+]
+
+{ #category : #accessing }
+AHTakenAnimalsComponent >> goToMainView [
+
+	self answer
+]
+
+{ #category : #'as yet unclassified' }
+AHTakenAnimalsComponent >> goToTakenAnimalsView [
+
+	self shouldNotImplement
 ]
 
 { #category : #initialization }
@@ -36,6 +48,7 @@ AHTakenAnimalsComponent >> renderMainContentOn: html [
 		mediumSize: 8;
 		mediumOffset: 2;
 		with: [ 
+			self renderLoginErrorMessageIfAnyOn: html.
 			html row
 				style: 'min-height: inherit;';
 				with: takenAnimalsGrid ]
