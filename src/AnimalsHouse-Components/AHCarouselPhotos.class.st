@@ -22,7 +22,7 @@ AHCarouselPhotos >> renderContentOn: html [
 					self renderImageOn: html with: self secondPhoto active: false.
 					self renderImageOn: html with: self thirdPhoto active: false ].
 			html carouselControlPreviousFor: 'example'.
-			html carouselControlNextFor: 'example' ].
+			html carouselControlNextFor: 'example'  ].
 	html script: '$(".carousel").carousel()'
 ]
 

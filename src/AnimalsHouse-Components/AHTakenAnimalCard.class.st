@@ -41,13 +41,17 @@ AHTakenAnimalCard >> renderContentOn: html [
 AHTakenAnimalCard >> renderModalBodyOn: html [
 
 	html modalBody
-		style: 'color: #000000; font-size: 16px';
+		style:
+			'color: #000000; font-size: 16px; overflow-x: hidden; overflow-y: auto;';
 		with: [ 
 			html tbsImage
 				style:
 					'border: 3px solid black; max-width: 50%; margin-left: 25%; margin-right: 25%; margin-bottom: 3%;';
 				url: (self readImageFrom: data image).
-			self renderAnimalDataOn: html ].
+			self renderAnimalDataOn: html.
+			html div
+			style: 'overflow-x: hidden; overflow-y: auto; max-height: 600px';
+			 with: [ self renderReportsDataOn: html ] ].
 	html modalFooter
 		style: 'justify-content: space-evenly;';
 		with: [ 
@@ -126,6 +130,25 @@ AHTakenAnimalCard >> renderReportModalOn: html [
 
 { #category : #rendering }
 AHTakenAnimalCard >> renderReportsDataOn: html [
+
+	data reports size = 0 ifTrue: [ ^ false ].
+	html heading
+		style: 'margin: 5%';
+		level: 4;
+		with: 'Моя подальша доля:'.
+
+	data reports collect: [ :report | 
+		html horizontalRule.
+		html row
+			style: 'display: inline-flex; justify-content: center';
+			with: [ 
+				html tbsImage
+					style:
+						'border: 3px solid black; max-width: 50%; margin-left: 25%; margin-right: 25%; margin-bottom: 3%;';
+					url: (self readImageFrom: report image).
+				html paragraph
+					style: 'margin: 3%; word-break: break-word';
+					with: report comment ] ]
 ]
 
 { #category : #initialization }

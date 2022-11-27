@@ -14,15 +14,19 @@ AHApplicationRootComponent class >> canBeRoot [
 
 { #category : #'class initialization' }
 AHApplicationRootComponent class >> initialize [
+
 	| app |
 	app := WAAdmin register: self asApplicationAt: 'AnimalsHouse'.
 	app preferenceAt: #sessionClass put: AHSession.
-	app addLibrary: JQDeploymentLibrary; 
-	addLibrary: JQUiDeploymentLibrary; 
-	addLibrary: TBSDeploymentLibrary; 
-	addLibrary: SBSDevelopmentLibrary; 
-	addLibrary: SBSDeploymentLibrary;
-	addLibrary: SBSFileLibrary.
+	app
+		addLibrary: JQDeploymentLibrary;
+		addLibrary: JQDevelopmentLibrary;
+		addLibrary: JQUiDevelopmentLibrary;
+		addLibrary: JQUiDeploymentLibrary;
+		addLibrary: TBSDeploymentLibrary;
+		addLibrary: SBSDevelopmentLibrary;
+		addLibrary: SBSDeploymentLibrary;
+		addLibrary: SBSFileLibrary
 ]
 
 { #category : #initialization }
