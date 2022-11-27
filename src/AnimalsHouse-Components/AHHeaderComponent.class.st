@@ -60,18 +60,21 @@ AHHeaderComponent >> renderButtonsOn: html [
 		with: [ 
 			html form: [ 
 					self renderHomeButtonOn: html.
-					self renderTakenAnimalsButtonOn: html ] ].
-	html container 		style: 'justify-content: flex-end';with: [ 
-		self session isLogged
-			ifTrue: [ 
-				self session currentUser isAdministrator
-					ifTrue: [ html form: [ self renderAdminButtonOn: html ] ]
-					ifFalse: [ html form: [ self renderDisconnectButtonOn: html ] ] ]
-			ifFalse: [ 
-				html form: [ 
-					self
-						renderModalLoginButtonOn: html;
-						renderModalRegisterButtonOn: html ] ] ]
+					self renderTakenAnimalsButtonOn: html.
+					self renderReviewsButtonOn: html ] ].
+	html container
+		style: 'justify-content: flex-end';
+		with: [ 
+			self session isLogged
+				ifTrue: [ 
+					self session currentUser isAdministrator
+						ifTrue: [ html form: [ self renderAdminButtonOn: html ] ]
+						ifFalse: [ html form: [ self renderDisconnectButtonOn: html ] ] ]
+				ifFalse: [ 
+					html form: [ 
+							self
+								renderModalLoginButtonOn: html;
+								renderModalRegisterButtonOn: html ] ] ]
 ]
 
 { #category : #rendering }
@@ -105,7 +108,7 @@ AHHeaderComponent >> renderDisconnectButtonOn: html [
 AHHeaderComponent >> renderHomeButtonOn: html [
 
 	html tbsNavbarButton tbsPullLeft
-		callback: [ component answer ];
+		callback: [ component goToMainView ];
 		with: [ html text: 'Головна' ]
 ]
 
@@ -131,6 +134,15 @@ AHHeaderComponent >> renderModalRegisterButtonOn: html [
 		with: [ 
 			html tbsGlyphIcon iconLock.
 			html text: 'Реєстрація' ]
+]
+
+{ #category : #rendering }
+AHHeaderComponent >> renderReviewsButtonOn: html [
+
+	html tbsNavbarButton tbsPullLeft
+		disabled: component class = AHReviewsComponent;
+		callback: [ component goToReviewsView ];
+		with: [ html text: 'Відгуки' ]
 ]
 
 { #category : #rendering }

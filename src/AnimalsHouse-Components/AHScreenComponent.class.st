@@ -32,6 +32,12 @@ AHScreenComponent >> goToMainView [
 ]
 
 { #category : #'as yet unclassified' }
+AHScreenComponent >> goToReviewsView [
+	
+	self subclassResponsibility.
+]
+
+{ #category : #'as yet unclassified' }
 AHScreenComponent >> goToTakenAnimalsView [ 
 
 	self subclassResponsibility.

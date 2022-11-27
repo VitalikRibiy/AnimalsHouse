@@ -21,7 +21,14 @@ AHAdminComponent >> goToAdminView [
 
 { #category : #'as yet unclassified' }
 AHAdminComponent >> goToMainView [
-	self answer
+
+	self application url
+]
+
+{ #category : #'as yet unclassified' }
+AHAdminComponent >> goToReviewsView [
+
+	self call: AHReviewsComponent new.
 ]
 
 { #category : #'as yet unclassified' }

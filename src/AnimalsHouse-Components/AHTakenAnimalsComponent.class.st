@@ -16,7 +16,13 @@ AHTakenAnimalsComponent >> goToAdminView [
 { #category : #accessing }
 AHTakenAnimalsComponent >> goToMainView [
 
-	self answer
+	self application url
+]
+
+{ #category : #'as yet unclassified' }
+AHTakenAnimalsComponent >> goToReviewsView [
+
+	self call: AHReviewsComponent new
 ]
 
 { #category : #'as yet unclassified' }

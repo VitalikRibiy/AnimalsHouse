@@ -34,9 +34,9 @@ Class {
 { #category : #demo }
 Animal class >> createDemoData [
 
-	| image |
+	| image admin user |
 	image := 'C:\Users\Vital\Documents\Pharo\images\Animals House\БританськийСамець.jpg'.
-	AHAdministrator
+	admin := AHAdministrator
 		withLogin: 'admin'
 		password: 'test'
 		userInfo: (AHUserInfo
@@ -44,11 +44,12 @@ Animal class >> createDemoData [
 				 lastName: 'Admin'
 				 phoneNumber: '380734940326'
 				 email: 'VitalikRibiy@gmail.com').
-	AHUser withLogin: 'user' password: 'test' userInfo: (AHUserInfo
+	user := AHUser withLogin: 'user' password: 'test' userInfo: (AHUserInfo
 			 withFirstName: 'Vitalii'
 			 lastName: 'Ribii'
 			 phoneNumber: '380734940326'
 			 email: 'VitalikRibiy@gmail.com').
+	AHReview withText: 'sampleText' receiver: admin sender: user type: ReviewType positive.
 	CatBreed initialize.
 	DogBreed initialize.
 	CatBreed

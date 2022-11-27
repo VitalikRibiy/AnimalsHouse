@@ -169,13 +169,13 @@ AHTakenAnimalCard >> save [
 
 	| report |
 	report := AHReport
-		          withAnimal: data
-		          user: data owner
+		          withAnimal: data animal
+		          user: data user
 		          image: (self saveImage: image)
 		          comment: comment
-		          date: DateAndTime now asUTC.
-	data addReport: report;
-		save
+		          date: DateAndTime now asUTC. data animal
+		          addReport: report;
+		          save
 ]
 
 { #category : #accessing }

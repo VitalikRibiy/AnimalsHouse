@@ -188,12 +188,12 @@ AHFoundAnimalCard >> reset [
 { #category : #actions }
 AHFoundAnimalCard >> save [
 
-	| selectedClass |
-	selectedClass := data animalSpecies = Species cat
-		                 ifTrue: [ Cat ]
-		                 ifFalse: [ Dog ].
-	image ifNil: [ image := data photo ].
-	selectedClass
+	| tmp1 tmp2 |
+	tmp2 := report animalSpecies = Species cat
+		        ifTrue: [ Cat ]
+		        ifFalse: [ Dog ].
+	image ifNil: [ image := report image ].
+	tmp2
 		withName: name
 		age: age
 		sex: sex
@@ -201,8 +201,8 @@ AHFoundAnimalCard >> save [
 		weight: weight
 		healthStatus: healthStatus
 		description: description
-		image: (self saveImage: image).
-	data remove
+		image: image.
+	report remove
 ]
 
 { #category : #accessing }

@@ -21,6 +21,12 @@ AHMainScreenComponent >> goToMainView [
 ]
 
 { #category : #'as yet unclassified' }
+AHMainScreenComponent >> goToReviewsView [
+
+	self call: AHReviewsComponent new
+]
+
+{ #category : #'as yet unclassified' }
 AHMainScreenComponent >> goToTakenAnimalsView [
 	
 	self call: takenAnimalsView.

@@ -54,49 +54,44 @@ FoundAnimalModal >> renderContentOn: html [
 ]
 
 { #category : #rendering }
-FoundAnimalModal >> renderFormBodyOn: html [
-	self reset.
-	html modalBody: [
-		html form multipart; 
+FoundAnimalModal >> renderFormBodyOn: arg1 [
+
+	| tmp1 |
+	arg1 modalBody: [ 
+		| tmp2 |
+		tmp2 := arg1 form.
+		tmp2
+			multipart;
 			with: [ 
-			html formGroup: [ 
-				html label: 'Фото'.
-				html fileUpload callback: [ :file | photo := file ].
-			].
-			html formGroup: [ 
-				html label: 'Вид'.
-				html select list: Species list;
-					 callback: [ :value | animalSpecies := value ].
-			].
-			html formGroup: [ 
-				html label: 'Місце'.
-				html textInput callback: [ :value | place := value ].
-			].
-			html formGroup: [ 
-				html label: 'Опис'.
-				html textInput callback: [ :value | description := value ].
-			].
-			html formGroup: [ 
-				html label: 'Ваше Ім`я'.
-				html textInput callback: [ :value | contactName := value ].
-			].
-			html formGroup: [ 
-				html label: 'Контактний номер телефону'.
-				html telephoneInput callback: [ :value | contactPhone := value ].
-			].
-			html modalFooter: [ 
-				html formButton
-					beSecondary;
-					dataDismiss: 'modal';
-					callback: [ self reset. ];
-					with: 'Закрити'.
-				html formButton
-					bePrimary;
-					callback: [ self save. ];
-					with: 'Надіслати заявку' 
-			].
-		].
-	].
+				arg1
+					formGroup: [ 
+						arg1 label: 'Photo'.
+						arg1 fileUpload callback: [ :arg2 | photo := arg2 ] ];
+					formGroup: [ 
+						arg1 label: 'Place'.
+						arg1 textInput callback: [ :arg3 | place := arg3 ] ];
+					formGroup: [ 
+						arg1 label: 'Description'.
+						arg1 textInput callback: [ :arg4 | description := arg4 ] ];
+					formGroup: [ 
+						arg1 label: 'Name'.
+						arg1 textInput callback: [ :arg5 | contactName := arg5 ] ];
+					formGroup: [ 
+						arg1 label: 'Contact Phone'.
+						arg1 telephoneInput callback: [ :arg6 | contactPhone := arg6 ] ];
+					modalFooter: [ 
+						| tmp3 tmp4 |
+						tmp3 := arg1 formButton.
+						tmp3
+							beSecondary;
+							dataDismiss: 'modal';
+							callback: [ self reset ];
+							with: 'Close'.
+						tmp4 := arg1 formButton.
+						tmp4
+							bePrimary;
+							callback: [ self save ];
+							with: 'Send application' ] ] ]
 ]
 
 { #category : #initialization }
