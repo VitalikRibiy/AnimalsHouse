@@ -26,31 +26,25 @@ FoundAnimalModal >> contactPhone [
 
 { #category : #rendering }
 FoundAnimalModal >> renderContentOn: html [
-	html container
-		with: [
-			html formButton
-				style: 'width: 14rem; height: 6rem';
-				bePrimary;
-				dataToggle: 'modal';
-				dataTarget: '#FoundAnimalModal';
-				with: 'Повідомити про тварину'.			
-			html modal
-				id: 'FoundAnimalModal';
-				with: [ 
-					html modalDialog with: [ 
-						html modalContent: [ 
-							html modalHeader: [ 
-								html modalTitle
-									level5;
-									with: 'Повідомити про тварину'.
-								html modalCloseButton 
-							].
-							self renderFormBodyOn: html.
-						]
-					]
-				]
-		].
 
+	html container with: [ 
+		html formButton
+			style: 'height: 4vh; font-size: 16px; border-radius: 10px';
+			bePrimary;
+			dataToggle: 'modal';
+			dataTarget: '#FoundAnimalModal';
+			with: 'Повідомити про тварину'.
+		html modal
+			id: 'FoundAnimalModal';
+			with: [ 
+				html modalDialog with: [ 
+						html modalContent: [ 
+								html modalHeader: [ 
+										html modalTitle
+											level5;
+											with: 'Повідомити про тварину'.
+										html modalCloseButton ].
+								self renderFormBodyOn: html ] ] ] ]
 ]
 
 { #category : #rendering }

@@ -32,15 +32,23 @@ AHReviewsComponent >> goToTakenAnimalsView [
 AHReviewsComponent >> renderMainContentOn: html [
 
 	html column
-		style: 'min-height: 86vh';
+		style: 'min-height: 86vh;';
 		extraLargeSize: 10;
 		extraLargeOffset: 1;
 		mediumSize: 8;
 		mediumOffset: 2;
 		with: [ 
 			self renderLoginErrorMessageIfAnyOn: html.
+			html row
+				style: 'justify-content: start; height: 6vh; margin: 5px';
+				with: [ 
+					html formButton
+						style: 'height: 4vh; font-size: 16px; border-radius: 10px';
+						bePrimary;
+						with: 'Залишити відгук' ].
 			html div
-				style: 'min-height: inherit;';
+				style:
+					'height: 80vh; overflow-x: hidden; overflow-y: auto; border: 3px solid #355070; border-radius: 12px; padding: 5px';
 				with: [ self renderReviewsOn: html ] ]
 ]
 
@@ -66,6 +74,6 @@ AHReviewsComponent >> renderReview: review on: html [
 AHReviewsComponent >> renderReviewsOn: html [
 
 	^ (AHReview selectAll select: [ :review | 
-		   review receiver class = AHAdministrator ]) collect: [ 
+		   review receiver isAdministrator ]) collect: [ 
 		  :filteredReview | self renderReview: filteredReview on: html ]
 ]

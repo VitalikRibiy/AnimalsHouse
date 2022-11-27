@@ -42,6 +42,12 @@ AHReview >> receiver: anObject [
 ]
 
 { #category : #accessing }
+AHReview >> receiverOfReview [
+
+	^ receiver
+]
+
+{ #category : #accessing }
 AHReview >> sender [
 
 	^ sender

@@ -37,19 +37,31 @@ Animal class >> createDemoData [
 	| image admin user |
 	image := 'C:\Users\Vital\Documents\Pharo\images\Animals House\БританськийСамець.jpg'.
 	admin := AHAdministrator
-		withLogin: 'admin'
-		password: 'test'
-		userInfo: (AHUserInfo
-				 withFirstName: 'Admin'
-				 lastName: 'Admin'
-				 phoneNumber: '380734940326'
-				 email: 'VitalikRibiy@gmail.com').
-	user := AHUser withLogin: 'user' password: 'test' userInfo: (AHUserInfo
-			 withFirstName: 'Vitalii'
-			 lastName: 'Ribii'
-			 phoneNumber: '380734940326'
-			 email: 'VitalikRibiy@gmail.com').
-	AHReview withText: 'sampleText' receiver: admin sender: user type: ReviewType positive.
+		         withLogin: 'admin'
+		         password: 'test'
+		         userInfo: (AHUserInfo
+				          withFirstName: 'Admin'
+				          lastName: 'Admin'
+				          phoneNumber: '380734940326'
+				          email: 'VitalikRibiy@gmail.com').
+	user := AHUser
+		        withLogin: 'user'
+		        password: 'test'
+		        userInfo: (AHUserInfo
+				         withFirstName: 'Vitalii'
+				         lastName: 'Ribii'
+				         phoneNumber: '380734940326'
+				         email: 'VitalikRibiy@gmail.com').
+AHReview withText: 'sample positive text' receiver: admin sender: user type: ReviewType positive.
+AHReview withText: 'sample negative text' receiver: admin sender: user type: ReviewType negative.
+AHReview withText: 'sample positive text' receiver: admin sender: user type: ReviewType positive.
+AHReview withText: 'sample negative text' receiver: admin sender: user type: ReviewType negative.
+AHReview withText: 'sample positive text' receiver: admin sender: user type: ReviewType positive.
+AHReview withText: 'sample negative text' receiver: admin sender: user type: ReviewType negative.
+AHReview withText: 'sample positive text' receiver: admin sender: user type: ReviewType positive.
+AHReview withText: 'sample negative text' receiver: admin sender: user type: ReviewType negative.
+AHReview withText: 'sample positive text' receiver: admin sender: user type: ReviewType positive.
+AHReview withText: 'sample negative text' receiver: admin sender: user type: ReviewType negative.
 	CatBreed initialize.
 	DogBreed initialize.
 	CatBreed
