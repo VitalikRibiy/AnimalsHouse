@@ -124,6 +124,10 @@ AHTakenAnimalCard >> renderReportModalOn: html [
 							self renderReportModalBodyOn: html ] ] ]
 ]
 
+{ #category : #rendering }
+AHTakenAnimalCard >> renderReportsDataOn: html [
+]
+
 { #category : #initialization }
 AHTakenAnimalCard >> reset [
 
@@ -142,13 +146,13 @@ AHTakenAnimalCard >> save [
 
 	| report |
 	report := AHReport
-		          withAnimal: data animal
-		          user: data user
+		          withAnimal: data
+		          user: data owner
 		          image: (self saveImage: image)
 		          comment: comment
-		          date: DateAndTime now asUTC. data animal
-		          addReport: report;
-		          save
+		          date: DateAndTime now asUTC.
+	data addReport: report;
+		save
 ]
 
 { #category : #accessing }
