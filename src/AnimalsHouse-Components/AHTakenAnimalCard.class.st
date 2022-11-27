@@ -1,8 +1,20 @@
 Class {
 	#name : #AHTakenAnimalCard,
 	#superclass : #AHAnimalCard,
+	#instVars : [
+		'image',
+		'comment',
+		'showUpload'
+	],
 	#category : #'AnimalsHouse-Components'
 }
+
+{ #category : #initialization }
+AHTakenAnimalCard >> initialize [
+
+	super initialize.
+	showUpload := true
+]
 
 { #category : #rendering }
 AHTakenAnimalCard >> renderContentOn: html [
@@ -21,7 +33,8 @@ AHTakenAnimalCard >> renderContentOn: html [
 						dataToggle: 'modal';
 						dataTarget: '#TakenAnimalModal' , data id;
 						with: 'Переглянути' ].
-			self renderModalOn: html ]
+			self renderModalOn: html.
+			self renderReportModalOn: html ]
 ]
 
 { #category : #rendering }
@@ -47,6 +60,8 @@ AHTakenAnimalCard >> renderModalBodyOn: html [
 					self session currentUser voyageId = data owner voyageId ifTrue: [ 
 						html formButton
 							bePrimary;
+							dataToggle: 'modal';
+							dataTarget: '#ReportModal';
 							dataDismiss: 'modal';
 							with: 'Додати звіт' ] ] ]
 ]
@@ -65,4 +80,79 @@ AHTakenAnimalCard >> renderModalOn: html [
 										with: 'Забрана тварина'.
 									html modalCloseButton ].
 							self renderModalBodyOn: html ] ] ]
+]
+
+{ #category : #rendering }
+AHTakenAnimalCard >> renderReportModalBodyOn: html [
+
+	self reset.
+	html modalBody: [ 
+		html form
+			multipart;
+			with: [ 
+				html formGroup: [ 
+						html label: 'Фото'.
+						html fileUpload callback: [ :file | image := file ] ].
+				html formGroup: [ 
+						html label: 'Коментар'.
+						html textInput callback: [ :value | comment := value ] ].
+				html modalFooter: [ 
+						html formButton
+							beSecondary;
+							dataDismiss: 'modal';
+							callback: [ self reset ];
+							with: 'Закрити'.
+						html formButton
+							bePrimary;
+							callback: [ self save ];
+							with: 'Зберегти' ] ] ]
+]
+
+{ #category : #rendering }
+AHTakenAnimalCard >> renderReportModalOn: html [
+
+	html modal
+		id: 'ReportModal';
+		with: [ 
+			html modalDialog with: [ 
+					html modalContent: [ 
+							html modalHeader: [ 
+									html modalTitle
+										level5;
+										with: 'Завантажити звіт'.
+									html modalCloseButton ].
+							self renderReportModalBodyOn: html ] ] ]
+]
+
+{ #category : #initialization }
+AHTakenAnimalCard >> reset [
+
+	image := nil.
+	comment := nil.
+]
+
+{ #category : #initialization }
+AHTakenAnimalCard >> resetUpload [
+
+	showUpload := false.
+]
+
+{ #category : #actions }
+AHTakenAnimalCard >> save [
+
+	| report |
+	report := AHReport
+		          withAnimal: data animal
+		          user: data user
+		          image: (self saveImage: image)
+		          comment: comment
+		          date: DateAndTime now asUTC. data animal
+		          addReport: report;
+		          save
+]
+
+{ #category : #accessing }
+AHTakenAnimalCard >> showUpload [
+
+	showUpload := true.
 ]

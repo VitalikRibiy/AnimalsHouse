@@ -59,3 +59,14 @@ AHBasicCard >> renderAnimalImageOn: html with: image [
 			'display: flex; max-width: 100%; width: auto; height: 200px; object-fit: cover;';
 		url: (self readImageFrom: image)
 ]
+
+{ #category : #accessing }
+AHBasicCard >> saveImage: imageObject [
+
+	| filepath |
+	filepath := FileSystem disk workingDirectory / imageObject fileName.
+	filepath binaryWriteStream
+		nextPutAll: imageObject rawContents;
+		close.
+	^ filepath pathString.
+]

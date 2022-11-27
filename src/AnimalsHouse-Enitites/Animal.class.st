@@ -25,7 +25,8 @@ Class {
 		'description',
 		'image',
 		'status',
-		'owner'
+		'owner',
+		'reports'
 	],
 	#category : #'AnimalsHouse-Enitites'
 }
@@ -291,10 +292,14 @@ Animal class >> withName: nameValue age: ageValue sex: sexValue breed: breedValu
 		healthStatus: healthStatusValue;
 		description: descriptionValue;
 		image: imageValue;
-		status: AnimalStatus inShelter;
-		owner: nil;
 		save.
 	^ instance
+]
+
+{ #category : #adding }
+Animal >> addReport: report [
+
+	reports addLast: report.
 ]
 
 { #category : #accessing }
@@ -447,6 +452,14 @@ Animal >> image: anObject [
 		         ifNotNil: [ anObject ]
 ]
 
+{ #category : #initialization }
+Animal >> initialize [
+
+	super initialize.
+	reports := OrderedCollection new.
+	status := AnimalStatus inShelter
+]
+
 { #category : #testing }
 Animal >> isCat [
 	^ self subclassResponsibility
@@ -480,6 +493,12 @@ Animal >> owner [
 Animal >> owner: ownerUser [
 	
 	owner := ownerUser.
+]
+
+{ #category : #accessing }
+Animal >> reports [
+
+	^ reports
 ]
 
 { #category : #accessing }

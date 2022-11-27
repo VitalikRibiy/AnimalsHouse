@@ -126,18 +126,18 @@ AHScreenComponent >> resetAdminView [
 
 { #category : #'as yet unclassified' }
 AHScreenComponent >> tryConnectionWithLogin: login andPassword: password [
+
 	| user |
 	user := self userWithLogin: login.
-	user ifNil: [ self loginErrorOccurred ].
-	(login = user login and: [ (SHA256 hashMessage: password) = user password asByteArray ])
+	user ifNil: [ ^ self loginErrorOccurred ].
+	(login = user login and: [ 
+		 (SHA256 hashMessage: password) = user password asByteArray ])
 		ifTrue: [ 
 			self session currentUser: user.
-			user isAdministrator ifTrue:[
+			user isAdministrator ifTrue: [ 
 				self resetAdminView.
-				self goToAdminView
-			].
-		]
-		ifFalse: [ self loginErrorOccurred ]
+				self goToAdminView ] ]
+		ifFalse: [ ^ self loginErrorOccurred  ]
 ]
 
 { #category : #'as yet unclassified' }

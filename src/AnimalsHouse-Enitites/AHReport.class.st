@@ -11,12 +11,6 @@ Class {
 	#category : #'AnimalsHouse-Enitites'
 }
 
-{ #category : #testing }
-AHReport class >> isVoyageRoot [
-
-	^ true
-]
-
 { #category : #'instance creation' }
 AHReport class >> withAnimal: animalObject user: userObject image: imageObject comment: commentObject date: dateObject [
 

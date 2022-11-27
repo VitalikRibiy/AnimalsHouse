@@ -10,8 +10,9 @@ Class {
 }
 
 { #category : #testing }
-AHUser class >> isVoyageRoot [
-	^ true
+AHUser class >> isVoyageRoot [ 
+
+	^ true.
 ]
 
 { #category : #'instance creation' }

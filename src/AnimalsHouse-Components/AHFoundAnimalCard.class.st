@@ -206,17 +206,6 @@ AHFoundAnimalCard >> save [
 ]
 
 { #category : #accessing }
-AHFoundAnimalCard >> saveImage: imageObject [
-
-	| filepath |
-	filepath := FileSystem disk workingDirectory / imageObject fileName.
-	filepath binaryWriteStream
-		nextPutAll: imageObject rawContents;
-		close.
-	^ filepath pathString.
-]
-
-{ #category : #accessing }
 AHFoundAnimalCard >> sex [
 
 	^ sex

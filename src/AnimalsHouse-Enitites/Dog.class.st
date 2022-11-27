@@ -9,7 +9,10 @@ Class {
 
 { #category : #initialization }
 Dog >> initialize [
+
+	super initialize.
 	animalSpecies := Species dog.
+
 ]
 
 { #category : #testing }
