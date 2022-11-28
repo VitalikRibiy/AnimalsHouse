@@ -48,44 +48,38 @@ FoundAnimalModal >> renderContentOn: html [
 ]
 
 { #category : #rendering }
-FoundAnimalModal >> renderFormBodyOn: arg1 [
+FoundAnimalModal >> renderFormBodyOn: html [
 
-	| tmp1 |
-	arg1 modalBody: [ 
-		| tmp2 |
-		tmp2 := arg1 form.
-		tmp2
+	html modalBody: [ 
+		html form
 			multipart;
 			with: [ 
-				arg1
-					formGroup: [ 
-						arg1 label: 'Photo'.
-						arg1 fileUpload callback: [ :arg2 | photo := arg2 ] ];
-					formGroup: [ 
-						arg1 label: 'Place'.
-						arg1 textInput callback: [ :arg3 | place := arg3 ] ];
-					formGroup: [ 
-						arg1 label: 'Description'.
-						arg1 textInput callback: [ :arg4 | description := arg4 ] ];
-					formGroup: [ 
-						arg1 label: 'Name'.
-						arg1 textInput callback: [ :arg5 | contactName := arg5 ] ];
-					formGroup: [ 
-						arg1 label: 'Contact Phone'.
-						arg1 telephoneInput callback: [ :arg6 | contactPhone := arg6 ] ];
-					modalFooter: [ 
-						| tmp3 tmp4 |
-						tmp3 := arg1 formButton.
-						tmp3
-							beSecondary;
-							dataDismiss: 'modal';
-							callback: [ self reset ];
-							with: 'Close'.
-						tmp4 := arg1 formButton.
-						tmp4
-							bePrimary;
-							callback: [ self save ];
-							with: 'Send application' ] ] ]
+				html formGroup
+					style: 'color: black; font-size: medium; display: flex; flex-direction: column';
+					with: [ 
+						html label: 'Photo'.
+						html fileUpload callback: [ :value | photo := value ].
+						html label: 'Place'.
+						html textInput callback: [ :value | place := value ].
+						html label: 'Description'.
+						html textInput callback: [ :value | description := value ].
+						html label: 'Name'.
+						html textInput callback: [ :value | contactName := value ].
+						html label: 'Contact Phone'.
+						html telephoneInput callback: [ :value | contactPhone := value ] ] ].
+		html modalFooter: [ 
+			| tmp3 tmp4 |
+			tmp3 := html formButton.
+			tmp3
+				beSecondary;
+				dataDismiss: 'modal';
+				callback: [ self reset ];
+				with: 'Close'.
+			tmp4 := html formButton.
+			tmp4
+				bePrimary;
+				callback: [ self save ];
+				with: 'Send application' ] ]
 ]
 
 { #category : #initialization }
