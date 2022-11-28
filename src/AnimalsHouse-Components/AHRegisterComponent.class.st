@@ -91,17 +91,17 @@ AHRegisterComponent >> registerErrorMessage [
 
 { #category : #rendering }
 AHRegisterComponent >> renderBodyOn: html [
-	html modalBody: [
-		
-		html form multipart;
-			style: 'color: black; font-size: small;';
-			with: [
-			self renderUserInfoOn: html.
-			self renderLoginFieldOn: html.
-			self renderPasswordFieldOn: html.
-			html modalFooter: [ self renderButtonsOn: html ]
-			] 
-		]
+
+	html modalBody: [ 
+		html form
+			multipart;
+			style:
+						'color: black; font-size: medium; display: flex; flex-direction: column';
+			with: [ 
+				self renderUserInfoOn: html.
+				self renderLoginFieldOn: html.
+				self renderPasswordFieldOn: html.
+				html modalFooter: [ self renderButtonsOn: html ] ] ]
 ]
 
 { #category : #rendering }

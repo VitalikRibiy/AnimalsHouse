@@ -25,9 +25,9 @@ AHScreenComponent >> goToAdminView [
 	self subclassResponsibility.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 AHScreenComponent >> goToMainView [
-	
+
 	self subclassResponsibility.
 ]
 

@@ -60,11 +60,14 @@ AHWantAnimalCard >> renderModalBodyOn: html [
 	html modalBody: [ 
 		self renderUserInfoOn: html.
 		html form
+							style:
+						'color: black; font-size: medium; display: flex; flex-direction: column';
 			multipart;
 			with: [ 
 				html modalFooter: [ 
-						html label style: 'justify-content: start;';
-						with: 'Віддати тварину новому власнику?'.
+						html label
+							style: 'justify-content: start;';
+							with: 'Віддати тварину новому власнику?'.
 						html formButton
 							beSecondary;
 							callback: [ self delete ];

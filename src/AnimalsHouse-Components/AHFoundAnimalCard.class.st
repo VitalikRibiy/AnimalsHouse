@@ -119,57 +119,66 @@ AHFoundAnimalCard >> renderContentOn: html [
 
 { #category : #rendering }
 AHFoundAnimalCard >> renderFormBodyOn: html [
+
 	self reset.
-	html modalBody: [
-		html form multipart; 
+	html modalBody: [ 
+		html form
+							style:
+						'color: black; font-size: medium; display: flex; flex-direction: column';
+			multipart;
 			with: [ 
-			html formGroup: [
-				html label: 'Фото'.
-				html fileUpload callback: [ :file | self image: file ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Кличка'.
-				html textInput callback: [ :value | name := value ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Стать'.
-				html select formControl list: (Sex list);
-					callback: [ :value | sex := value ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Порода'.
-				html select list: (Species breedsOf: data animalSpecies);
-					 callback: [ :value | self breed: value ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Вік'.
-				html textInput callback: [ :value | age := value asNumber ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Вага'.
-				html textInput callback: [ :value | weight := value asNumber ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Здоров`я'.
-				html textInput callback: [ :value | healthStatus := value ].
-			].
-			html formGroup: [ 
-				html label style: 'margin-right: 5px'; with: 'Опис'.
-				html textInput callback: [ :value | description := value ].
-			].
-			html modalFooter: [ 
-				html formButton
-					beSecondary;
-					dataDismiss: 'modal';
-					callback: [ self reset. ];
-					with: 'Закрити'.
-				html formButton
-					bePrimary;
-					callback: [ self save. ];
-					with: 'Зареєструвати' 
-			].
-		].
-	].
+				html formGroup: [ 
+						html label: 'Фото'.
+						html fileUpload callback: [ :file | self image: file ] ].
+				html formGroup: [ 
+						html label
+							style: 'margin-right: 5px';
+							with: 'Кличка'.
+						html textInput callback: [ :value | name := value ] ].
+				html formGroup: [ 
+					html label
+						style: 'margin-right: 5px';
+						with: 'Стать'.
+					html select formControl
+						list: Sex list;
+						callback: [ :value | sex := value ] ].
+				html formGroup: [ 
+					html label
+						style: 'margin-right: 5px';
+						with: 'Порода'.
+					html select
+						list: (Species breedsOf: data animalSpecies);
+						callback: [ :value | self breed: value ] ].
+				html formGroup: [ 
+					html label
+						style: 'margin-right: 5px';
+						with: 'Вік'.
+					html textInput callback: [ :value | age := value asNumber ] ].
+				html formGroup: [ 
+					html label
+						style: 'margin-right: 5px';
+						with: 'Вага'.
+					html textInput callback: [ :value | weight := value asNumber ] ].
+				html formGroup: [ 
+					html label
+						style: 'margin-right: 5px';
+						with: 'Здоров`я'.
+					html textInput callback: [ :value | healthStatus := value ] ].
+				html formGroup: [ 
+					html label
+						style: 'margin-right: 5px';
+						with: 'Опис'.
+					html textInput callback: [ :value | description := value ] ].
+				html modalFooter: [ 
+					html formButton
+						beSecondary;
+						dataDismiss: 'modal';
+						callback: [ self reset ];
+						with: 'Закрити'.
+					html formButton
+						bePrimary;
+						callback: [ self save ];
+						with: 'Зареєструвати' ] ] ]
 ]
 
 { #category : #actions }
@@ -188,12 +197,12 @@ AHFoundAnimalCard >> reset [
 { #category : #actions }
 AHFoundAnimalCard >> save [
 
-	| tmp1 tmp2 |
-	tmp2 := report animalSpecies = Species cat
+	| class |
+	class := species = Species cat
 		        ifTrue: [ Cat ]
 		        ifFalse: [ Dog ].
-	image ifNil: [ image := report image ].
-	tmp2
+	image ifNil: [ image := data image ].
+	class
 		withName: name
 		age: age
 		sex: sex
@@ -202,7 +211,7 @@ AHFoundAnimalCard >> save [
 		healthStatus: healthStatus
 		description: description
 		image: image.
-	report remove
+	data remove
 ]
 
 { #category : #accessing }

@@ -13,7 +13,7 @@ AHReviewsComponent >> goToAdminView [
 { #category : #'as yet unclassified' }
 AHReviewsComponent >> goToMainView [
 
-	self application url
+	self answer.
 ]
 
 { #category : #'as yet unclassified' }

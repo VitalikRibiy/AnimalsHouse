@@ -47,28 +47,26 @@ AHAuthenticationModal >> renderAccountFieldOn: html [
 
 { #category : #rendering }
 AHAuthenticationModal >> renderBodyOn: html [
-	html modalBody: [
-		html form multipart;
+
+	html modalBody: [ 
+		html form
+			multipart;
 			with: [ 
-				html formGroup 
-				style: 'color: black; font-size: small;'; 
-				with: [ 
-				html label with: 'Логін'.
-				html textInput
-				formControl;
-				attributeAt: 'autofocus' put: 'true';
-				callback: [ :value | self account: value ];
-				value: account.
-				
-				html label with: 'Пароль'.
-				html passwordInput
-				formControl;
-				callback: [ :value | self password: value ];
-				value: password .
-				].						
-			].
-			html modalFooter: [ self renderButtonsOn: html ]
-	]
+				html formGroup 			style:
+				'color: black; font-size: medium; display: flex; flex-direction: column'; with: [ 
+						html label with: 'Логін'.
+						html textInput
+							formControl;
+							attributeAt: 'autofocus' put: 'true';
+							callback: [ :value | self account: value ];
+							value: account.
+
+						html label with: 'Пароль'.
+						html passwordInput
+							formControl;
+							callback: [ :value | self password: value ];
+							value: password ] ].
+		html modalFooter: [ self renderButtonsOn: html ] ]
 ]
 
 { #category : #rendering }

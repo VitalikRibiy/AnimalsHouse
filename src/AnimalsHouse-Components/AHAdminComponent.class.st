@@ -16,13 +16,13 @@ AHAdminComponent >> createHeaderComponent [
 { #category : #'as yet unclassified' }
 AHAdminComponent >> goToAdminView [
 
-	self shouldNotImplement
+	self answer
 ]
 
 { #category : #'as yet unclassified' }
 AHAdminComponent >> goToMainView [
 
-	self application url
+	self answer
 ]
 
 { #category : #'as yet unclassified' }

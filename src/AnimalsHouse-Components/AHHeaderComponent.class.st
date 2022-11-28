@@ -64,7 +64,7 @@ AHHeaderComponent >> renderButtonsOn: html [
 		style: 'justify-content: flex-start; margin-left: 1%';
 		with: [ 
 			html form: [ 
-					self renderHomeButtonOn: html.
+					"self renderHomeButtonOn: html."
 					self renderTakenAnimalsButtonOn: html.
 					self renderReviewsButtonOn: html ] ].
 	html container
@@ -105,7 +105,7 @@ AHHeaderComponent >> renderDisconnectButtonOn: html [
 	html tbsNavbarButton
 		tbsPullRight;
 		style: self buttonStyle;
-		callback: [ self session reset ];
+		callback: [ self session reset. component goToMainView ];
 		with: [ 
 			html text: 'Вийти'.
 			html tbsGlyphIcon iconLogout ]

@@ -12,18 +12,6 @@ Class {
 	#category : #'AnimalsHouse-Components'
 }
 
-{ #category : #accessing }
-FoundAnimalModal >> contactName [
-
-	^ contactName
-]
-
-{ #category : #accessing }
-FoundAnimalModal >> contactPhone [
-
-	^ contactPhone
-]
-
 { #category : #rendering }
 FoundAnimalModal >> renderContentOn: html [
 
@@ -52,34 +40,43 @@ FoundAnimalModal >> renderFormBodyOn: html [
 
 	html modalBody: [ 
 		html form
+			style:
+				'color: black; font-size: medium; display: flex; flex-direction: column';
 			multipart;
 			with: [ 
-				html formGroup
-					style: 'color: black; font-size: medium; display: flex; flex-direction: column';
-					with: [ 
+				html formGroup with: [ 
 						html label: 'Photo'.
-						html fileUpload callback: [ :value | photo := value ].
+						html fileUpload callback: [ :value | photo := value ] ].
+				html formGroup with: [ 
 						html label: 'Place'.
-						html textInput callback: [ :value | place := value ].
-						html label: 'Description'.
-						html textInput callback: [ :value | description := value ].
-						html label: 'Name'.
-						html textInput callback: [ :value | contactName := value ].
-						html label: 'Contact Phone'.
-						html telephoneInput callback: [ :value | contactPhone := value ] ] ].
-		html modalFooter: [ 
-			| tmp3 tmp4 |
-			tmp3 := html formButton.
-			tmp3
-				beSecondary;
-				dataDismiss: 'modal';
-				callback: [ self reset ];
-				with: 'Close'.
-			tmp4 := html formButton.
-			tmp4
-				bePrimary;
-				callback: [ self save ];
-				with: 'Send application' ] ]
+						html textInput
+							formControl;
+							callback: [ :value | place := value ] ].
+				html formGroup with: [ 
+					html label: 'Description'.
+					html textInput
+						formControl;
+						callback: [ :value | description := value ] ].
+				html formGroup with: [ 
+					html label: 'Name'.
+					html textInput
+						formControl;
+						callback: [ :value | contactName := value ] ].
+				html formGroup with: [ 
+					html label: 'Contact Phone'.
+					html telephoneInput
+						formControl;
+						callback: [ :value | contactPhone := value ] ].
+				html modalFooter: [ 
+					html tbsButton
+						beDefault;
+						dataDismiss: 'modal';
+						callback: [ self reset ];
+						with: 'Close'.
+					html tbsSubmitButton
+						bePrimary;
+						callback: [ self save ];
+						with: 'Send application' ] ] ]
 ]
 
 { #category : #initialization }
@@ -101,7 +98,7 @@ FoundAnimalModal >> save [
 		contactPhone: contactPhone
 		animalPhoto: (self saveImage: photo)
 		animalDescription: description
-		animalPlace: place
+		animalPlace: place.
 ]
 
 { #category : #accessing }
