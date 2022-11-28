@@ -14,6 +14,12 @@ AHHeaderComponent class >> from: aComponent [
 	yourself
 ]
 
+{ #category : #'as yet unclassified' }
+AHHeaderComponent >> buttonStyle [
+
+	^ 'border-radius: 5px;height: 30px; width: fit-content;margin: 3px;'
+]
+
 { #category : #accessing }
 AHHeaderComponent >> component [
 
@@ -28,16 +34,15 @@ AHHeaderComponent >> component: anObject [
 
 { #category : #rendering }
 AHHeaderComponent >> renderAdminButtonOn: html [
-	html form: [
+
+	html form: [ 
 		html tbsNavbarButton
 			tbsPullRight;
+			style: self buttonStyle;
 			callback: [ component goToAdminView ];
-			with: [
+			with: [ 
 				html tbsGlyphIcon iconListAlt.
-				html text: ' Admin View' 
-				]
-			]
-
+				html text: ' Admin View' ] ]
 ]
 
 { #category : #rendering }
@@ -56,14 +61,14 @@ AHHeaderComponent >> renderBrandOn: html [
 AHHeaderComponent >> renderButtonsOn: html [
 
 	html container
-		style: 'justify-content: flex-start';
+		style: 'justify-content: flex-start; margin-left: 1%';
 		with: [ 
 			html form: [ 
 					self renderHomeButtonOn: html.
 					self renderTakenAnimalsButtonOn: html.
 					self renderReviewsButtonOn: html ] ].
 	html container
-		style: 'justify-content: flex-end';
+		style: 'justify-content: flex-end; margin-right: 7%';
 		with: [ 
 			self session isLogged
 				ifTrue: [ 
@@ -96,10 +101,12 @@ AHHeaderComponent >> renderContentOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderDisconnectButtonOn: html [
+
 	html tbsNavbarButton
 		tbsPullRight;
+		style: self buttonStyle;
 		callback: [ self session reset ];
-		with: [
+		with: [ 
 			html text: 'Вийти'.
 			html tbsGlyphIcon iconLogout ]
 ]
@@ -108,15 +115,18 @@ AHHeaderComponent >> renderDisconnectButtonOn: html [
 AHHeaderComponent >> renderHomeButtonOn: html [
 
 	html tbsNavbarButton tbsPullLeft
+		style: self buttonStyle;
 		callback: [ component goToMainView ];
 		with: [ html text: 'Головна' ]
 ]
 
 { #category : #rendering }
 AHHeaderComponent >> renderModalLoginButtonOn: html [
+
 	html render: (AHAuthenticationModal from: component).
 	html tbsNavbarButton
 		tbsPullRight;
+		style: self buttonStyle;
 		attributeAt: 'data-target' put: '#authModalDialog';
 		attributeAt: 'data-toggle' put: 'modal';
 		with: [ 
@@ -126,9 +136,11 @@ AHHeaderComponent >> renderModalLoginButtonOn: html [
 
 { #category : #rendering }
 AHHeaderComponent >> renderModalRegisterButtonOn: html [
+
 	html render: (AHRegisterComponent from: component).
 	html tbsNavbarButton
 		tbsPullRight;
+		style: self buttonStyle;
 		attributeAt: 'data-target' put: '#registerModalDialog';
 		attributeAt: 'data-toggle' put: 'modal';
 		with: [ 
@@ -140,6 +152,7 @@ AHHeaderComponent >> renderModalRegisterButtonOn: html [
 AHHeaderComponent >> renderReviewsButtonOn: html [
 
 	html tbsNavbarButton tbsPullLeft
+		style: self buttonStyle;
 		disabled: component class = AHReviewsComponent;
 		callback: [ component goToReviewsView ];
 		with: [ html text: 'Відгуки' ]
@@ -149,7 +162,8 @@ AHHeaderComponent >> renderReviewsButtonOn: html [
 AHHeaderComponent >> renderTakenAnimalsButtonOn: html [
 
 	html tbsNavbarButton tbsPullLeft
-		disabled: component class = AHTakenAnimalsComponent ;
+		style: self buttonStyle;
+		disabled: component class = AHTakenAnimalsComponent;
 		callback: [ component goToTakenAnimalsView ];
 		with: [ html text: 'Забрані тварини' ]
 ]
