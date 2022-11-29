@@ -64,10 +64,12 @@ AHTakenAnimalsComponent >> renderMainContentOn: html [
 					html progress
 						style: 'height: 40px; width: 100%';
 						with: [ 
+							| percent |
+							percent := Animal takenPercent.
 							html progressBar
 								infoBackground;
-								valueNow: Animal takenPercent;
-								with: Animal takenPercent asString , '%' ] ].
+								valueNow: percent;
+								with: percent asString , '%' ] ].
 			html row
 				style: 'min-height: inherit;';
 				with: takenAnimalsGrid ]
