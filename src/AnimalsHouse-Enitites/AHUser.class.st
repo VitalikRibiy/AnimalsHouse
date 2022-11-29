@@ -26,6 +26,22 @@ AHUser class >> withLogin: login password: password userInfo: userInfoObject [
 	^ instance.
 ]
 
+{ #category : #'as yet unclassified' }
+AHUser >> getReviews [
+	
+	^ AHReview selectAll select: [ :review | 
+			  review receiverUser = self ]
+]
+
+{ #category : #testing }
+AHUser >> hasReviews [
+
+	^ AHReview selectAll
+		   detect: [ :e | e receiverUser login = self login ]
+		   ifFound: [ ^ true ]
+		   ifNone: [ ^ false ]
+]
+
 { #category : #testing }
 AHUser >> isAdministrator [
 	^ false.

@@ -82,35 +82,28 @@ AHAnimalCard >> renderContentOn: html [
 ]
 
 { #category : #rendering }
-AHAnimalCard >> renderModalBodyOn: arg1 [
+AHAnimalCard >> renderModalBodyOn: html [
 
-	| tmp1 tmp2 tmp3 |
-	tmp2 := arg1 modalBody.
-	tmp2
+	html modalBody
 		style: 'color: #000000; font-size: 16px';
 		with: [ 
-			| tmp4 |
-			tmp4 := arg1 tbsImage.
-			tmp4
+			html tbsImage
 				style:
 					'border: 3px solid black; max-width: 50%; margin-left: 25%; margin-right: 25%; margin-bottom: 3%;';
 				url: data image.
-			self renderAnimalDataOn: arg1 ].
-	tmp3 := arg1 modalFooter.
-	tmp3
+			self renderAnimalDataOn: html ].
+	html modalFooter
 		style: 'justify-content: space-evenly;';
 		with: [ 
-			| tmp5 tmp6 |
-			tmp5 := arg1 formButton.
-			tmp5
-				beSecondary;
-				dataDismiss: 'modal';
-				with: 'Закрити'.
-			tmp6 := arg1 formButton.
-			tmp6
-				bePrimary;
-				callback: [ self save ];
-				with: 'Забрати' ]
+			html form: [ 
+					html formButton
+						beSecondary;
+						dataDismiss: 'modal';
+						with: 'Закрити'.
+					html formButton
+						bePrimary;
+						callback: [ self save ];
+						with: 'Забрати' ] ]
 ]
 
 { #category : #rendering }

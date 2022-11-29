@@ -4,6 +4,12 @@ Class {
 	#category : #'AnimalsHouse-Enums'
 }
 
+{ #category : #accessing }
+ReviewType class >> list [
+
+	^ { self positive. self negative }
+]
+
 { #category : #testing }
 ReviewType class >> negative [
 

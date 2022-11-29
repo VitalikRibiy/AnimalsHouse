@@ -20,6 +20,12 @@ AHSession >> currentUser: anObject [
 ]
 
 { #category : #testing }
+AHSession >> isAdministrator [ 
+
+	^ self currentUser ifNil: [ ^ false ] ifNotNil: [ ^ self currentUser isAdministrator ]
+]
+
+{ #category : #testing }
 AHSession >> isLogged [
 	^ self currentUser notNil
 ]

@@ -2,10 +2,11 @@ Class {
 	#name : #AHReview,
 	#superclass : #Object,
 	#instVars : [
-		'receiver',
+		'receiverUser',
 		'sender',
 		'text',
-		'type'
+		'type',
+		'date'
 	],
 	#category : #'AnimalsHouse-Enitites'
 }
@@ -22,29 +23,36 @@ AHReview class >> withText: textObject receiver: receiverObject sender: senderOb
 	| instance |
 	instance := self new
 		            text: textObject;
-		            receiver: receiverObject;
+		            receiverUser: receiverObject;
 		            sender: senderObject;
-						type: typeObject;
+		            type: typeObject;
+		            date: DateAndTime now;
 		            save.
 	^ instance
 ]
 
 { #category : #accessing }
-AHReview >> receiver [
+AHReview >> date [
 
-	^ receiver
+	^ date.
 ]
 
 { #category : #accessing }
-AHReview >> receiver: anObject [
+AHReview >> date: dateObject [
 
-	receiver := anObject
+	date := dateObject. 
 ]
 
 { #category : #accessing }
-AHReview >> receiverOfReview [
+AHReview >> receiverUser [
 
-	^ receiver
+	^ receiverUser
+]
+
+{ #category : #accessing }
+AHReview >> receiverUser: anObject [
+
+	receiverUser := anObject
 ]
 
 { #category : #accessing }

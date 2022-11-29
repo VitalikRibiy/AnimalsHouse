@@ -42,14 +42,18 @@ AHReviewsComponent >> renderMainContentOn: html [
 			html row
 				style: 'justify-content: start; height: 6vh; margin: 5px';
 				with: [ 
-					html formButton
+					html formButton bePrimary
 						style: 'height: 4vh; font-size: 16px; border-radius: 10px';
-						bePrimary;
+						dataToggle: 'modal';
+						dataTarget: '#ReviewModal';
 						with: 'Залишити відгук' ].
 			html div
 				style:
 					'height: 80vh; overflow-x: hidden; overflow-y: auto; border: 3px solid #355070; border-radius: 12px; padding: 5px';
-				with: [ self renderReviewsOn: html ] ]
+				with: [ self renderReviewsOn: html ].
+			html row: ((AHReviewModal from: self)
+					 sender: self session currentUser;
+					 receiverUser: AHAdministrator getInstance) ]
 ]
 
 { #category : #rendering }
@@ -65,7 +69,8 @@ AHReviewsComponent >> renderReview: review on: html [
 						html tbsPanelTitle
 							level: 3;
 							with: review sender userInfo firstName , ' '
-								, review sender userInfo lastName ].
+								, review sender userInfo lastName , '-'
+								, review date asDate asString ].
 				html horizontalRule.
 				html tbsPanelBody: review text ] ]
 ]
@@ -73,7 +78,8 @@ AHReviewsComponent >> renderReview: review on: html [
 { #category : #rendering }
 AHReviewsComponent >> renderReviewsOn: html [
 
-	^ (AHReview selectAll select: [ :review | 
-		   review receiver isAdministrator ]) collect: [ 
-		  :filteredReview | self renderReview: filteredReview on: html ]
+	^ ((AHReview selectAll select: [ :review | 
+		    review receiverUser isAdministrator ]) sort: [ :a :b | 
+		   a date > b date ]) collect: [ :filteredReview | 
+		  self renderReview: filteredReview on: html ]
 ]

@@ -34,7 +34,10 @@ AHTakenAnimalCard >> renderContentOn: html [
 						dataTarget: '#TakenAnimalModal' , data id;
 						with: 'Переглянути' ].
 			self renderModalOn: html.
-			self renderReportModalOn: html ]
+			self renderReportModalOn: html.
+			html div with: ((AHReviewModal from: component)
+					 sender: self session currentUser;
+					 receiverUser: data owner) ]
 ]
 
 { #category : #rendering }
@@ -50,8 +53,8 @@ AHTakenAnimalCard >> renderModalBodyOn: html [
 				url: (self readImageFrom: data image).
 			self renderAnimalDataOn: html.
 			html div
-			style: 'overflow-x: hidden; overflow-y: auto; max-height: 600px';
-			 with: [ self renderReportsDataOn: html ] ].
+				style: 'overflow-x: hidden; overflow-y: auto; max-height: 600px';
+				with: [ self renderReportsDataOn: html ] ].
 	html modalFooter
 		style: 'justify-content: space-evenly;';
 		with: [ 
@@ -60,6 +63,14 @@ AHTakenAnimalCard >> renderModalBodyOn: html [
 						beSecondary;
 						dataDismiss: 'modal';
 						with: 'Закрити'.
+
+					self session isAdministrator ifTrue: [ 
+						html formButton
+							bePrimary;
+							dataDismiss: 'modal';
+							dataToggle: 'modal';
+							dataTarget: '#ReviewModal';
+							with: 'Залишити відгук' ].
 
 					self session currentUser voyageId = data owner voyageId ifTrue: [ 
 						html formButton

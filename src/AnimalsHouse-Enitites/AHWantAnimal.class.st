@@ -38,6 +38,12 @@ AHWantAnimal >> animal: anObject [
 ]
 
 { #category : #accessing }
+AHWantAnimal >> id [
+
+		^ self voyageId value printStringHex
+]
+
+{ #category : #accessing }
 AHWantAnimal >> user [
 
 	^ user

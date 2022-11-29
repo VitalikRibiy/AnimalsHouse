@@ -39,12 +39,14 @@ AHWantAnimalCard >> renderContentOn: html [
 							, data animal breed name printString.
 					html formButton bePrimary
 						dataToggle: 'modal';
-						dataTarget: '#GiveAnimalModal';
+						dataTarget: '#GiveAnimalModal' , data id;
 						with: 'Віддати' ] ].
 	html modal
-		id: 'GiveAnimalModal';
+		id: 'GiveAnimalModal', data id;
 		with: [ 
-			html modalDialog with: [ 
+			html modalDialog
+				style: 'max-width: 70vh';
+				with: [ 
 					html modalContent: [ 
 							html modalHeader: [ 
 									html modalTitle
@@ -79,10 +81,38 @@ AHWantAnimalCard >> renderModalBodyOn: html [
 ]
 
 { #category : #rendering }
+AHWantAnimalCard >> renderReview: review on: html [
+
+	html row with: [ 
+		html tbsPanel
+			style: 'width: 100%';
+			class: 'panel-danger' if: review type = ReviewType negative;
+			class: 'panel-success' if: review type = ReviewType positive;
+			with: [ 
+				html tbsPanelHeading: [ 
+						html tbsPanelTitle
+							level: 3;
+							with: review sender userInfo firstName , ' '
+								, review sender userInfo lastName , '-'
+								, review date asDate asString ].
+				html horizontalRule.
+				html tbsPanelBody: review text ] ]
+]
+
+{ #category : #rendering }
+AHWantAnimalCard >> renderReviewsOn: html [
+
+	data user hasReviews ifTrue: [ 
+		(data user getReviews sort: [ :a :b | a date > b date ]) do: [ 
+			:filteredReview | self renderReview: filteredReview on: html ] ]
+]
+
+{ #category : #rendering }
 AHWantAnimalCard >> renderUserInfoOn: html [
 
 	html container
-		style: 'margin-left: 10%; width:50%';
+		style:
+			'margin-left: 5%; width:80%;color: black; font-size: medium; display: flex; flex-direction: column';
 		with: [ 
 			html row
 				style: 'justify-content: start;';
@@ -111,5 +141,10 @@ AHWantAnimalCard >> renderUserInfoOn: html [
 					html label
 						style: 'font-size: bold; margin-right: 3%;';
 						with: 'Номер телефону:'.
-					html paragraph: data user userInfo phoneNumber ] ]
+					html paragraph: data user userInfo phoneNumber ].
+			data user hasReviews ifTrue: [
+			html div
+				style:
+					'justify-content: start; overflow-x: hidden; overflow-y: auto; border: 3px solid #355070; border-radius: 12px; padding: 5px; max-height: 50vh';
+				with: [ self renderReviewsOn: html ] ] ]
 ]
