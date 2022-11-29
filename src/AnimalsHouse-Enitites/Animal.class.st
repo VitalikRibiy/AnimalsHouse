@@ -316,6 +316,15 @@ Animal class >> reset [
 	self initializeVoyageDB
 ]
 
+{ #category : #accessing }
+Animal class >> takenPercent [
+
+	^ ((100 / self total) asFloat
+	  *
+		  (self selectMany: [ :animal | animal status = AnimalStatus taken ])
+			  size) rounded
+]
+
 { #category : #'instance creation' }
 Animal class >> testWithName: nameValue age: ageValue sex: sexValue breed: breedValue weight: weightValue healthStatus: healthStatusValue description: descriptionValue image: imageValue [
 	| instance |
@@ -329,6 +338,12 @@ Animal class >> testWithName: nameValue age: ageValue sex: sexValue breed: breed
 	description: descriptionValue; 
 	image: imageValue.
 	^ instance.
+]
+
+{ #category : #accessing }
+Animal class >> total [
+
+	^ Animal selectAll size.
 ]
 
 { #category : #'instance creation' }

@@ -56,6 +56,19 @@ AHTakenAnimalsComponent >> renderMainContentOn: html [
 		with: [ 
 			self renderLoginErrorMessageIfAnyOn: html.
 			html row
+				style: 'justify-content: center;';
+				with: [ 
+					html label
+						style: 'font-size: 24px';
+						with: 'Тварин прилаштовано'.
+					html progress
+						style: 'height: 40px; width: 100%';
+						with: [ 
+							html progressBar
+								infoBackground;
+								valueNow: Animal takenPercent;
+								with: Animal takenPercent asString , '%' ] ].
+			html row
 				style: 'min-height: inherit;';
 				with: takenAnimalsGrid ]
 ]
