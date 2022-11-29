@@ -66,8 +66,8 @@ AHAdminComponent >> renderMainContentOn: html [
 						extraLargeSize: 10;
 						with: [ 
 							html column
-								extraLargeSize: 8;
-								extraLargeOffset: 2;
+								extraLargeSize: 10;
+								extraLargeOffset: 1;
 								mediumSize: 10;
 								mediumOffset: 1;
 								with: foundAnimalGrid ] ].
@@ -80,9 +80,9 @@ AHAdminComponent >> renderMainContentOn: html [
 					extraLargeSize: 10;
 					with: [ 
 						html column
-							extraLargeSize: 8;
-							extraLargeOffset: 2;
+							extraLargeSize: 10;
+							extraLargeOffset: 1;
 							mediumSize: 10;
 							mediumOffset: 1;
-							with: wantAnimalGrid ] ] ].
+							with: wantAnimalGrid ] ] ]
 ]

@@ -90,7 +90,7 @@ AHAnimalCard >> renderModalBodyOn: html [
 			html tbsImage
 				style:
 					'border: 3px solid black; max-width: 50%; margin-left: 25%; margin-right: 25%; margin-bottom: 3%;';
-				url: data image.
+				url: (self readImageFrom: data image).
 			self renderAnimalDataOn: html ].
 	html modalFooter
 		style: 'justify-content: space-evenly;';
