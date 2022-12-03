@@ -34,73 +34,61 @@ Class {
 { #category : #demo }
 Animal class >> createDemoData [
 
-	| image admin user |
-	image := 'C:\Users\Vital\Documents\Pharo\images\Animal House\БританськийСамець.jpg'.
+	| baseImagePath admin user1 user2 animal wantedAnimal1 wantedAnimal2 wantedAnimal3 |
+	baseImagePath := 'C:\Users\vribi\Documents\Pharo\images\Animals House\'.
 	admin := AHAdministrator
 		         withLogin: 'admin'
 		         password: 'test'
 		         userInfo: (AHUserInfo
 				          withFirstName: 'Admin'
 				          lastName: 'Admin'
-				          phoneNumber: '380734940326'
+				          phoneNumber: '0734940326'
 				          email: 'VitalikRibiy@gmail.com').
-	user := AHUser
-		        withLogin: 'user'
-		        password: 'test'
-		        userInfo: (AHUserInfo
-				         withFirstName: 'Vitalii'
-				         lastName: 'Ribii'
-				         phoneNumber: '380734940326'
-				         email: 'VitalikRibiy@gmail.com').
+	user1 := AHUser
+		         withLogin: 'user'
+		         password: 'test'
+		         userInfo: (AHUserInfo
+				          withFirstName: 'Vitalii'
+				          lastName: 'Ribii'
+				          phoneNumber: '0734940326'
+				          email: 'VitalikRibiy@gmail.com').
+	user2 := AHUser
+		         withLogin: 'user2'
+		         password: 'test'
+		         userInfo: (AHUserInfo
+				          withFirstName: 'Ostap'
+				          lastName: 'Malets'
+				          phoneNumber: '0504940326'
+				          email: 'test@gmail.com').
 	AHReview
 		withText: 'sample positive text'
 		receiver: admin
-		sender: user
+		sender: user1
 		type: ReviewType positive.
 	AHReview
 		withText: 'sample negative text'
 		receiver: admin
-		sender: user
+		sender: user2
 		type: ReviewType negative.
 	AHReview
 		withText: 'sample positive text'
 		receiver: admin
-		sender: user
+		sender: user1
 		type: ReviewType positive.
 	AHReview
 		withText: 'sample negative text'
 		receiver: admin
-		sender: user
+		sender: user2
 		type: ReviewType negative.
 	AHReview
 		withText: 'sample positive text'
-		receiver: admin
-		sender: user
+		receiver: user1
+		sender: admin
 		type: ReviewType positive.
 	AHReview
 		withText: 'sample negative text'
-		receiver: admin
-		sender: user
-		type: ReviewType negative.
-	AHReview
-		withText: 'sample positive text'
-		receiver: admin
-		sender: user
-		type: ReviewType positive.
-	AHReview
-		withText: 'sample negative text'
-		receiver: admin
-		sender: user
-		type: ReviewType negative.
-	AHReview
-		withText: 'sample positive text'
-		receiver: admin
-		sender: user
-		type: ReviewType positive.
-	AHReview
-		withText: 'sample negative text'
-		receiver: admin
-		sender: user
+		receiver: user2
+		sender: admin
 		type: ReviewType negative.
 	CatBreed initialize.
 	DogBreed initialize.
@@ -154,7 +142,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely British'
-		image: image.
+		image: baseImagePath , 'БританськийСамець.jpg'.
 	Cat
 		withName: 'Heddy'
 		age: 1
@@ -163,7 +151,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely British'
-		image: image.
+		image: baseImagePath , 'БританськаСамка.jpg'.
 	Cat
 		withName: 'Erl'
 		age: 1
@@ -172,7 +160,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Irish'
-		image: image.
+		image: baseImagePath , 'ІрландецьСамець.jpg'.
 	Cat
 		withName: 'Essy'
 		age: 1
@@ -181,7 +169,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Irish'
-		image: image.
+		image: baseImagePath , 'ІрландецьСамка.jpg'.
 	Cat
 		withName: 'Puffy'
 		age: 1
@@ -190,25 +178,25 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Munchkin'
-		image: image.
-	Cat
-		withName: 'Plummy'
-		age: 1
-		sex: Sex male
-		breed: (CatBreed getByName: 'Munchkin')
-		weight: 5
-		healthStatus: 'Healthy'
-		description: 'Lovely Munchkin'
-		image: image.
-	Dog
-		withName: 'Jozy'
-		age: 1
-		sex: Sex female
-		breed: (DogBreed getByName: 'Husky')
-		weight: 5
-		healthStatus: 'Healthy'
-		description: 'Lovely Husky'
-		image: image.
+		image: baseImagePath , 'МанчкінСамка.jpg'.
+	wantedAnimal1 := Cat
+		                 withName: 'Plummy'
+		                 age: 1
+		                 sex: Sex male
+		                 breed: (CatBreed getByName: 'Munchkin')
+		                 weight: 5
+		                 healthStatus: 'Healthy'
+		                 description: 'Lovely Munchkin'
+		                 image: baseImagePath , 'МанчкінСамець.jpg'.
+	wantedAnimal2 := Dog
+		                 withName: 'Jozy'
+		                 age: 1
+		                 sex: Sex female
+		                 breed: (DogBreed getByName: 'Husky')
+		                 weight: 5
+		                 healthStatus: 'Healthy'
+		                 description: 'Lovely Husky'
+		                 image: baseImagePath , 'ХаскіСамка1.jpeg'.
 	Dog
 		withName: 'Sansa'
 		age: 1
@@ -217,16 +205,16 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Husky'
-		image: image.
-	Dog
-		withName: 'Jenny'
-		age: 1
-		sex: Sex female
-		breed: (DogBreed getByName: 'Husky')
-		weight: 5
-		healthStatus: 'Healthy'
-		description: 'Lovely Husky'
-		image: image.
+		image: baseImagePath , 'ХаскіСамка2.jpg'.
+	wantedAnimal3 := Dog
+		                 withName: 'Jenny'
+		                 age: 1
+		                 sex: Sex female
+		                 breed: (DogBreed getByName: 'Husky')
+		                 weight: 5
+		                 healthStatus: 'Healthy'
+		                 description: 'Lovely Husky'
+		                 image: baseImagePath , 'ХаскіСамка3.jfif'.
 	Dog
 		withName: 'Jo'
 		age: 1
@@ -235,7 +223,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Husky'
-		image: image.
+		image: baseImagePath , 'ХаскіСамець.jpg'.
 	Dog
 		withName: 'Fred'
 		age: 1
@@ -244,7 +232,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely ToyTerier'
-		image: image.
+		image: baseImagePath , 'ТойТер`єрСамець.jpg'.
 	Dog
 		withName: 'Finny'
 		age: 1
@@ -253,7 +241,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely ToyTerier'
-		image: image.
+		image: baseImagePath , 'ТойТер`єрСамка.jpg'.
 	Dog
 		withName: 'Archi'
 		age: 1
@@ -262,7 +250,7 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Labrador'
-		image: image.
+		image: baseImagePath , 'ЛабрадорСамець.jpg'.
 	Dog
 		withName: 'Ally'
 		age: 1
@@ -271,7 +259,51 @@ Animal class >> createDemoData [
 		weight: 5
 		healthStatus: 'Healthy'
 		description: 'Lovely Labrador'
-		image: image
+		image: baseImagePath , 'ЛабрадорСамка.jpg'.
+	animal := Dog
+		          withName: 'Braddy'
+		          age: 2
+		          sex: Sex male
+		          breed: (DogBreed getByName: 'Labrador')
+		          weight: 15
+		          healthStatus: 'Healthy'
+		          description: 'Чудовий лабрадор'
+		          image: baseImagePath , 'ЛабрадорСамецьЗабрали.jpg'.
+	animal
+		status: AnimalStatus taken;
+		owner: user1;
+		addReport: (AHReport
+				 withAnimal: animal
+				 user: user1
+				 image: baseImagePath , 'ЛабрадорСамецьЗабралиЗвіт1.jpg'
+				 comment: 'Ми з ним щасливі, він виріс'
+				 date: DateAndTime now);
+		addReport: (AHReport
+				 withAnimal: animal
+				 user: user1
+				 image: baseImagePath , 'ЛабрадорСамецьЗабралиЗвіт2.jpg'
+				 comment: 'Він класний, йому з нами добре'
+				 date: DateAndTime now);
+		save.
+	AHWantAnimal withAnimal: wantedAnimal1 user: user1.
+	AHWantAnimal withAnimal: wantedAnimal2 user: user2.
+	AHWantAnimal withAnimal: wantedAnimal3 user: user2.
+	AHWantAnimal withAnimal: wantedAnimal2 user: user1.
+
+	AHFoundAnimal
+		withSpecies: Species dog
+		contactName: 'Петро'
+		contactPhone: '0953231434'
+		animalPhoto: baseImagePath , 'ТойТерєрЗнайдений.jpg'
+		animalDescription: 'Маленька собачка загубилася'
+		animalPlace: 'Ходить біля базару'.
+	AHFoundAnimal
+		withSpecies: Species cat
+		contactName: 'Тарас'
+		contactPhone: '0953231425'
+		animalPhoto: baseImagePath , 'МанчкінЗнайдено.jfif'
+		animalDescription: 'Котик виглядає загубленим'
+		animalPlace: 'Бігає парком'
 ]
 
 { #category : #demo }
@@ -319,10 +351,10 @@ Animal class >> reset [
 { #category : #accessing }
 Animal class >> takenPercent [
 
-	^ ((100 / self total) asFloat
-	  *
-		  (self selectMany: [ :animal | animal status = AnimalStatus taken ])
-			  size) rounded
+	^ ((100 / self count) asFloat
+	   *
+		   (self selectMany: [ :animal | animal status = AnimalStatus taken ])
+			   size) rounded
 ]
 
 { #category : #'instance creation' }
@@ -338,12 +370,6 @@ Animal class >> testWithName: nameValue age: ageValue sex: sexValue breed: breed
 	description: descriptionValue; 
 	image: imageValue.
 	^ instance.
-]
-
-{ #category : #accessing }
-Animal class >> total [
-
-	^ Animal selectAll size.
 ]
 
 { #category : #'instance creation' }

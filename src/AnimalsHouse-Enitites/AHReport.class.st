@@ -21,9 +21,8 @@ AHReport class >> withAnimal: animalObject user: userObject image: imageObject c
 		user: userObject;
 		image: imageObject;
 		comment: commentObject;
-		date: dateObject;
-		save.
-	^ instance.
+		date: dateObject.
+	^ instance
 ]
 
 { #category : #accessing }

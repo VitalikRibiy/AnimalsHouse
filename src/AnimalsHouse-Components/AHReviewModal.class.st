@@ -4,16 +4,16 @@ Class {
 	#instVars : [
 		'type',
 		'text',
-		'receiver',
+		'receiverUser',
 		'sender'
 	],
 	#category : #'AnimalsHouse-Components'
 }
 
 { #category : #accessing }
-AHReviewModal >> receiverUser: receiverUser [
+AHReviewModal >> receiverUser: receiverUserObject [
 
-	receiver := receiverUser
+	receiverUser := receiverUserObject
 ]
 
 { #category : #rendering }
@@ -83,7 +83,7 @@ AHReviewModal >> save [
 
 	AHReview
 		withText: text
-		receiver: receiver
+		receiver: receiverUser
 		sender: sender
 		type: type
 ]

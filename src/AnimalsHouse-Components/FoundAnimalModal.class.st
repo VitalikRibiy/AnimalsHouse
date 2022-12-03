@@ -44,14 +44,21 @@ FoundAnimalModal >> renderFormBodyOn: html [
 				'color: black; font-size: medium; display: flex; flex-direction: column';
 			multipart;
 			with: [ 
+				html formGroup: [ 
+						html label
+							style: 'margin-right: 5px';
+							with: 'Вид'.
+						html select
+							list: Species list;
+							callback: [ :value | animalSpecies := value ] ].
 				html formGroup with: [ 
-						html label: 'Photo'.
-						html fileUpload callback: [ :value | photo := value ] ].
+					html label: 'Photo'.
+					html fileUpload callback: [ :value | photo := value ] ].
 				html formGroup with: [ 
-						html label: 'Place'.
-						html textInput
-							formControl;
-							callback: [ :value | place := value ] ].
+					html label: 'Place'.
+					html textInput
+						formControl;
+						callback: [ :value | place := value ] ].
 				html formGroup with: [ 
 					html label: 'Description'.
 					html textInput

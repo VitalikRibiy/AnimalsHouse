@@ -102,9 +102,11 @@ AHWantAnimalCard >> renderReview: review on: html [
 { #category : #rendering }
 AHWantAnimalCard >> renderReviewsOn: html [
 
-	data user hasReviews ifTrue: [ 
-		(data user getReviews sort: [ :a :b | a date > b date ]) do: [ 
-			:filteredReview | self renderReview: filteredReview on: html ] ]
+	| reviews |
+	reviews := data user getReviews.
+	^ (reviews collect: [ :filteredReview | 
+		   self renderReview: filteredReview on: html ]) sort: [ :a :b | 
+		  a date > b date ]
 ]
 
 { #category : #rendering }

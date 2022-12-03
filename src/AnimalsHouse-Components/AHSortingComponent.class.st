@@ -86,11 +86,15 @@ AHSortingComponent >> renderContentOn: html [
 							html dropdownMenu
 								attributeAt: 'aria-labelledby' put: 'navbarDropdown';
 								with: [ 
-									((Species breedsOf: selectedSpeciesName) collect: [ :breed | 
-											 self renderBreedLinkOn: html with: breed ]) addFirst:
-											'Порода' ] ] ].
+									((Species breedsOf: selectedSpeciesName)
+										collect: [ :breed | 
+											self renderBreedLinkOn: html with: breed ]) addFirst: (html dropdownItem
+		class: 'active' if: 'Порода' = self selectedBreedName;
+		callback: [ self selectBreed: 'Порода' ];
+		with: 'Порода') ] ] ].
 			html div
-				style: 'justify-content: end; display: inline-flex;padding: 10px; width: 50%';
+				style:
+					'justify-content: end; display: inline-flex;padding: 10px; width: 50%';
 				with: [ 
 					html form: [ 
 							html formButton

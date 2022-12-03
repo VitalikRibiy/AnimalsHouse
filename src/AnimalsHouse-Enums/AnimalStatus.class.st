@@ -10,11 +10,6 @@ AnimalStatus class >> inShelter [
 ]
 
 { #category : #'as yet unclassified' }
-AnimalStatus class >> returned [
-	^ 'Повернута'
-]
-
-{ #category : #'as yet unclassified' }
 AnimalStatus class >> taken [
 	^ 'Забрана'
 ]

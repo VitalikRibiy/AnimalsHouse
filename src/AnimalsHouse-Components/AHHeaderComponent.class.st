@@ -137,7 +137,7 @@ AHHeaderComponent >> renderModalLoginButtonOn: html [
 { #category : #rendering }
 AHHeaderComponent >> renderModalRegisterButtonOn: html [
 
-	html render: (AHRegisterComponent from: component).
+	html render: (AHRegisterModal from: component).
 	html tbsNavbarButton
 		tbsPullRight;
 		style: self buttonStyle;

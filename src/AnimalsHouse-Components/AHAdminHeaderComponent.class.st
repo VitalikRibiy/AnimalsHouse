@@ -17,12 +17,11 @@ AHAdminHeaderComponent >> renderButtonsOn: html [
 { #category : #rendering }
 AHAdminHeaderComponent >> renderPublicViewButtonOn: html [
 
-
-		html tbsNavbarButton
-			tbsPullRight;
-			style: self buttonStyle;
-			callback: [ component goToMainView ];
-			with: [ 
-				html tbsGlyphIcon iconEyeOpen.
-				html text: 'Публічний вигляд' ]
+	html tbsNavbarButton
+		tbsPullRight;
+		style: self buttonStyle;
+		callback: [ component answer ];
+		with: [ 
+			html tbsGlyphIcon iconEyeOpen.
+			html text: 'Публічний вигляд' ]
 ]

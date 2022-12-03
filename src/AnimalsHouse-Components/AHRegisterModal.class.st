@@ -1,5 +1,5 @@
 Class {
-	#name : #AHRegisterComponent,
+	#name : #AHRegisterModal,
 	#superclass : #AHBasicModal,
 	#instVars : [
 		'login',
@@ -13,84 +13,79 @@ Class {
 }
 
 { #category : #accessing }
-AHRegisterComponent >> email [
+AHRegisterModal >> email [
 
 	^ email
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> email: anObject [
+AHRegisterModal >> email: anObject [
 
 	email := anObject
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> firstName [
+AHRegisterModal >> firstName [
 
 	^ firstName
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> firstName: anObject [
+AHRegisterModal >> firstName: anObject [
 
 	firstName := anObject
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> lastName [
+AHRegisterModal >> lastName [
 
 	^ lastName
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> lastName: anObject [
+AHRegisterModal >> lastName: anObject [
 
 	lastName := anObject
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> login [
+AHRegisterModal >> login [
 
 	^ login
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> login: anObject [
+AHRegisterModal >> login: anObject [
 
 	login := anObject
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> password [
+AHRegisterModal >> password [
 
 	^ password
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> password: anObject [
+AHRegisterModal >> password: anObject [
 
 	password := anObject
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> phoneNumber [
+AHRegisterModal >> phoneNumber [
 
 	^ phoneNumber
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> phoneNumber: anObject [
+AHRegisterModal >> phoneNumber: anObject [
 
 	phoneNumber := anObject
 ]
 
-{ #category : #accessing }
-AHRegisterComponent >> registerErrorMessage [
-	^ 'Заповніть усі поля'
-]
-
 { #category : #rendering }
-AHRegisterComponent >> renderBodyOn: html [
+AHRegisterModal >> renderBodyOn: html [
 
 	html modalBody: [ 
 		html form
@@ -105,7 +100,7 @@ AHRegisterComponent >> renderBodyOn: html [
 ]
 
 { #category : #rendering }
-AHRegisterComponent >> renderButtonsOn: html [
+AHRegisterModal >> renderButtonsOn: html [
 	html tbsButton
 		attributeAt: 'type' put: 'button';
 		attributeAt: 'data-dismiss' put: 'modal';
@@ -118,7 +113,7 @@ AHRegisterComponent >> renderButtonsOn: html [
 ]
 
 { #category : #rendering }
-AHRegisterComponent >> renderContentOn: html [
+AHRegisterModal >> renderContentOn: html [
 	html modal
 		id: 'registerModalDialog';
 		with: [ 
@@ -129,7 +124,7 @@ AHRegisterComponent >> renderContentOn: html [
 ]
 
 { #category : #rendering }
-AHRegisterComponent >> renderHeaderOn: html [
+AHRegisterModal >> renderHeaderOn: html [
 	html modalHeader: [ 
 		html modalTitle
 			level5;
@@ -139,7 +134,7 @@ AHRegisterComponent >> renderHeaderOn: html [
 ]
 
 { #category : #rendering }
-AHRegisterComponent >> renderLoginFieldOn: html [
+AHRegisterModal >> renderLoginFieldOn: html [
 	html
 	formGroup: [ 
 		html label with: 'Логін'; style: 'color: #000000'.
@@ -152,7 +147,7 @@ AHRegisterComponent >> renderLoginFieldOn: html [
 ]
 
 { #category : #rendering }
-AHRegisterComponent >> renderPasswordFieldOn: html [
+AHRegisterModal >> renderPasswordFieldOn: html [
 	html formGroup: [
 	html label with: 'Пароль'.
 	html passwordInput
@@ -164,7 +159,7 @@ AHRegisterComponent >> renderPasswordFieldOn: html [
 ]
 
 { #category : #rendering }
-AHRegisterComponent >> renderUserInfoOn: html [
+AHRegisterModal >> renderUserInfoOn: html [
 	html
 	formGroup: [ 
 		html label with: 'Ім`я'.
@@ -199,15 +194,12 @@ AHRegisterComponent >> renderUserInfoOn: html [
 ]
 
 { #category : #accessing }
-AHRegisterComponent >> validate [
-	login notEmpty & 
-	password notEmpty & 
-	firstName notEmpty & 
-	lastName notEmpty & 
-	phoneNumber notEmpty & 
-	email notEmpty
-	ifTrue: [ (AHUser withLogin: login password: password userInfo:  (AHUserInfo withFirstName: firstName lastName: lastName phoneNumber: phoneNumber email: email)).
-		component tryConnectionWithLogin: login andPassword: password.
-		].
-	
+AHRegisterModal >> validate [
+
+	AHUser withLogin: login password: password userInfo: (AHUserInfo
+			 withFirstName: firstName
+			 lastName: lastName
+			 phoneNumber: phoneNumber
+			 email: email).
+	component tryConnectionWithLogin: login andPassword: password
 ]

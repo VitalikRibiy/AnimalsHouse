@@ -38,9 +38,9 @@ AHScreenComponent >> goToReviewsView [
 ]
 
 { #category : #'as yet unclassified' }
-AHScreenComponent >> goToTakenAnimalsView [ 
+AHScreenComponent >> goToTakenAnimalsView [
 
-	self subclassResponsibility.
+	self call: AHTakenAnimalsComponent new
 ]
 
 { #category : #'as yet unclassified' }

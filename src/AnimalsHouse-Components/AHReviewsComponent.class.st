@@ -22,12 +22,6 @@ AHReviewsComponent >> goToReviewsView [
 	self shouldNotImplement
 ]
 
-{ #category : #'as yet unclassified' }
-AHReviewsComponent >> goToTakenAnimalsView [
-
-	self call: AHTakenAnimalsComponent new.
-]
-
 { #category : #rendering }
 AHReviewsComponent >> renderMainContentOn: html [
 
@@ -70,7 +64,7 @@ AHReviewsComponent >> renderReview: review on: html [
 							level: 3;
 							with: review sender userInfo firstName , ' '
 								, review sender userInfo lastName , '-'
-								, review date asDate asString ].
+								, review date asDate greaseString ].
 				html horizontalRule.
 				html tbsPanelBody: review text ] ]
 ]

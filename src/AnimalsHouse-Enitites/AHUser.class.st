@@ -28,18 +28,16 @@ AHUser class >> withLogin: login password: password userInfo: userInfoObject [
 
 { #category : #'as yet unclassified' }
 AHUser >> getReviews [
-	
+
 	^ AHReview selectAll select: [ :review | 
-			  review receiverUser = self ]
+		  review receiverUser login = self login ]
 ]
 
 { #category : #testing }
 AHUser >> hasReviews [
 
-	^ AHReview selectAll
-		   detect: [ :e | e receiverUser login = self login ]
-		   ifFound: [ ^ true ]
-		   ifNone: [ ^ false ]
+	^ (AHReview selectAll count:
+		  [ :e | e receiverUser login = self login ]) > 0
 ]
 
 { #category : #testing }

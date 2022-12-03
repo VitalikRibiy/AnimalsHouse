@@ -3,18 +3,10 @@ Class {
 	#superclass : #AHAnimalCard,
 	#instVars : [
 		'image',
-		'comment',
-		'showUpload'
+		'comment'
 	],
 	#category : #'AnimalsHouse-Components'
 }
-
-{ #category : #initialization }
-AHTakenAnimalCard >> initialize [
-
-	super initialize.
-	showUpload := true
-]
 
 { #category : #rendering }
 AHTakenAnimalCard >> renderContentOn: html [
@@ -142,13 +134,13 @@ AHTakenAnimalCard >> renderReportModalOn: html [
 { #category : #rendering }
 AHTakenAnimalCard >> renderReportsDataOn: html [
 
-	data reports size = 0 ifTrue: [ ^ false ].
+	data reports isEmpty ifTrue: [ ^ false ].
 	html heading
 		style: 'margin: 5%';
 		level: 4;
 		with: 'Моя подальша доля:'.
 
-	data reports collect: [ :report | 
+	data reports do: [ :report | 
 		html horizontalRule.
 		html row
 			style: 'display: inline-flex; justify-content: center';
@@ -169,12 +161,6 @@ AHTakenAnimalCard >> reset [
 	comment := nil.
 ]
 
-{ #category : #initialization }
-AHTakenAnimalCard >> resetUpload [
-
-	showUpload := false.
-]
-
 { #category : #actions }
 AHTakenAnimalCard >> save [
 
@@ -187,10 +173,4 @@ AHTakenAnimalCard >> save [
 		          date: DateAndTime now asUTC.
 	data addReport: report;
 		save
-]
-
-{ #category : #accessing }
-AHTakenAnimalCard >> showUpload [
-
-	showUpload := true.
 ]

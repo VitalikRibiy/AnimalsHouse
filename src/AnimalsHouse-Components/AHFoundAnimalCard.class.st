@@ -123,8 +123,8 @@ AHFoundAnimalCard >> renderFormBodyOn: html [
 	self reset.
 	html modalBody: [ 
 		html form
-							style:
-						'color: black; font-size: medium; display: flex; flex-direction: column';
+			style:
+				'color: black; font-size: medium; display: flex; flex-direction: column';
 			multipart;
 			with: [ 
 				html formGroup: [ 
@@ -201,7 +201,7 @@ AHFoundAnimalCard >> save [
 	class := species = Species cat
 		        ifTrue: [ Cat ]
 		        ifFalse: [ Dog ].
-	image ifNil: [ image := data image ].
+	image ifNil: [ image := data photo ].
 	class
 		withName: name
 		age: age

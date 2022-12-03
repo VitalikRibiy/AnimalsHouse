@@ -31,12 +31,6 @@ AHAdminComponent >> goToReviewsView [
 	self call: AHReviewsComponent new.
 ]
 
-{ #category : #'as yet unclassified' }
-AHAdminComponent >> goToTakenAnimalsView [
-
-	self call: AHTakenAnimalsComponent.
-]
-
 { #category : #initialization }
 AHAdminComponent >> initialize [
 
